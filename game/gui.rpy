@@ -125,7 +125,7 @@ define gui.namebox_borders = Borders(5, 5, 5, 5)
 define gui.namebox_tile = False
 
 
-## The placement of dialogue relative to the textbox. These can be a whole
+## The placement of dialogue aulative to the textbox. These can be a whole
 ## number of pixels relative to the left or top side of the textbox, or 0.5 to
 ## center.
 define gui.dialogue_xpos = 402

@@ -1,7 +1,7 @@
 ﻿label start:
 
     $ mcname = renpy.input("What is your name?")
-    scene street with fade
+    scene houseday with fade
     play music track1 loop
     "Phew! That should be the last of all the boxes!"
     "Who knew moving would be so tiresome?"
@@ -21,7 +21,7 @@
     show aphnorm with dissolve
     q "Hi! You must be our new neighbour!!"
     mc "Hm? Oh, yeah! I just moved here!"
-    play voice aphperf
+    play sound aphperf
     q "I knew it! A little birdy told me we'd be meeting someone new~!"
     mc "What?"
     a "Nevermind that. I'm Aphmau! What's your name?"
@@ -60,7 +60,7 @@
             mc "That sounds fun! And I could really use your help"
             show aphlove 
             hide aphnorm 
-            play voice aphperf
+            play sound aphperf
             a "Terrific! I'm a pretty great party planner. This is gonna be awesome!"
             hide aphlove 
             show aphnorm
@@ -71,7 +71,7 @@
             mc "That sounds fun, but I think i'll organize it on my own"
             hide aphnorm
             show aphsad
-            play voice aphcry
+            play sound aphcry
             a "Aww...okay."
     a "Well, I'll see you around then! Looking forward to the party."
     hide aphnorm with dissolve
@@ -105,7 +105,7 @@ label choices1_a:
     q "dude. I told you. I got this. I'm working on it."
     qq "I really do not believe you"
     q "TRUUSSTTT!"
-    play voice garsigh
+    play sound garsigh
     qq "*sigh* Dante, we really need you to be on time with your payments!"
     qq "Laurance and I have been covering your part, but we can't keep doing that for you!"
     d "I hear you, and I appreciate you, but trust me, I got this covered"
@@ -143,8 +143,9 @@ label choices1_a:
             g "See? Even [mcname] agrees!"
             hide dansmirk
             show danmad at right
+            play sound danfine
             d "Dude. Whatever."
-            d "I never said I WILL pay...just...later"
+            d "I never said I WONT pay...just...later"
             g "I guess that's good enough for me"
     hide danmad
     show dannorm at right
@@ -168,6 +169,7 @@ label choices1_b:
     show kcnorm with dissolve
     kc "Hmmm? Kawaii-chan has never seen you around here..are you new?"
     mc "Oh! Uh, yeah, I just moved here"
+    play sound kcperfect
     kc "Oohhh! You're the one Aphmau-senpai talked about!"
     kc "My name is Kawaii-chan! It's nice to meet you!"
     mc "Ohhh, Aphmau told me a bit about you"
@@ -191,6 +193,7 @@ label choices1_b:
             $ renpy.notify("Kawaii-chan is glad you're helping her out!")
             hide kcnorm
             show kcstar
+            play sound kcperfect
             kc "Ohhh, thankyouthankyouthankyouu!!!"
             kc "Here's one, try it and tell Kawaii-chan what you think!"
             "Alright...here it goes...let's hope this isn't laced..."
@@ -227,7 +230,7 @@ label choices1cont:
     "I should probably make myself some dinner now. it's getting kinda late"
     scene houseinsidenoon with fade
     stop music
-    play music track19
+    play music track19 loop
     "Woah! The sun is already starting to set."
     "I'm kind of too tired to make something for myself...maybe i'll just order something."
     "You know what? I worked hard today, I should reward myself with some pizza!"
@@ -275,7 +278,7 @@ label choices1cont:
     scene black with fade
     scene bedroom with fade
     stop music
-    play music track4
+    play music track4 loop
     "A new day, a new slay! That's what the cool kids say."
     "I should probably go grocery shopping, I don't have much in the fridge..."
     "I think there should be one within walking distance"
@@ -288,7 +291,7 @@ label choices1cont:
     q "Oh my!"
     scene laur_grocery_cg_1 with fade
     stop music
-    play music track6
+    play music track6 loop
     pause(3.0)
     q "Are you alright?"
     q "Do you need help getting up?"
@@ -298,7 +301,8 @@ label choices1cont:
     scene grocerystore with fade
     show laurnorm with dissolve
     stop music
-    play music track4
+    play music track4 loop
+    play sound laurokay
     q "The floor here is slippery, you should be careful"
     mc "Yeah no I got that"
     la "My name is Laurence, by the way."
@@ -316,8 +320,10 @@ label choices1cont:
     hide laurnorm 
     show laursmile
     la "Oh right! Aphmau was telling me you were having a housewarming party today. I remember now"
+    play sound lauruhh
     la "I need to get going, I still have to get you a gift ahaha"
     mc "Oh, you don't need to worry about a gift-"
+    play sound laurwhynot
     la "No no, I insist, how else can I welcome you to the neighbourhood?"
     mc "In that case, i'm looking forward to it"
     la "And i'm looking forward to your party. See you around!"
@@ -330,8 +336,8 @@ label choices1cont:
         jump partyplan
     label aphpartyplan:
     scene houseinside with fade
-    "Aphmau should be coming soon to help out with the party-"
     play sound doorbell
+    "Aphmau should be coming soon to help out with the party-"
     "Oop! That's her!"
     scene frontdoor with fade
     show aphnorm with dissolve
@@ -364,32 +370,477 @@ label choices1cont:
     "Boom! Meal is ready! I should also leave out some snacks as well.."
     "people should be coming soon"
     label partycont:
-    "I'm really excited to meet everyone!"
     play sound doorbell
+    "I'm really excited to meet everyone!"
     "Oh, that's them...I'm so nervous!"
     scene frontdoor with fade
     if aphparty < 1:
-        show aphnorm
+        show aphnorm with dissolve
         a "Hi [mcname]!! I brought everyone that I could!"
         mc "That's great! Thanks so much"
         a "No problem! I got you this cool scented candle as a gift. I hope you like it!"
         mc "It's lovely, thank you"
         hide aphnorm with dissolve 
-    show katnorm with dissolve
-    k "Hi. You're [mcname], right?"
-    mc "I'd be concerned if I wasn't!"
-    k "...haha?"
-    k "Anyway. I'm one of Aphmau's roommates. I brought you this bottle of wine, as a gift"
-    mc "Ooo, cool! I'm not a big wine person but-"
-    k "Okay? I'll just keep it then"
-    mc "...okay"
-    hide katnorm with dissolve
-    show kcnorm with dissolve
+    show katnorm at left with dissolve
+    show kcnorm at right with dissolve
     if kcconvflag == 1:
-        kc "Good evening [mcname]-san!!"
-        mc "Hey Kawaii-chan!"
-        kc "Kawaii-chan was very excited for your party. She brought the cookies from yesterday since [mcname]-san liked them so much!"
-        mc "Oh wow, that's great! Thanks so much! Everyone's gonna love these"
-        
+        kc "Hey [mcname]-san!! Thanks for inviting us!"
+        mc "Of course! I'm so glad you made it!"
+        k "Hi, i'm Katelyn. We're both Aphmau's roommates"
+        mc "Oh, it's great to meet you! I'm really looking forward to making friends here"
+        k "yea yea"
+        if kcflag == 1:
+            kc "Well, Kawaii-chan knows how much you liked my cookies from yesterday, so I made some more!"
+            mc "Oooo, yes! Thanks so much Kawaii-chan!"
+            kc "Of course!"
+        else:
+            k "We brought this nice wine and bought some cool wine glasses to come with"
+            mc "Oh wow, that's a lot, thanks so much you guys!"
+            hide katnorm 
+            show katdis at left
+            k "See, Kawaii-chan? I knew this was too much!"
+            hide kcnorm
+            show kcmad at right
+            play sound kchey
+            kc "Ohhh, come on! It's not THAT much!!"
+    else:
+        mc "Hey guys! Welcome to the party!"
+        k "Hey. I'm Katelyn, and this is Kawaii-chan"
+        mc "It's great to meet the two of you! Your Aphmau's roommates, right?"
+        kc "Yup! Kawaii-chan hopes we can all become great friends!"
+        menu:
+            "We'll see":
+                mc "We'll have to see about that..."
+            "I agree":
+                mc "I'm looking forward to it!"
+        k "We brought this nice wine and bought some cool wine glasses to come with"
+        mc "Oh wow, that's a lot, thanks so much you guys!"
+        hide katnorm 
+        show katdis at left
+        k "See, Kawaii-chan? I knew this was too much!"
+        hide kcnorm
+        show kcmad at right
+        play sound kchey
+        kc "Ohhh, come on! It's not THAT much!!"
+    hide kcmad with dissolve
+    hide katdis with dissolve       
+    hide kcnorm with dissolve
+    hide katnorm with dissolve 
+    show lucinorm with dissolve
+    lu "Hey [mcname], i'm Lucinda. I'm a couple houses down from here, nice to meet you"
+    mc "Nice to meet you too! Come in."
+    lu "Oh, right, I got you this giftcard for CreamyDreamy Coffee Co. , it's a coffee shop nearby"
+    mc "Ohhh, that's cool! Thanks!"
+    hide lucinorm with dissolve
+    show laursmile with dissolve
+    la "Hey again, [mcname]!"
+    show garnorm at left with dissolve
+    show dannorm at right with dissolve
+    if gardanflag:
+        if garflag == 1:
+            g "Hiya [mcname]!"
+            mc "Hey Garroth! Great to see you! You too, Dante"
+            g "We've really been looking forward to this party. It's all I could think about!"
+            d "Ha. Laaaaamee"
+            hide garnorm
+            show garmad at left
+            g "SHUT UP!"
+            mc "Woaah, ahah. Lets calm down.."
+        if danflag ==1:
+            d "Whats poppin, [mcname]?"
+            mc "Haha, not much"
+            hide laursmile
+            show laurdis
+            la "What's 'poppin'?"
+            hide dannorm
+            show danmad at right 
+            d "Yea? What's wrong with that, pretty boy?"
+            la "Okay whatever"
+    else:
+        g "Hello! My name's Garroth!"
+        d "My name is Dante-"
+        hide dannorm
+        show dansmirk at right
+        play sound danheybaby
+        d "You could call me babe if you'd like~"
+        hide garnorm
+        hide laursmile
+        show laurdis 
+        show garmad at left
+        g "Dude."
+        la "Come on man we just got here"
+        hide dansmirk
+        show danmad at right
+        play sound danfine
+        d "Sorry I thought i'd give it a try."
+    hide laurdis
+    hide danmad
+    hide garmad
+    hide danmad
+    show dannorm at right
+    show laurnorm
+    show garnorm at left
+    g "Oh, we also have a 4th buddy, Travis, but he's just running a bit late!"
+    la "He said he's doing something important right now?"
+    d "I bet he's suckin cock"
+    hide laurnorm
+    show laurdis
+    la "Dude?"
+    d "My bad"
+    hide laurdis
+    show laurnorm
+    la "Anyway. Me and the guys all worked together on this. We got you these flowers! We hand-picked them ourselves"
+    hide laurnorm
+    hide garnorm
+    hide dannorm
+    show laursad
+    show garsad at left
+    show danmad at right
+    g "They um. They welted a little bit."
+    d "Yeah we kinda forgot to put them in soil....and sunlight...and..water...."
+    la "And some of these might be weeds..."
+    menu:
+        "This is awful":
+            mc "This....this is awful. These smell disgusting oh my god"
+            d "Yeah we probably should've took better care of them"
+            mc "Yeah just...please get rid of those before you come in..."
+            play sound garaww
+            g "I'll go do that..."
+        "This is beautiful":
+            $ danflag += 1
+            $ garflag += 1
+            $ laurflag += 1
+            mc "It's cute though! It's the thought that counts. Clearly you guys worked hard on these"
+            $ renpy.notify ("The boys all liked your gratitude!")
+            hide laursad
+            hide garsad
+            hide danmad
+            show laursmile
+            show garnorm at left
+            show dannorm at right
+            play sound garthanks
+            g "Right! We did work hard!"
+            d "We're glad you like them!"
+    hide danmad with dissolve
+    hide garsad with dissolve
+    hide laursad with dissolve
+    hide garnorm with dissolve
+    hide laursmile with dissolve
+    hide dannorm with dissolve
+    show zanenorm with dissolve
+    z "Hello...i'm Zane. Aphmau's friend."
+    mc "Nice to meet you Zane! I'm [mcname], i'm glad you could make it"
+    z "Whatever"
+    hide zanenorm with dissolve
+    "No gift...?"
+    show aarnorm with dissolve
+    ar "Hey, i'm Aaron, i'm good friends with Aphmau. It's nice to meet you"
+    mc "Great to meet you, Aaron! I'm [mcname]."
+    ar "I brought this bowl thing...I don't know, I thought it looked nice, so you could use it for decoration or something"
+    mc "Oh, sweet! This is really nice! Thanks so much, Aaron"
+    hide aarnorm
+    show aarsmile
+    ar "Anytime"
+    hide aarsmile with dissolve
+    "That should be everyone-"
+    q "WAIT! I'M HERE!"
+    show travnorm with dissolve
+    t "I'm here..! I'm here...! I'm Travis!"
+    mc "Right! You're with Laurence and those guys!"
+    t "Yeah..! Sorry...I ran here..."
+    mc "What were you doing before you got here?"
+    t "Suckin cock"
+    mc "Oh"
+    play sound travlaugh
+    t "Haha jk. Just had some business"
+    mc "..right. Come on in, we've got everyone"
+    if aphparty == 1:
+        scene houseinsidedecor with fade
+        show lucismirk with dissolve
+        lu "Wow, [mcname], you really decorated this place"
+        mc "Haha, that was all Aphmau, but i'm glad you like it!"
+        hide lucismirk with dissolve
+        show laurnorm with new
+    else:
+        scene houseinsidedecor with fade
+        show laurnorm with dissolve
+    la "Mm, this pasta is very good, did you make it yourself, [mcname]?"
+    mc "I did, yeah!"
+    show katsmile at left with dissolve
+    k "This is delicious, you're a great cook"
+    mc "Haha, it's nothing, just a family recipe.."
+    show zanenorm at right with dissolve
+    z "It's alright, I suppose..."
+    hide katsmile
+    show dansmirk at left with new
+    d "Is that why you're already on your third plate, Zane?"
+    hide zanenorm
+    show zanemad at right
+    z "I'M JUST HUNGRY!"
+    d "Suuurree"
+    z "Whatever..."
+    hide laurnorm
+    show garmad with new
+    g "Zane! Be nice!"
+    hide zanemad
+    show zanenorm at right
+    z "...the pasta is good, [mcname]."
+    hide garmad
+    show garnorm
+    g "That's a good boy, Zuzu!"
+    hide zanenorm
+    show zanemad at right
+    z "WHAT IS WRONG WITH YOU"
+    hide zanemad
+    hide garnorm
+    hide dansmirk
+    show lucinorm with new
+    lu "Okay enough of that"
+    lu "[mcname], why don't you tell us a bit about yourself?"
+    mc "Oh, well...there's not much to say..."
+    show katnorm at right with dissolve
+    k "Well, why'd you move here? Any reason?"
+    menu:
+        "To escape from my past":
+            mc "Well, I guess I just wanted to run away from my past...try to start fresh, y'know?"
+            hide lucinorm
+            hide katnorm
+            show aarsad with new
+            $ renpy.notify ("Aaron can relate to you!")
+            $ aarflag += 1
+            ar "I get that...wanting to leave all your troubles behind...your mistakes..."
+            mc "Yeah.."
+            show travshock at right with dissolve
+            t "Dude, were you a mafia leader or something?"
+            mc "What? No..I just-"
+            show danlaugh at left with dissolve
+            # TODO: DANLAUGH
+            d "Haha! I bet they're a hitman! Or an assassin!"
+            hide travshock
+            show travlaugh at right
+            play sound travlaugh
+            t "YOOOOO AHAHAHAHAHAH"
+            hide travlaugh
+            hide danlaugh
+            show travshock at right
+            show danmad at left
+            pause (3.0)
+            d "...you didn't come here to kill us, did you?"
+            hide aarsad
+            show aarmad
+            ar "Guys! What's wrong with you!?"
+            menu:
+                "I am here to kill you":
+                    mc "You caught me! I'm here to kill you all!"
+                    hide danmad
+                    hide travshock
+                    show danscare at left
+                    show travscare at right
+                    define b = Character("Both")
+                    b "AAAAAAAAAAAAAAAAAAAAAAAA!!!!!!!!!!"
+                    hide aarmad
+                    show laurdis with new
+                    la "Obviously they're joking guys"
+                    hide danscare
+                    hide travscare
+                    show danmad at left
+                    show travshock at right
+                    t "yeah.. obviously we knew that"
+                    d "totally"
+                "What are you talking about":
+                    mc "No i'm literally just some guy"
+                    d "....we'll believe you"
+                    t "for now..."
+                    mc "ohkay"
+        "To try something new":
+            mc "I guess I just wanted to try something new, look for some adventure, maybe?"
+            hide lucinorm
+            show lucismirk
+            $ renpy.notify ("Lucinda thinks you're interesting!")
+            lu "Ooo, adventurous, I like it"
+            lu "I'll definitely make sure to take you to cool places here"
+            mc "I'd love that!"
+            k "Where would you guys even go? There's honestly not much to do around here..."
+            lu "Wouldn't you like to know?"
+            show garnorm at left with dissolve
+            g "Sounds fun! Can I join?"
+            hide lucismirk 
+            show lucinorm
+            lu "Absolutely not"
+            hide garnorm
+            show garsad at left
+            play sound garaww
+            g "Awww, why not??"
+            k "I can't believe Lucinda is gatekeeping the neighbourhood from it's residents"
+            lu "If I took you guys to my special places, all you'd do is ruin it"
+            hide garsad
+            show laurdis at left with new
+            la "Wait, you're saying you know about secret areas around here?"
+            lu "Yeah? Of course?"
+            hide katnorm
+            show danmad at right with new
+            play sound danhuh
+            d "And you just never told anyone?? How long have you known about them???"
+            lu "Since we first moved here? Besides, why would I tell anyone?"
+            hide lucinorm
+            show lucismirk
+            play sound lucilaugh
+            lu "Then it's not a secret~"
+            d "Oh yeah but [mcname] is allowed to know about it"
+            lu "Yeah, cuz they're actually cool, unlike you guys"
+            mc "Oh wow"
+    hide lucismirk
+    hide danmad
+    hide laurdis
+    hide aarmad
+    hide travshock
+    hide travlaugh
+    show aphnorm with new
+    a "Either way, [mcname], we're all very glad to have you here now!"
+    show kcnorm at left with dissolve
+    kc "Kawaii-chan hopes we can all become great friends!"
+    mc "I hope so too, Kawaii-chan!"
+    if aphparty == 1:
+        scene houseinsidedecornoon with fade
+    else:
+        scene houseinsidenoon with fade
+    "Seems like everyone's broken off into their own groups...who should I join?"
+    menu:
+        "Aphmau, Kawaii-chan":
+            jump aphchanconv
+        "Lucinda, Katelyn":
+            jump lucikatconv
+        "Laurence, Garroth, Aaron":
+            jump laurgaraarconv
+        "Travis, Zane, Dante":
+            jump travzandanconv
+    label aphchanconv:
+        $ renpy.notify("Aphmau and Kawaii-chan are glad to talk to you!")
+        $ aphflag += 1
+        $ kcflag += 1
+        "Let's see what Aphmau and Kawaii-chan are up to!"
+        if kcflag == 2:
+            show aphlove at left with dissolve
+            show kcnorm at right with dissolve
+            a "Kawaii-chan!! These cookies are absolutely awesome!!!"
+            kc "Hehe! Kawaii-chan is so glad Aphmau-senpai loves them!"
+        else:
+            show aphnorm at left with dissolve
+            show kcnorm at right with dissolve
+        a "Oh, [mcname]! Hey!"
+        kc "This party is great, [mcname]!"
+        mc "Haha I didn't do much, but i'm glad you like it, Kawaii-chan!"
+        mc "So, what were you guys talking about?"
+        a "Kawaii-chan and I were just discussing getting coffee tomorrow and hanging out for a bit"
+        hide kcnorm 
+        show kcstar at right
+        kc "Ooo! [mcname], you should come with us!! We can all hang out and get to know you more!"
+        mc "Sure! I'll come with!"
+        play sound kcperfect
+        kc "YAAY!!"
+        a "We'll take you to CreamyDreamy Coffe Co! Its the GREATEST coffee shop ever!"
+        mc "Right, Lucinda actually gave me a gift card for that place, perfect!"
+        hide kcstar
+        show kcnorm at right
+        kc "We're gonna have so much fun!!"
+        mc "Well, it's just coffee..."
+        hide kcnorm
+        show kcmad at right
+        play sound kchey
+        kc "It's more than just coffee! It's a chance to bond!"
+        t "EVERYONE! I'D LIKE TO MAKE A TOAST!"
+        jump travtoast
+    label lucikatconv:
+        $ renpy.notify("Lucinda and Katelyn are glad to talk to you!")
+        $ luciflag += 1
+        $ katflag += 1
+        "Let's see what Lucinda and Katelyn are up to!"
+        show lucinorm at left with dissolve
+        show katnorm at right with dissolve
+        lu "You don't know what you're talking about"
+        k "Oh yeah? We should put this to the test, then!"
+        mc "Hey guys! What are you two talking about?"
+        k "Lucinda here thinks she's the better bowler than me-"
+        hide lucinorm
+        show lucismirk at left
+        lu "Cuz I am"
+        hide katnorm
+        show katdis at right
+        k "...right. You know what?"
+        hide katdis
+        show katsmile at right
+        k "Lucinda, I challenge you to a bowling contest tomorrow!"
+        k "And [mcname], you'll come along too, to judge us!"
+        mc "What? Me??"
+        play sound lucilaugh
+        lu "Ahaha, yes! You'll have to decide which of us is better at bowling"
+        hide katsmile
+        show katnorm at right
+        k "It's gonna be me, by the way."
+        lu "We'll see about that~"
+        t "EVERYONE! I'D LIKE TO MAKE A TOAST!"
+        jump travtoast
+        label laurgaraarconv:
+        $ garflag += 1
+        $ laurflag += 1
+        $ aarflag += 1
+        $ renpy.notify("Laurence, Garroth, and Aaron are glad to talk to you!")
+        "Let's see with Laurence, Garroth, and Aaron are up to!"
+        show aarnorm at left with dissolve
+        show laurnorm with dissolve
+        show garnorm at right with dissolve 
+        g "Hey [mcname]! We're all having a blast at your party!"
+        mc "Ahaha, thanks. I'd hardly call this a party, though"
+        ar "We're all enjoying ourselves nonetheless, so I'd call that a job well-done"
+        mc "That's good to know. What were you guys talking about?"
+        la "Well, we were all thinking of what the best restaurant around here is that we could introduce you to"
+        la "I was saying it's Piping Hot Pizza Palace, truly undefeated"
+        ar "Nuh uh, best restaurant is definitely the Sizzling Sausage Shack. Their food is on a whole 'nother level!"
+        hide garnorm
+        show garmad at right
+        g "Nope! Both of you are wrong! Best restaurant is the Creamy Dreamy Ice Cream Parlour!"
+        hide laurnorm
+        show laurdis 
+        la "That's an ice cream parlour?"
+        g "Yeah?"
+        ar "That doesn't count"
+        hide garmad
+        show garsad at right
+        play sound garaww
+        g "Aww, why not?"
+        menu:
+            "Piping Hot Pizza Palace sounds the best":
+                $ laurflag += 1
+                mc "I think Piping Hot Pizza Palace sounds the best, I love me a good pizza!"
+                hide laurdis
+                show laursmile
+                $ renpy.notify("Laurence is glad you like his suggestion!")
+                play sound laurexactly
+                la "It's so good! You're gonna love it, [mcname]."
+                la "We should go tomorrow, you'll see just how great it is."
+                mc "Looking forward to it!"
+                g "Whatever...who want's piping hot pizza or sizzling sausages in this weather? A nice, cool ice-cream is perfect.."
+            "Sizzling Sausage Shack sounds the best":
+                $ aarflag += 1
+                mc "I think Sizzling Sausage Shack sounds the best, I love me a good sausage!"
+                hide garsad
+                show garnorm at right
+                play sound garlaugh
+                g "pfft...love me a good sausage..."
+                hide aarnorm
+                show aarmad at left
+                ar "What's so funny, Garroth?"
+                hide garnorm
+                show garshock at right
+                g "Nothing! Nothing, Big Man!"
+                ar "Anyway..."
+                hide aarmad
+                show aarsmile at left
+                $ renpy.notify("Aaron is glad you like his suggestion!")
+                ar "It is the best! Guess you could say Real Recognizes Real"
+                ar "Why don't I take you there tomorrow? It truly is great"
+                mc "That sounds fun! I'm in!"
+            "Creamy Dreamy Ice Cream Parlour sounds the best":
+                $ garflag += 1
 
     return
