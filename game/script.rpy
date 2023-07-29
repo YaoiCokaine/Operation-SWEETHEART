@@ -2,7 +2,7 @@
 
     $ mcname = renpy.input("What is your name?")
     scene houseday with fade
-    play music track1 loop
+    play music daysong1 loop
     "Phew! That should be the last of all the boxes!"
     "Who knew moving would be so tiresome?"
     "It'll all be worth it, as i'm finally a homeowner!"
@@ -230,7 +230,7 @@ label choices1cont:
     "I should probably make myself some dinner now. it's getting kinda late"
     scene houseinsidenoon with fade
     stop music
-    play music track19 loop
+    play music noonsong loop
     "Woah! The sun is already starting to set."
     "I'm kind of too tired to make something for myself...maybe i'll just order something."
     "You know what? I worked hard today, I should reward myself with some pizza!"
@@ -278,7 +278,7 @@ label choices1cont:
     scene black with fade
     scene bedroom with fade
     stop music
-    play music track4 loop
+    play music daysong2 loop
     "A new day, a new slay! That's what the cool kids say."
     "I should probably go grocery shopping, I don't have much in the fridge..."
     "I think there should be one within walking distance"
@@ -291,7 +291,7 @@ label choices1cont:
     q "Oh my!"
     scene laur_grocery_cg_1 with fade
     stop music
-    play music track6 loop
+    play music daydream loop
     pause(3.0)
     q "Are you alright?"
     q "Do you need help getting up?"
@@ -301,7 +301,7 @@ label choices1cont:
     scene grocerystore with fade
     show laurnorm with dissolve
     stop music
-    play music track4 loop
+    play music daysong2 loop
     play sound laurokay
     q "The floor here is slippery, you should be careful"
     mc "Yeah no I got that"
@@ -718,6 +718,8 @@ label choices1cont:
         $ renpy.notify("Aphmau and Kawaii-chan are glad to talk to you!")
         $ aphflag += 1
         $ kcflag += 1
+        define aphchan = 0
+        $ aphchan +=1
         "Let's see what Aphmau and Kawaii-chan are up to!"
         if kcflag == 2:
             show aphlove at left with dissolve
@@ -754,6 +756,8 @@ label choices1cont:
         $ renpy.notify("Lucinda and Katelyn are glad to talk to you!")
         $ luciflag += 1
         $ katflag += 1
+        define lucikat = 0
+        $ lucikat +=1
         "Let's see what Lucinda and Katelyn are up to!"
         show lucinorm at left with dissolve
         show katnorm at right with dissolve
@@ -780,7 +784,7 @@ label choices1cont:
         lu "We'll see about that~"
         t "EVERYONE! I'D LIKE TO MAKE A TOAST!"
         jump travtoast
-        label laurgaraarconv:
+    label laurgaraarconv:
         $ garflag += 1
         $ laurflag += 1
         $ aarflag += 1
@@ -798,7 +802,7 @@ label choices1cont:
         ar "Nuh uh, best restaurant is definitely the Sizzling Sausage Shack. Their food is on a whole 'nother level!"
         hide garnorm
         show garmad at right
-        g "Nope! Both of you are wrong! Best restaurant is the Creamy Dreamy Ice Cream Parlour!"
+        g "Nope! Both of you are wrong! Best restaurant is the Cloud 9 Nice Ice Cream Parlour!"
         hide laurnorm
         show laurdis 
         la "That's an ice cream parlour?"
@@ -810,6 +814,8 @@ label choices1cont:
         g "Aww, why not?"
         menu:
             "Piping Hot Pizza Palace sounds the best":
+                define laurrest = 0
+                $ laurrest +=1
                 $ laurflag += 1
                 mc "I think Piping Hot Pizza Palace sounds the best, I love me a good pizza!"
                 hide laurdis
@@ -821,6 +827,8 @@ label choices1cont:
                 mc "Looking forward to it!"
                 g "Whatever...who want's piping hot pizza or sizzling sausages in this weather? A nice, cool ice-cream is perfect.."
             "Sizzling Sausage Shack sounds the best":
+                define aarrest = 0
+                $ aarrest +=1
                 $ aarflag += 1
                 mc "I think Sizzling Sausage Shack sounds the best, I love me a good sausage!"
                 hide garsad
@@ -840,7 +848,264 @@ label choices1cont:
                 ar "It is the best! Guess you could say Real Recognizes Real"
                 ar "Why don't I take you there tomorrow? It truly is great"
                 mc "That sounds fun! I'm in!"
-            "Creamy Dreamy Ice Cream Parlour sounds the best":
+            "Cloud 9 Nice Ice Cream Parlour sounds the best":
+                define garrest = 0
+                $ garrest +=1
                 $ garflag += 1
+                mc "Who said it shouldn't count? I think Cloud 9 Nice Ice Cream Parlour sounds the best. Love me some ice cream!"
+                hide garsad
+                show garnorm at right
+                play sound garawesome
+                $ renpy.notify("Garroth is glad you like his suggestion!")
+                g "I knew you'd agree with me, [mcname]!"
+                la "But that's ice cream...that's not a proper restaurant..."
+                g "You're just mad your restaurant isn't as good as Cloud 9 Nice Ice Cream Parlour!"
+                la "No I don't think I am"
+                g "[mcname], we'll go get ice cream together so you can see just how good it is!"
+                mc "That sounds fun, let's do that!"
+                g "Yippee!"
+                a "Yippee..?"
+        t "EVERYONE! I'D LIKE TO MAKE A TOAST!"
+        jump travtoast
+    label travzandanconv:
+        $ travflag += 1
+        $ zaneflag += 1
+        $ danflag += 1
+        define travzandan = 0
+        $ travzandan += 1
+        $ renpy.notify("Travis, Zane, and Dante are glad to talk to you!")
+        mc "Let's go see what Travis, Zane, and Dante are up to!" 
+        show travnorm at left with dissolve
+        show zanenorm with dissolve
+        show dannorm at right with dissolve
+        t "-and then I said, that's not a camel, that's my wife!"
+        hide dannorm
+        hide travnorm
+        show travlaugh at left
+        show danlaugh at right
+        play sound danlaugh
+        d "AHAHA!! TOO GOOODD"
+        hide zanenorm
+        show zanemad
+        z "That wasn't funny at all..."
+        hide travlaugh
+        show travshock at left
+        t "No no dude you need to hear it again."
+        t "So two guys walk into a bar-"
+        mc "Hey guys! What are you all talking about?"
+        hide danlaugh
+        show dannorm at right
+        d "Haha nothing, Travis was just cracking some jokes"
+        z "I'd hardly call that a joke, wasn't funny at all,"
+        z "I don't even think there was a punchline?"
+        t "You just wouldn't get humour, my guy"
+        z "BUT IT'S NOT HUMOUR! IT'S NOT FUNNY IF THERE IS NO PUNCHLINE!!"
+        t "Nah but it was tho"
+        z "Oh my fucking god"
+        menu:
+            "Joke was funny":
+                $ travflag +=1 
+                mc "I don't know, I thought it was pretty funny"
+                $ renpy.notify("Travis appreciates your support!")
+                hide travshock
+                show travnorm at left
+                t "Knew you were a comedy connoisseur! See, Zane? Majority wins"
+                hide dannorm
+                show danmad at right
+                d "Dude, am I not enough for you?"
+                hide travnorm
+                show travsad at left
+                t "Noo it isn't like that...come on man you're more than enough for me"
+                hide danmad
+                show dannorm at right
+                d "Awww...thanks man."
+                z "This is what happens when you enable them"
+                mc "Right"
+            "Joke wasn't funny":
+                $ zaneflag += 1
+                mc "Yeah no that wasn't funny at all"
+                $ renpy.notify("Zane appreciates your support!")
+                hide zanemad
+                show zanenorm
+                play sound zanethanks
+                z "Glad to know someone else has common sense as well..."
+                t "Duuudee it's funny in like...an ironic way.."
+                hide dannorm 
+                show danmad at right
+                d "Yeah it's like...satire yo"
+                mc "Is it?"
+                d "...yea no not really I guess"
+                t "DUDE?"
+                d "Nah they're right I think you can do better"
+                t "Whatever man you guys don't get real comedy"
+        hide zanemad
+        show zanenorm
+        z "You guys will learn about real comedy tomorrow, I hope"
+        mc "What's happening tomorrow?"
+        hide danmad
+        show dannorm at right
+        d "We're gonna watch a movie tomorrow, apparently it's the funniest movie of the year or something"
+        hide travshock
+        hide travsad
+        show travnorm at left
+        t "It's called 'Killer Babez VS MICHAEL'"
+        mc "...who's Michael?"
+        d "I guess we're gonna find out..."
+        d "Oh my god! Dude, you should definitely come watch it with us!"
+        t "Oh duude! You have to!"
+        hide dannorm
+        show dansmirk at right
+        play sound danheybaby
+        d "You'd fit in with all the killer babes, definitely"
+        z "You cannot be saying that"
+        mc "That sounds very fun! I'd love to come with"
+        z "hah, the more the merrier..."
+        t "Exactly!"
+        z "No I was joking"
+        hide travnorm
+        show travshock at left
+        t "Interesting, I don't recall there being a punchline there?"
+        z "Omfg"
+        hide dansmirk
+        show dannorm at right
+        d "Tomorrow's gonna be so much fun. Oh yeah, forgot to mention, this party's been great man"
+        hide travshock
+        show travnorm at left
+        t "Truly! You know what? I'm gonna do a toast!"
+        mc "No that's not necessary-"
+        t "EVERYONE! I'D LIKE TO MAKE A TOAST!"
+    label travtoast:
+        scene houseinsidedecornoon with fade
+        show travnorm with dissolve
+        t "Here's a toast, to our new beloved friend, [mcname]!"
+        define e = Character("Everyone")
+        e "WOOOOOO!!"
+        t "Here's to welcoming [mcname] to our lovely neighbourhood!!"
+        e "YEAAHH!!!!"
+        mc "Aww...you guys....stawp it..."
+        scene black with dissolve
+        "Some partying later..."
+scene houseinsidenight with fade
+stop music
+play music nightsong loop
+"Everyone's gone home now."
+if aphparty == 1:
+    "And I finally got all of these decorations down..."
+"Man, i'm so tired!"
+"But i'm really looking forward to tomorrow!"
+if aphchan == 1:
+    "I can't wait to hang out with Aphmau and Kawaii-Chan. Hopefully I can get to know them better!"
+    "Also looking forward to using Lucinda's gift card, apparently the CreamyDreamy coffee is spectacular."
+if lucikat == 1:
+    "I can't wait to go bowling with Katelyn and Lucinda!"
+    "Or well...I guess I'm not bowling, i'm just watching them bowl...but that'll probably be fun, too!"
+if laurrest ==1:
+    "I can't wait to go to Piping Hot Pizza Palace with Laurence! It sounds soooo good..."
+    "It'll also be great to spend some time with Laurence and get to know him more!"
+if aarrest ==1:
+    "I can't wait to go to Sizzling Sausage Shack with Aaron! It sounds soooo good..."
+    "It'll also be great to spend some time with Aaron and get to know him more!"  
+if garrest ==1:
+    "I can't wait to go to Cloud 9 Nice Ice Cream Parlour with Garroth! It sounds soooo good..."
+    "It'll also be great to spend some time with Garroth and get to know him more!" 
+if travzandan == 1:
+    "I can't wait to go to the movies with Zane, Travis, and Dante tomorrow!"
+    "Sounds like it'll be a really funny movie, and hopefully I can bond with the guys more!"
+play sound doorbell 
+"I should probably go to bed now.."
+"? Who's here at this time?"
+scene frontdoornight with fade
+show tylernorm with dissolve
+ty "Hey"
+mc "...you?"
+ty "You remember me right"
+mc "Yeah no you're um. I wanna say Taylor?"
+ty "Tyler but yeah"
+ty "I know what you're doing"
+mc "What?"
+ty "I've been here long enough to sense an imbalance"
+mc "What are you talking about i'm so lost"
+ty "What you're doing is RECKLESS....continue this path and bad things will ensue.."
+mc "Okay I'm calling the cops"
+ty "NO WAIT sorry I was trying out this new mysterious thing"
+ty "Anyway...let me just say, I've been watching your interactions with the people of this street"
+mc "Totally not weird at all"
+ty "And I can tell that one of the residents here has caught your eye...you're in love"
+mc "Wh- How'd you know I like-"
+ty "Don't worry, I can tell...you don't have to say it.."
+ty "But let me warn you. You need to be careful."
+ty "Be careful with how you interact with everyone. You don't want to be too affectionate with everyone, just focus on your little crush."
+ty "I'm just saying, if you don't actively target one person, bad things might happen.."
+mc "...right. Definitely"
+ty "I'm just saying, if you really want to be with your one person, then really dedicate yourself to that one person. If you mess around..you might get an ending you're not happy with"
+mc "an 'ending'? What is that supposed to mean?"
+ty "You will learn as time goes on"
+mc "Hey man don't you have pizzas to deliver"
+label splashscreen:
 
-    return
+    python:
+        process_list = []
+        currentuser = ""
+        if renpy.windows:
+            try:
+                process_list = subprocess.check_output("wmic process get Description", shell=True).lower().replace("\r", "").replace(" ", "").split("\n")
+            except:
+                pass
+            try:
+                for name in ('LOGNAME', 'USER', 'LNAME', 'USERNAME'):
+                    user = os.environ.get(name)
+                    if user:
+                        currentuser = user
+            except:
+                pass
+ty "Farewell, [currentuser]"
+mc "??? who is [currentuser]???"
+hide tylernorm with dissolve
+"Jesus christ that guy is weird"
+scene Bedroom_Night_Dark with fade
+"I need to go to sleep now"
+"That guy was...really creepy...but maybe he's right"
+"I can't be fooling around too much...I should be careful with how I progress from here"
+scene black with fade
+pause (3.0)
+scene Bedroom_Day with fade
+"*yaawn* What a beautiful morning!"
+if aphchan == 1:
+    "I should probably get ready to get coffee with Aphmau and Kawaii-chan."
+if lucikat == 1:
+    "I should probably get ready to go bowling with Lucinda and Katelyn."
+if laurrest ==1:
+    "I should probably get ready to go to Piping Hot Pizza Palace with Laurence."
+if aarrest ==1:
+    "I should probably get ready to go to Sizzling Sausage Shack with Aaron." 
+if garrest ==1:
+    "I should probably get ready to go to Cloud 9 Nice Ice Cream Parlour."
+if travzandan == 1:
+    "I should probably get ready to go watch Killer Babez VS MICHAEL with the guys."
+"Hmm..I wonder if I should dress up nicely?"
+menu:
+    "Dress up nicely":
+        define dressup = 0
+        $ dressup += 1
+        "I'll make a good impression if I put some effort into my look."
+    "Don't":
+        "Eh, it's not a big deal, a shirt and sweatpants should probably be fine."
+if aphchan == 1:
+    jump aphchancoffee
+if lucikat == 1:
+    jump lucikatbowl
+if laurrest ==1:
+    jump laurpizza
+if aarrest ==1:
+    jump aarsausage
+if garrest ==1:
+    jump garcream
+if travzandan == 1:
+    jump guymovie
+label aphchancoffee:
+    scene houseday with fade
+    mc "I guess I should just wait out here"
+
+
+
+return

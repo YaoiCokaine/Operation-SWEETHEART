@@ -4,6 +4,7 @@ IMAGES
 
 -front door + night + noon
 -bedroom + night
+-tyler sprites: norm + pizza
 -aphmau party cg
 
 VOICE
@@ -23,18 +24,8 @@ garroth:
 Katelyn:
 -sad 
 
-laur:
--sad
-
 luci:
--new laugh
-
-trav:
--confusion
-
-zane:
 -laugh
--anger
 
 
 flags:
@@ -46,6 +37,7 @@ Aphmau:
 Dante:
     -Side with rent
     -keep flowers
+    -talk to him zane and travis
 
 Garroth:
     -Side with rent
@@ -74,3 +66,10 @@ Lucinda:
 Katelyn:
     -talk to her and lucinda
 
+Travis:
+    -talk to him dante and zane
+    -find his joke funny
+
+Zane:
+    -talk to him dante and travis
+    -not find travis' joke funny

@@ -35,11 +35,12 @@ define kcconvflag = 0
 
 #audio
 
-define track1 = "audio/dream/vntrack01.mp3"
-define track4 = "audio/dream/vntrack04.mp3"
-define track6 = "audio/dream/vntrack06.mp3"
-define track19 = "audio/dream/vntrack19.mp3"
-#noon music ^
+define daysong1 = "audio/dream/vntrack01.mp3"
+define nightsong = "audio/dream/vntrack08.mp3"
+define daysong2 = "audio/dream/vntrack04.mp3"
+define daydream = "audio/dream/vntrack06.mp3"
+define noonsong = "audio/dream/vntrack19.mp3"
+
 define aarlaugh = "audio/voice/AaronV/aarlaugh.mp3"
 define aartease = "audio/voice/AaronV/aartease.mp3"
 

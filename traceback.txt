@@ -1,21 +1,21 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 809, in script
-    play sound garawww
+  File "game/script.rpy", line 878, in script
+    play sound danlaugh
   File "renpy/common/000statements.rpy", line 300, in execute_play_sound
     renpy.sound.play(_audio_eval(p["file"]),
   File "renpy/common/000statements.rpy", line 32, in _audio_eval
     return eval(expr, locals=store.audio.__dict__)
-  File "game/script.rpy", line 809, in <module>
-    play sound garawww
-NameError: name 'garawww' is not defined
+  File "game/script.rpy", line 878, in <module>
+    play sound danlaugh
+NameError: name 'danlaugh' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 809, in script
-    play sound garawww
+  File "game/script.rpy", line 878, in script
+    play sound danlaugh
   File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\ast.py", line 2232, in execute
     self.call("execute")
   File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\ast.py", line 2220, in call
@@ -30,11 +30,11 @@ Full traceback:
     return py_eval_bytecode(code, globals, locals)
   File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\python.py", line 1073, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 809, in <module>
-    play sound garawww
-NameError: name 'garawww' is not defined
+  File "game/script.rpy", line 878, in <module>
+    play sound danlaugh
+NameError: name 'danlaugh' is not defined
 
 Windows-10-10.0.22000 AMD64
 Ren'Py 8.0.1.22070801
 Operation SWEETHEART 1.0
-Tue Jul 25 22:31:09 2023
+Fri Jul 28 13:35:50 2023
