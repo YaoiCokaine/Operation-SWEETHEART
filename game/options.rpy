@@ -62,7 +62,7 @@ define config.has_voice = True
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "audio/dream/vntrack07.mp3"
 
 
 ## Transitions #################################################################
@@ -113,6 +113,8 @@ define config.window = "auto"
 
 define config.window_show_transition = Dissolve(.2)
 define config.window_hide_transition = Dissolve(.2)
+
+define gui.game_menu_background = "gui/game_menu.png"
 
 
 ## Preference defaults #########################################################

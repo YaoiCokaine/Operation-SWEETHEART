@@ -2,17 +2,20 @@ TO DO
 
 IMAGES
 
--front door + night + noon
--bedroom + night
--tyler sprites: norm + pizza
 -aphmau party cg
+-Kawaii chan coffee cg (two variations)
+-aphmau coffee cg (two variations)
+
+-coffee shop bg
+-bowling outside
+-bowling inside
+
 
 VOICE
 
 aar:
 -angry
 -sad line
--agreement line
 
 dan:
 -laugh
@@ -27,12 +30,19 @@ Katelyn:
 luci:
 -laugh
 
+    if aphchan == 1:
+        $ aph = ("Aph")
+        $ lol = (nick)
+    else:
+        $ aph = ("Aphmau")
+        $ lol = (mcname)
 
 flags:
 
 Aphmau:
     -Organize party
     -Talk to her and kc
+    -get her coffee
 
 Dante:
     -Side with rent
@@ -48,6 +58,7 @@ Garroth:
 Kawaii Chan:
     -Eat cookies
     -talk to her and aph
+    -get her coffee
 
 Laurence:
     -keep flowers

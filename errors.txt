@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 985: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
-    return
-    ^
+File "game/DEFINITIONS.rpy", line 362: expected '=' not found.
+    image citynoon
+                  ^
+
+File "game/DEFINITIONS.rpy", line 365: expected '=' not found.
+    image citynight
+                   ^
 
 Ren'Py Version: Ren'Py 8.0.1.22070801
-Fri Jul 28 13:32:17 2023
+Mon Jul 31 11:50:44 2023

@@ -15,6 +15,7 @@ define q = Character("?")
 define qq = Character("??")
 define ty = Character("Tyler")
 
+
 define new = Dissolve(0.3)
 
 #flags
@@ -43,6 +44,7 @@ define noonsong = "audio/dream/vntrack19.mp3"
 
 define aarlaugh = "audio/voice/AaronV/aarlaugh.mp3"
 define aartease = "audio/voice/AaronV/aartease.mp3"
+define aarsure = "audio/voice/AaronV/aarsure.mp3"
 
 define aphperf = "audio/voice/AphmauV/aphperf.mp3"
 define aphwhat = "audio/voice/AphmauV/aphwhat.mp3"
@@ -80,8 +82,14 @@ define luciohright = "audio/voice/LucindaV/lucioohright.mp3"
 define travlaugh = "audio/voice/TravisV/travlaugh.mp3"
 define travgroan = "audio/voice/TravisV/travgroan.mp3"
 define travsad = "audio/voice/TravisV/travsad.mp3"
+define travconf = "audio/voice/TravisV/travconf.mp3"
+define travcry = "audio/voice/TravisV/travcry.mp3"
 
 define zanethanks = "audio/voice/ZaneV/zanethanks.mp3"
+define zanemad = "audio/voice/ZaneV/zaneno.mp3"
+define zanelaugh = "audio/voice/ZaneV/zanelaugh.mp3"
+
+
 
 define crunch = "audio/sound/crunch.mp3"
 define wow = "audio/sound/wow.mp3"
@@ -286,6 +294,18 @@ init:
     image travscare:
         "images/travis/travscare.png"
         zoom 0.4
+init:
+    image tylerpizza:
+        "images/tylerpizza.png"
+        zoom 0.4
+init:
+    image tylernorm:
+        "images/tylernorm.png"
+        zoom 0.4
+init:
+    image namebox:
+        "gui/namebox.png"
+        zoom 0.4
 
 
 #backgrounds
@@ -326,3 +346,25 @@ init:
 init:
     image houseinsidenight:
         "images/Backgrounds/houseinsidenight.png"
+init:
+    image bedroomnight:
+        "images/Backgrounds/bedroomnight.png"
+init:
+    image bedroomday:
+        "images/Backgrounds/bedroomday.png"
+init:
+    image bedroomnoon:
+        "images/Backgrounds/bedroomnoon.png"
+init:
+    image citynoon:
+        "images/Backgrounds/City_Afternoon.png"
+init:
+    image citynight:
+        "images/Backgrounds/City_Night.png"
+
+if aphchan == 1:
+    $ aph = ("Aph")
+    $ lol = ("[nick]")
+else:
+    $ aph = ("Aphmau")
+    $ lol = ("[mcname]")

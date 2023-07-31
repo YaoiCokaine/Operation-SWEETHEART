@@ -1,5 +1,4 @@
 ﻿label start:
-
     $ mcname = renpy.input("What is your name?")
     scene houseday with fade
     play music daysong1 loop
@@ -16,10 +15,10 @@
     play sound doorbell
     "I should probably start unpacking my stuff, and then-"
     "Hm? Who could that be?"
-    scene frontdoor with fade
+    scene frontdoorday with fade
     mc "If you're from the IRS, then I told you, I need a little bit more time-"
     show aphnorm with dissolve
-    q "Hi! You must be our new neighbour!!"
+    q "Hi! You must be our new neighbour!!" 
     mc "Hm? Oh, yeah! I just moved here!"
     play sound aphperf
     q "I knew it! A little birdy told me we'd be meeting someone new~!"
@@ -78,7 +77,7 @@
     hide aphsad with dissolve
     "She was nice. I should start thinking about that party."
     "But first, I should get all my stuff settled in..."
-    scene bedroom with fade
+    scene bedroomday with fade
     "Alright! That's all the important stuff! I can do the rest tomorrow, I've done enough today."
     "I guess I could go outside and get some fresh air"
     scene street with fade
@@ -254,7 +253,7 @@ label choices1cont:
         "Right, I also need to look for a job here...that's gonna be tough..."
     "Oh wow, the pizza is already here!"
     scene frontdoornight with fade
-# TODO: tyler sprite
+    show tylerpizza with dissolve
     ty "Hey I'm Tyler"
     mc "Hi...Tyler! Are you the pizza delivery guy?"
     ty "No i'm just holding a pizza at your doorstep for no reason"
@@ -268,15 +267,25 @@ label choices1cont:
     ty "yeah here's ur pizza. That's $100"
     mc "WHAT"
     ty "Jk lol it's $12. Wouldn't it be crazy tho if it was $100"
-    mc "Can you just leave"
-    ty "ok"
+    menu:
+        "That'd be funny":
+            mc "Haha that would be kinda funny I think"
+            ty "I know right haha"
+            ty "Okay bye bye"
+        "Get the fuck out":
+            define tylermean = 0
+            $ tylermean += 1
+            mc "Can you just leave"
+            ty "Wow. rude. Just wanted to make a fucking joke but seems like someone's a little grumpy today"
+            mc "Just....leave"
+            ty "Ok"
     hide tylerpizza with dissolve 
     "What an....interesting delivery guy."
     "And it's already dark out! I guess I should get some sleep now."
     scene bedroomnight with fade
     "Hopefully the party goes well tomorrow..."
     scene black with fade
-    scene bedroom with fade
+    scene bedroomday with fade
     stop music
     play music daysong2 loop
     "A new day, a new slay! That's what the cool kids say."
@@ -339,7 +348,7 @@ label choices1cont:
     play sound doorbell
     "Aphmau should be coming soon to help out with the party-"
     "Oop! That's her!"
-    scene frontdoor with fade
+    scene frontdoorday with fade
     show aphnorm with dissolve
     a "I brought decorations!"
     mc "Woah! That's quite a few!"
@@ -373,7 +382,7 @@ label choices1cont:
     play sound doorbell
     "I'm really excited to meet everyone!"
     "Oh, that's them...I'm so nervous!"
-    scene frontdoor with fade
+    scene frontdoorday with fade
     if aphparty < 1:
         show aphnorm with dissolve
         a "Hi [mcname]!! I brought everyone that I could!"
@@ -576,6 +585,7 @@ label choices1cont:
     d "Is that why you're already on your third plate, Zane?"
     hide zanenorm
     show zanemad at right
+    play sound zanemad
     z "I'M JUST HUNGRY!"
     d "Suuurree"
     z "Whatever..."
@@ -637,7 +647,7 @@ label choices1cont:
                     show danscare at left
                     show travscare at right
                     define b = Character("Both")
-                    b "AAAAAAAAAAAAAAAAAAAAAAAA!!!!!!!!!!"
+                    b "AAAAAAAAAAAAAAAAAAAAAAAA!!!!!!!!!!" with hpunch
                     hide aarmad
                     show laurdis with new
                     la "Obviously they're joking guys"
@@ -915,6 +925,7 @@ label choices1cont:
                 d "Dude, am I not enough for you?"
                 hide travnorm
                 show travsad at left
+                play sound travsad
                 t "Noo it isn't like that...come on man you're more than enough for me"
                 hide danmad
                 show dannorm at right
@@ -937,6 +948,7 @@ label choices1cont:
                 d "...yea no not really I guess"
                 t "DUDE?"
                 d "Nah they're right I think you can do better"
+                play sound travsad
                 t "Whatever man you guys don't get real comedy"
         hide zanemad
         show zanenorm
@@ -1011,7 +1023,7 @@ if garrest ==1:
 if travzandan == 1:
     "I can't wait to go to the movies with Zane, Travis, and Dante tomorrow!"
     "Sounds like it'll be a really funny movie, and hopefully I can bond with the guys more!"
-play sound doorbell 
+play sound doorbell
 "I should probably go to bed now.."
 "? Who's here at this time?"
 scene frontdoornight with fade
@@ -1036,39 +1048,28 @@ ty "Don't worry, I can tell...you don't have to say it.."
 ty "But let me warn you. You need to be careful."
 ty "Be careful with how you interact with everyone. You don't want to be too affectionate with everyone, just focus on your little crush."
 ty "I'm just saying, if you don't actively target one person, bad things might happen.."
-mc "...right. Definitely"
+menu:
+    "Will keep that in mind":
+        mc "Right...definitely. Totally get what you're saying"
+    "You're a weirdo":
+        $ tylermean += 1
+        mc "Okay you're a creep no offence"
 ty "I'm just saying, if you really want to be with your one person, then really dedicate yourself to that one person. If you mess around..you might get an ending you're not happy with"
 mc "an 'ending'? What is that supposed to mean?"
 ty "You will learn as time goes on"
 mc "Hey man don't you have pizzas to deliver"
-label splashscreen:
-
-    python:
-        process_list = []
-        currentuser = ""
-        if renpy.windows:
-            try:
-                process_list = subprocess.check_output("wmic process get Description", shell=True).lower().replace("\r", "").replace(" ", "").split("\n")
-            except:
-                pass
-            try:
-                for name in ('LOGNAME', 'USER', 'LNAME', 'USERNAME'):
-                    user = os.environ.get(name)
-                    if user:
-                        currentuser = user
-            except:
-                pass
-ty "Farewell, [currentuser]"
-mc "??? who is [currentuser]???"
+ty "Farewell, [mcname]"
 hide tylernorm with dissolve
 "Jesus christ that guy is weird"
-scene Bedroom_Night_Dark with fade
+scene bedroomnight with fade
 "I need to go to sleep now"
 "That guy was...really creepy...but maybe he's right"
 "I can't be fooling around too much...I should be careful with how I progress from here"
 scene black with fade
 pause (3.0)
-scene Bedroom_Day with fade
+scene bedroomday with fade
+stop music
+play music daysong1 loop
 "*yaawn* What a beautiful morning!"
 if aphchan == 1:
     "I should probably get ready to get coffee with Aphmau and Kawaii-chan."
@@ -1082,14 +1083,6 @@ if garrest ==1:
     "I should probably get ready to go to Cloud 9 Nice Ice Cream Parlour."
 if travzandan == 1:
     "I should probably get ready to go watch Killer Babez VS MICHAEL with the guys."
-"Hmm..I wonder if I should dress up nicely?"
-menu:
-    "Dress up nicely":
-        define dressup = 0
-        $ dressup += 1
-        "I'll make a good impression if I put some effort into my look."
-    "Don't":
-        "Eh, it's not a big deal, a shirt and sweatpants should probably be fine."
 if aphchan == 1:
     jump aphchancoffee
 if lucikat == 1:
@@ -1104,7 +1097,211 @@ if travzandan == 1:
     jump guymovie
 label aphchancoffee:
     scene houseday with fade
-    mc "I guess I should just wait out here"
+    "I guess I should just wait out here"
+    show aphnorm at left with dissolve
+    show kcnorm at right with dissolve
+    a "Hi [mcname]! Hopefully we didn't keep you waiting for too long!"
+    mc "Oh, no, not at all!"
+    kc "We should get going!"
+    scene coffeeshop with fade
+    show kcnorm at left with dissolve
+    kc "This place is awesome, [mcname]-san will love it for sure!"
+    show aphlove at right with dissolve
+    a "Aaa! I haven't had coffee here in so long!! I've been really yearning for this.."
+    mc "Man...this must be some damn good coffee"
+    a "It's more than just coffee...it's divine necter derived from the gods..."
+    mc "...right"
+    kc "We should probably order now! We're next in line!"
+    show tylercoffee with dissolve
+    ty "Hey guys welcome to CreamyDreamy Coffee Co. what can I squeeze outta bean for ya"
+    mc "..you again?"
+    ty "Pardon? Idk you"
+    mc "You...last night...we.."
+    hide aphlove
+    hide kcnorm
+    show kcconf at left
+    show aphconf at right 
+    a "[mcname]? You know this guy?"
+    mc "I- no...sorry...you guys just order..."
+    hide kcconf
+    show kcnorm at left
+    hide aphconf
+    show aphnorm at right
+    kc "I'd like the Mega-Ultra-Caramel-Crunchy-Crater-Chaos-Chalice please!"
+    kc "[mcname]-san should get it too!"
+    a "-and I'll have the Psychedelic Pop-Rock Espresso!"
+    a "Seriously, [mcname], it's the best"
+    mc "Jesus those can't be real"
+    ty "Okay I have a mega ultra whatever and psychedelic shit-show coming up. What about you?"
+    menu:
+        "Psychedelic Pop-Rock Espresso":
+            $ aphflag += 1
+            mc "I'll have the Psychedelic Pop-Rock Espresso as well."
+            $ renpy.notify("Aphmau's glad you took her suggestion!")
+            play sound aphperf
+            hide aphnorm
+            show aphlove at right
+            a "Hahaa! Yayy!!"
+            hide kcnorm
+            show kcsad at left
+            kc "Aww...Kawaii-chan really wanted you to try the Mega-Ultra-Caramel-Crunchy-Crater-Chaos-Chalice..."
+        "Mega-Ultra-Caramel-Crunchy-Crater-Chaos-Chalice":
+            $ kcflag +=  1
+            define chaoschalice = 0
+            $ chaoschalice += 1
+            mc "I'll have the Mega-Ultra-Caramel-Crunchy-Crater-Chaos-Chalice as well."
+            $ renpy.notify("Kawaii-chan's glad you took her suggestion!")   
+            hide kcnorm
+            show kcstar at left
+            play sound kcperfect
+            kc "Yayy!! Kawaii-chan knows [mcname]-san will love it!"
+            hide aphnorm
+            show aphsad at right
+            a "Aww..I thought you'd try the Psychedelic Pop-Rock Espresso..."
+        "A secret third thing":
+            define thirdthing=0
+            $ thirdthing +=1
+            mc "Um...I'll get something else.."
+            ty "Right, one Make-A-Choice Creamer Dreamer special for you"
+            mc "What? I didn't even order-"
+            ty "It's what we give to our particularly non-decisive customers"
+            menu:
+                "Fuck you bitch":
+                    $ tylermean += 1
+                    mc "Okay wow fuck you bitch damn"
+                    ty "HEY I can call security on you"
+                    mc "Whatever"
+                "Thanks":
+                    mc "Thanks..."
+                    ty "No problem man it's actually a special i've been working on for a while"
+                    mc "Right yeah don't care"
+    ty "Anyway i'll get all of that squeezed out for ya"
+    hide kcnorm with dissolve
+    hide aphnorm with dissolve
+    hide kcsad with dissolve
+    hide aphsad with dissolve
+    hide kcstar with dissolve
+    hide aphlove with dissolve
+    ty "[mcname]- stay back..."
+    mc "Wsg gang"
+    ty "Remember what I told you last night..."
+    mc "Wait! So you do acknowledge yesterday!"
+    ty "Just don't fumble this, bad things will happen"
+    mc "Why...why are you helping me like this"
+    ty "Let's just say...I lost someone close to me who was just like you..."
+    mc "..right"
+    a "[mcname]! Everything okay over there?"
+    mc "I'm coming Aphmau!"
+    menu:
+        "I don't need your help":
+            $ tylermean +=1 
+            mc "Listen, Tyler, I don't need your help. Quite frankly, you're freaking me out, so just leave me alone, okay?"
+            if tylermean == 4:
+                ty "...."
+                ty "if that's what you wish for...Tyler will comply..."
+                mc "Ohkay. You know what I- goodbye"
+            else:
+                ty "You don't get it, man! You need this! You need me!"
+                mc "Whatever you say man"
+        "Thanks for your help":
+            mc "Thanks for the help, even if i'm not sure what you're talking about, i'll keep your advice in mind"
+            ty "Good...now go get em tiger!"
+            mc "Don't ever call me that ever again"
+    if chaoschalice == 1:
+        stop music
+        play music daydream loop
+        scene kawaiichan_coffee_cg_1 with fade
+        pause (3.0)
+        play sound wow
+        kc "Nyaaaa~ Isn't the Mega-Ultra-Caramel-Crunchy-Crater-Chaos-Chalice so good??"
+        mc "Woah...it really is!"
+        scene kawaiichan_coffee_cg_2 with dissolve
+        kc "Kawaii-chan knew [mcname]-san would love it!"
+        kc "Isn't Kawaii-chan the best~~"
+        mc "Haha, you are pretty great!"
+        a "You really should try the Psychedelic Pop-Rock Espresso next time..."
+        mc "I'll definitely try it, no worries"
+    else:
+        stop music
+        play music daydream loop
+        scene aphmau_coffee_cg_1 with fade
+        pause (3.0)
+        play sound wow
+        a "Aaa~! Soo delicious!!"
+        mc "Truly!! This is awesome!"
+        scene aphmau_coffee_cg_2 with dissolve
+        a "So glad you love it! It's the greatest drink ever, right??"
+        mc "It's definitely up there!"
+        mc "Thanks for recommending this, Aphmau!"
+        kc "[mcname]-san would've liked the Mega-Ultra-Caramel-Crunchy-Crater-Chaos-Chalice more..."
+        mc "Don't worry, Kawaii-chan, i'll try it next time i'm here!"
+    scene coffeeshop with fade
+    stop music
+    play music daysong2 loop
+    show aphnorm at left with dissolve
+    show kcnorm at right with dissolve
+    mc "Man, this has been great, you guys weren't kidding when you said this place was awesome!"
+    kc "We should come here again in the future!"
+    mc "I'd love to! I'm just..so glad i've made some good friends here.."
+    mc "Seriously, thank you Kawaii-chan, thank you Aphmau"
+    play sound aphperf
+    a "Hey, call me Aph!"
+    mc "Really? Are you sure?"
+    a "Of course, silly! We're friends now, friends give eachother nicknames!"
+    hide kcnorm
+    show kcstar at right  
+    kc "Ooo! We should have a nickname for [mcname]-san too!"
+    a "Ooo, yess!! What should we call you?"
+    $ nick = renpy.input("What should we call you?")
+    a "That's cute! I like it! [nick]. That's what we'll call you!"
+    kc "Kawaii-chan really likes it!"
+    mc "Haha. I guess that's been established!"
+    kc "Kawaii-chan's finished her coffee!"
+    a "I finished mine too!"
+    mc "Me too, now what?"
+    hide aphnorm
+    show aphsad at left
+    a "Aww, I don't want this to end already!"
+    kc "We don't need coffee to hang out, why don't we all go on a walk!"
+    hide aphsad 
+    show aphnorm at left
+    mc "You're right! I'd love to walk around for a bit!"
+    scene citynoon with fade
+    show aphconf at left with dissolve
+    show kcnorm at right with dissolve
+    a "Woah! The sun's already setting!"
+    mc "You know what they say, time flies by when we're having fun!"
+    play sound kclaugh
+    kc "Kawaii-chan is having such a blast hanging out with you guys!"
+    mc "Me too!"
+    scene black with fade
+    "We hung out for a while longer.."
+    scene citynight with fade
+    show aphnorm at left with dissolve
+    show kcnorm at right with dissolve
+    play sound aphlaugh
+    a "Hahah!! You're so funny, [nick]!"
+    kc "It's getting late, Kawaii-chan's a bit tired..."
+    mc "Yeah...it might be a good idea to call it a night.."
+    a "Let's all head home!"
+    scene housenight with fade
+    show aphnorm at left with dissolve
+    show kcnorm at right with dissolve
+    kc "We had lot's of fun [nick]-san!"
+    a "You should definitely call us if you ever wanna hang out again!"
+    mc "Definitely! I'll see you guys later, goodnight!"
+    jump dayend
+label lucikatbowl:
+    scene bowlingoutside with fade
+    "They should be around here somewhere.."
+    lu "[mcname]! Over here!"
+    show lucinorm at right with dissolve
+    show katnorm at left with dissolve
+    lu "Glad you could make it!"
+    k "You're about to see two bowling experts go head to head!"
+    hide katnorm
+    show katsmile at left
+    k "One of us is definitely better than the other, of course"
 
 
 
