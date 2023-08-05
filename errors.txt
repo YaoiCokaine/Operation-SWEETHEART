@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/DEFINITIONS.rpy", line 362: expected '=' not found.
-    image citynoon
-                  ^
-
-File "game/DEFINITIONS.rpy", line 365: expected '=' not found.
-    image citynight
-                   ^
+File "game/script.rpy", line 166: expected statement.
+    kcconv = True
+           ^
 
 Ren'Py Version: Ren'Py 8.0.1.22070801
-Mon Jul 31 11:50:44 2023
+Fri Aug  4 18:11:28 2023

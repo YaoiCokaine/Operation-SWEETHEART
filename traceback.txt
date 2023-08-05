@@ -1,26 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1031, in script
-    $ lol = (nick)
-  File "game/script.rpy", line 1031, in <module>
-    $ lol = (nick)
-NameError: name 'nick' is not defined
+  File "game/script.rpy", line 1038, in script
+    if aphparty == True:
+  File "game/script.rpy", line 1038, in <module>
+    if aphparty == True:
+NameError: name 'aphparty' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1031, in script
-    $ lol = (nick)
-  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\ast.py", line 1131, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\python.py", line 1049, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/script.rpy", line 1031, in <module>
-    $ lol = (nick)
-NameError: name 'nick' is not defined
+  File "game/script.rpy", line 1038, in script
+    if aphparty == True:
+  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\ast.py", line 2115, in execute
+    if renpy.python.py_eval(condition):
+  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\python.py", line 1080, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\python.py", line 1073, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/script.rpy", line 1038, in <module>
+    if aphparty == True:
+NameError: name 'aphparty' is not defined
 
 Windows-10-10.0.22000 AMD64
 Ren'Py 8.0.1.22070801
 Operation SWEETHEART 1.0
-Mon Jul 31 12:11:50 2023
+Fri Aug  4 18:51:51 2023

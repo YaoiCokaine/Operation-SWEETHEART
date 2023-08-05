@@ -2,33 +2,15 @@ TO DO
 
 IMAGES
 
--aphmau party cg
--Kawaii chan coffee cg (two variations)
--aphmau coffee cg (two variations)
-
--coffee shop bg
+-bowling food court
 -bowling outside
 -bowling inside
+-luci v katelyn bowling cg
+-katlrny winnong cg
 
+-tyler coffee sprite
+-tyler bowl sprite
 
-VOICE
-
-aar:
--angry
--sad line
-
-dan:
--laugh
--sad
-
-garroth:
--angry
-
-Katelyn:
--sad 
-
-luci:
--laugh
 
     if aphchan == 1:
         $ aph = ("Aph")
@@ -73,9 +55,13 @@ Aaron:
 Lucinda:
     -Start new
     -talk to her and katelyn
+    -support her
+    - chilli fries
 
 Katelyn:
     -talk to her and lucinda
+    -support her
+    -burger
 
 Travis:
     -talk to him dante and zane

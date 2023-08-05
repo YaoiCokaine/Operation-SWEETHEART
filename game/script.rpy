@@ -54,7 +54,7 @@
     menu:
         "Organize with Aphmau":
             $ aphflag += 1
-            $ aphparty += 1
+            $ aphparty = True
             $ renpy.notify("Aphmau's looking forward to the party!")
             mc "That sounds fun! And I could really use your help"
             show aphlove 
@@ -67,6 +67,7 @@
             mc "Thanks so much!"
             a "Anytime! That's what neighbours are for!"
         "Organize on your own":
+            $ aphparty = False
             mc "That sounds fun, but I think i'll organize it on my own"
             hide aphnorm
             show aphsad
@@ -96,7 +97,8 @@
             "Not my business."
             jump choices1_b
 label choices1_a:
-    $ gardanflag += 1
+    $ gardan = True
+    $ kcconv = False
     scene boyshouse with fade
     show garmad at left with dissolve
     qq "You haven't paid your share of the rent, you can't keep getting away with it!"
@@ -163,7 +165,8 @@ label choices1_a:
     scene street with fade
     jump choices1cont
 label choices1_b:
-    $ kcconvflag += 1
+    $ kcconv = True
+    $ gardan = False
     "I guess I'll just sit out here for a bit..."
     show kcnorm with dissolve
     kc "Hmmm? Kawaii-chan has never seen you around here..are you new?"
@@ -234,9 +237,9 @@ label choices1cont:
     "I'm kind of too tired to make something for myself...maybe i'll just order something."
     "You know what? I worked hard today, I should reward myself with some pizza!"
     "I'll order it now and start thinking about that party in the mean time"
-    if aphparty == 1:
+    if aphparty == True:
         "I guess I should call Aphmau to discuss some stuff...I hope she isn't busy!"
-        "It.s dialing...."
+        "It's dialing...."
         a "Hello?"
         mc "Hi Aphmau! I was just calling because I wanted to talk about the party"
         a "Ooo, that's right! You don't have to worry at all about decorations and inviting people, I've got that completely covered! You just think about the food and drinks"
@@ -245,7 +248,7 @@ label choices1cont:
         "Glad to know she's got all of that taken care of"
         play sound doorbell
         "Food and drinks...I could make some pasta for everyone!"
-    else:
+    if aphparty == False:
         "How do you even organize a housewarming party? I guess I could cook some food for everyone.."
         "Hopefully pasta works..."
         "I can't wait to meet everyone. It seems like Aphmau will tell all her friends to come over, so maybe I can make some new friends too!"
@@ -316,7 +319,7 @@ label choices1cont:
     mc "Yeah no I got that"
     la "My name is Laurence, by the way."
     mc "I'm [mcname]...thanks for helping me up"
-    if gardanflag == 1: 
+    if gardan == True: 
         mc "Wait a second, Laurence..I live across you!"
         hide laurnorm
         show laurdis
@@ -339,7 +342,7 @@ label choices1cont:
     hide laursmile with dissolve
     "He was nice. Very handsome, too..."
     "Seems like I've gotten all my groceries, I should go home and start working on the party"
-    if aphparty == 1:
+    if aphparty == True:
         jump aphpartyplan
     else:
         jump partyplan
@@ -383,7 +386,7 @@ label choices1cont:
     "I'm really excited to meet everyone!"
     "Oh, that's them...I'm so nervous!"
     scene frontdoorday with fade
-    if aphparty < 1:
+    if aphparty == False:
         show aphnorm with dissolve
         a "Hi [mcname]!! I brought everyone that I could!"
         mc "That's great! Thanks so much"
@@ -392,7 +395,7 @@ label choices1cont:
         hide aphnorm with dissolve 
     show katnorm at left with dissolve
     show kcnorm at right with dissolve
-    if kcconvflag == 1:
+    if kcconv == True:
         kc "Hey [mcname]-san!! Thanks for inviting us!"
         mc "Of course! I'm so glad you made it!"
         k "Hi, i'm Katelyn. We're both Aphmau's roommates"
@@ -412,7 +415,7 @@ label choices1cont:
             show kcmad at right
             play sound kchey
             kc "Ohhh, come on! It's not THAT much!!"
-    else:
+    if kcconv == False:
         mc "Hey guys! Welcome to the party!"
         k "Hey. I'm Katelyn, and this is Kawaii-chan"
         mc "It's great to meet the two of you! Your Aphmau's roommates, right?"
@@ -445,11 +448,11 @@ label choices1cont:
     la "Hey again, [mcname]!"
     show garnorm at left with dissolve
     show dannorm at right with dissolve
-    if gardanflag:
+    if gardan:
         if garflag == 1:
             g "Hiya [mcname]!"
             mc "Hey Garroth! Great to see you! You too, Dante"
-            g "We've really been looking forward to this party. It's all I could think about!"
+            g "We've really been looking forward to this party. It's all I could think about!" 
             d "Ha. Laaaaamee"
             hide garnorm
             show garmad at left
@@ -563,7 +566,7 @@ label choices1cont:
     play sound travlaugh
     t "Haha jk. Just had some business"
     mc "..right. Come on in, we've got everyone"
-    if aphparty == 1:
+    if aphparty == True:
         scene houseinsidedecor with fade
         show lucismirk with dissolve
         lu "Wow, [mcname], you really decorated this place"
@@ -647,6 +650,8 @@ label choices1cont:
                     show danscare at left
                     show travscare at right
                     define b = Character("Both")
+                    play sound dancry
+                    play sound travcry
                     b "AAAAAAAAAAAAAAAAAAAAAAAA!!!!!!!!!!" with hpunch
                     hide aarmad
                     show laurdis with new
@@ -710,26 +715,45 @@ label choices1cont:
     show kcnorm at left with dissolve
     kc "Kawaii-chan hopes we can all become great friends!"
     mc "I hope so too, Kawaii-chan!"
-    if aphparty == 1:
+    if aphparty == True:
         scene houseinsidedecornoon with fade
     else:
         scene houseinsidenoon with fade
     "Seems like everyone's broken off into their own groups...who should I join?"
     menu:
         "Aphmau, Kawaii-chan":
+            $ aphchan = True
+            $ laurrest = False
+            $ aarrest = False
+            $ garrest = False
+            $ lucikat = False
+            $ travzandan = False
             jump aphchanconv
         "Lucinda, Katelyn":
+            $ aphchan = False
+            $ laurrest = False
+            $ aarrest = False
+            $ garrest = False
+            $ lucikat = True
+            $ travzandan = False
             jump lucikatconv
         "Laurence, Garroth, Aaron":
+            $ aphchan = False
+            $ lucikat = False
+            $ travzandan = False
             jump laurgaraarconv
         "Travis, Zane, Dante":
+            $ aphchan = False
+            $ laurrest = False
+            $ aarrest = False
+            $ garrest = False
+            $ lucikat = False
+            $ travzandan = True
             jump travzandanconv
     label aphchanconv:
         $ renpy.notify("Aphmau and Kawaii-chan are glad to talk to you!")
         $ aphflag += 1
         $ kcflag += 1
-        define aphchan = 0
-        $ aphchan +=1
         "Let's see what Aphmau and Kawaii-chan are up to!"
         if kcflag == 2:
             show aphlove at left with dissolve
@@ -766,8 +790,6 @@ label choices1cont:
         $ renpy.notify("Lucinda and Katelyn are glad to talk to you!")
         $ luciflag += 1
         $ katflag += 1
-        define lucikat = 0
-        $ lucikat +=1
         "Let's see what Lucinda and Katelyn are up to!"
         show lucinorm at left with dissolve
         show katnorm at right with dissolve
@@ -824,8 +846,9 @@ label choices1cont:
         g "Aww, why not?"
         menu:
             "Piping Hot Pizza Palace sounds the best":
-                define laurrest = 0
-                $ laurrest +=1
+                $ laurrest = True
+                $ aarrest = False
+                $ garrest = False
                 $ laurflag += 1
                 mc "I think Piping Hot Pizza Palace sounds the best, I love me a good pizza!"
                 hide laurdis
@@ -837,8 +860,9 @@ label choices1cont:
                 mc "Looking forward to it!"
                 g "Whatever...who want's piping hot pizza or sizzling sausages in this weather? A nice, cool ice-cream is perfect.."
             "Sizzling Sausage Shack sounds the best":
-                define aarrest = 0
-                $ aarrest +=1
+                $ aarrest = True
+                $ garrest = False
+                $ laurrest = False
                 $ aarflag += 1
                 mc "I think Sizzling Sausage Shack sounds the best, I love me a good sausage!"
                 hide garsad
@@ -859,8 +883,9 @@ label choices1cont:
                 ar "Why don't I take you there tomorrow? It truly is great"
                 mc "That sounds fun! I'm in!"
             "Cloud 9 Nice Ice Cream Parlour sounds the best":
-                define garrest = 0
-                $ garrest +=1
+                $ garrest = True
+                $ laurrest = False
+                $ aarrest = False
                 $ garflag += 1
                 mc "Who said it shouldn't count? I think Cloud 9 Nice Ice Cream Parlour sounds the best. Love me some ice cream!"
                 hide garsad
@@ -881,8 +906,6 @@ label choices1cont:
         $ travflag += 1
         $ zaneflag += 1
         $ danflag += 1
-        define travzandan = 0
-        $ travzandan += 1
         $ renpy.notify("Travis, Zane, and Dante are glad to talk to you!")
         mc "Let's go see what Travis, Zane, and Dante are up to!" 
         show travnorm at left with dissolve
@@ -1001,26 +1024,26 @@ scene houseinsidenight with fade
 stop music
 play music nightsong loop
 "Everyone's gone home now."
-if aphparty == 1:
+if aphparty == True:
     "And I finally got all of these decorations down..."
 "Man, i'm so tired!"
 "But i'm really looking forward to tomorrow!"
-if aphchan == 1:
+if aphchan == True:
     "I can't wait to hang out with Aphmau and Kawaii-Chan. Hopefully I can get to know them better!"
     "Also looking forward to using Lucinda's gift card, apparently the CreamyDreamy coffee is spectacular."
-if lucikat == 1:
+if lucikat == True:
     "I can't wait to go bowling with Katelyn and Lucinda!"
     "Or well...I guess I'm not bowling, i'm just watching them bowl...but that'll probably be fun, too!"
-if laurrest ==1:
+if laurrest == True:
     "I can't wait to go to Piping Hot Pizza Palace with Laurence! It sounds soooo good..."
     "It'll also be great to spend some time with Laurence and get to know him more!"
-if aarrest ==1:
+if aarrest == True:
     "I can't wait to go to Sizzling Sausage Shack with Aaron! It sounds soooo good..."
     "It'll also be great to spend some time with Aaron and get to know him more!"  
-if garrest ==1:
+if garrest == True:
     "I can't wait to go to Cloud 9 Nice Ice Cream Parlour with Garroth! It sounds soooo good..."
     "It'll also be great to spend some time with Garroth and get to know him more!" 
-if travzandan == 1:
+if travzandan == True :
     "I can't wait to go to the movies with Zane, Travis, and Dante tomorrow!"
     "Sounds like it'll be a really funny movie, and hopefully I can bond with the guys more!"
 play sound doorbell
@@ -1071,29 +1094,29 @@ scene bedroomday with fade
 stop music
 play music daysong1 loop
 "*yaawn* What a beautiful morning!"
-if aphchan == 1:
+if aphchan == True:
     "I should probably get ready to get coffee with Aphmau and Kawaii-chan."
-if lucikat == 1:
+if lucikat == True:
     "I should probably get ready to go bowling with Lucinda and Katelyn."
-if laurrest ==1:
+if laurrest == True:
     "I should probably get ready to go to Piping Hot Pizza Palace with Laurence."
-if aarrest ==1:
+if aarrest == True:
     "I should probably get ready to go to Sizzling Sausage Shack with Aaron." 
-if garrest ==1:
+if garrest == True:
     "I should probably get ready to go to Cloud 9 Nice Ice Cream Parlour."
-if travzandan == 1:
+if travzandan == True:
     "I should probably get ready to go watch Killer Babez VS MICHAEL with the guys."
-if aphchan == 1:
+if aphchan == True:
     jump aphchancoffee
-if lucikat == 1:
+if lucikat == True:
     jump lucikatbowl
-if laurrest ==1:
+if laurrest == True:
     jump laurpizza
-if aarrest ==1:
+if aarrest == True:
     jump aarsausage
-if garrest ==1:
+if garrest == True:
     jump garcream
-if travzandan == 1:
+if travzandan == True:
     jump guymovie
 label aphchancoffee:
     scene houseday with fade
@@ -1136,6 +1159,9 @@ label aphchancoffee:
     menu:
         "Psychedelic Pop-Rock Espresso":
             $ aphflag += 1
+            $ poprock = True
+            $ chaoschalice = False
+            $ thirdthing = False
             mc "I'll have the Psychedelic Pop-Rock Espresso as well."
             $ renpy.notify("Aphmau's glad you took her suggestion!")
             play sound aphperf
@@ -1147,8 +1173,9 @@ label aphchancoffee:
             kc "Aww...Kawaii-chan really wanted you to try the Mega-Ultra-Caramel-Crunchy-Crater-Chaos-Chalice..."
         "Mega-Ultra-Caramel-Crunchy-Crater-Chaos-Chalice":
             $ kcflag +=  1
-            define chaoschalice = 0
-            $ chaoschalice += 1
+            $ chaoschalice = True
+            $ poprock = False
+            $ thirdthing = False
             mc "I'll have the Mega-Ultra-Caramel-Crunchy-Crater-Chaos-Chalice as well."
             $ renpy.notify("Kawaii-chan's glad you took her suggestion!")   
             hide kcnorm
@@ -1159,8 +1186,9 @@ label aphchancoffee:
             show aphsad at right
             a "Aww..I thought you'd try the Psychedelic Pop-Rock Espresso..."
         "A secret third thing":
-            define thirdthing=0
-            $ thirdthing +=1
+            $ thirdthing = True
+            $ poprock = False
+            $ chaoschalice = False
             mc "Um...I'll get something else.."
             ty "Right, one Make-A-Choice Creamer Dreamer special for you"
             mc "What? I didn't even order-"
@@ -1207,10 +1235,10 @@ label aphchancoffee:
             mc "Thanks for the help, even if i'm not sure what you're talking about, i'll keep your advice in mind"
             ty "Good...now go get em tiger!"
             mc "Don't ever call me that ever again"
-    if chaoschalice == 1:
+    if chaoschalice == True:
+        scene kawaiichan_coffee_cg_1 with fade
         stop music
         play music daydream loop
-        scene kawaiichan_coffee_cg_1 with fade
         pause (3.0)
         play sound wow
         kc "Nyaaaa~ Isn't the Mega-Ultra-Caramel-Crunchy-Crater-Chaos-Chalice so good??"
@@ -1221,10 +1249,15 @@ label aphchancoffee:
         mc "Haha, you are pretty great!"
         a "You really should try the Psychedelic Pop-Rock Espresso next time..."
         mc "I'll definitely try it, no worries"
-    else:
+        scene coffeeshop with fade
+        stop music
+        play music daysong2 loop
+        show aphnorm at left with dissolve
+        show kcnorm at right with dissolve
+    elif poprock == True:
+        scene aphmau_coffee_cg_1 with fade
         stop music
         play music daydream loop
-        scene aphmau_coffee_cg_1 with fade
         pause (3.0)
         play sound wow
         a "Aaa~! Soo delicious!!"
@@ -1235,11 +1268,19 @@ label aphchancoffee:
         mc "Thanks for recommending this, Aphmau!"
         kc "[mcname]-san would've liked the Mega-Ultra-Caramel-Crunchy-Crater-Chaos-Chalice more..."
         mc "Don't worry, Kawaii-chan, i'll try it next time i'm here!"
-    scene coffeeshop with fade
-    stop music
-    play music daysong2 loop
-    show aphnorm at left with dissolve
-    show kcnorm at right with dissolve
+        scene coffeeshop with fade
+        stop music
+        play music daysong2 loop
+        show aphnorm at left with dissolve
+        show kcnorm at right with dissolve
+    elif thirdthing == True:
+        hide tylercoffee with dissolve
+        show aphnorm at left with dissolve
+        show kcnorm at right with dissolve
+        mc "Hey, this Special is actually quite good, I like it"
+        a "I've never had it before, actually"
+        kc "Kawaii-chan still thinks the Mega-Ultra-Caramel-Crunchy-Crater-Chaos-Chalice is the best!"
+        mc "Haha!"    
     mc "Man, this has been great, you guys weren't kidding when you said this place was awesome!"
     kc "We should come here again in the future!"
     mc "I'd love to! I'm just..so glad i've made some good friends here.."
@@ -1290,7 +1331,10 @@ label aphchancoffee:
     kc "We had lot's of fun [nick]-san!"
     a "You should definitely call us if you ever wanna hang out again!"
     mc "Definitely! I'll see you guys later, goodnight!"
-    jump dayend
+    if tylermean == 4:
+        jump tylersecretend1
+    else:
+        jump dayend
 label lucikatbowl:
     scene bowlingoutside with fade
     "They should be around here somewhere.."
@@ -1302,6 +1346,250 @@ label lucikatbowl:
     hide katnorm
     show katsmile at left
     k "One of us is definitely better than the other, of course"
+    hide lucinorm
+    show lucismirk at right
+    lu "That's me, right?"
+    k "I guess we'll find out~"
+    "There's some tension between two..but I can't tell what kind...."
+    lu "Come on, let's go inside"
+    scene bowlinginside with fade
+    show katnorm at right with dissolve
+    show lucinorm at left with dissolve
+    k "We're gonna have to get two pairs of bowling shoes"
+    mc "I don't suppose I can bowl too, can I..?"
+    hide lucinorm
+    show lucisad at left
+    play sound luciohright
+    lu "Ah..well..you see, it's like....a preorder...you get it?"
+    mc "Right..."
+    k "You can join us next time! Promise"
+    mc "I'm fine with that"
+    show tylerbowl with dissolve
+    ty "Hey guys welcome to the Super-Duper X-treme Bowling Palooza, you guys need shoes?"
+    mc "..you again?"
+    ty "Pardon? Idk you"
+    mc "You...last night...we.." 
+    k "[mcname]? You know this guy?"
+    mc "I- no...sorry...you guys just get your shoes..."
+    lu "Right...we'd like two Adult Women shoes, size 8, please"
+    ty "Only 2? None for your friend here?"
+    mc "Oh, i'm not playing ahaha"
+    ty "Yea I bet you'd suck at bowling anyway"
+    ty "Anyway here are your shoes"
+    k "Hey [mcname], you can go grab some food if you want"
+    mc "I think i'll do that later"
+    lu "Alright, let's go to our lane then!"
+    hide lucinorm with dissolve
+    hide katnorm with dissolve
+    ty "[mcname]- stay back..."
+    mc "Wsg gang"
+    ty "Remember what I told you last night..."
+    mc "Wait! So you do acknowledge yesterday!"
+    ty "Just don't fumble this, bad things will happen"
+    mc "Why...why are you helping me like this"
+    ty "Let's just say...I lost someone close to me who was just like you..."
+    mc "..right"
+    k "[mcname]? You coming?"
+    mc "Give me a sec, Katelyn!"
+    menu:
+        "I don't need your help":
+            $ tylermean +=1 
+            mc "Listen, Tyler, I don't need your help. Quite frankly, you're freaking me out, so just leave me alone, okay?"
+            if tylermean == 4:
+                ty "...."
+                ty "if that's what you wish for...Tyler will comply..."
+                mc "Ohkay. You know what I- goodbye"
+            else:
+                ty "You don't get it, man! You need this! You need me!"
+                mc "Whatever you say man"
+        "Thanks for your help":
+            mc "Thanks for the help, even if i'm not sure what you're talking about, i'll keep your advice in mind"
+            ty "Good...now go get em tiger!"
+            mc "Don't ever call me that ever again"
+    scene bowlinglane with fade
+    show lucievil at left with dissolve
+    play sound lucigotthis
+    lu "Alright Katelyn, you ready to get your shit rocked?"
+    show katdis at right with dissolve
+    k "If it helps you sleep at night, sure"
+    lu "[mcname], who are you gonna cheer for?"
+    menu:
+        "Support Lucinda":
+            $ luciwin = True
+            $ katwin = False
+            $ luciflag += 1
+            mc "I think Lucinda's gonna win, so Go Lucinda!!!"
+            $ renpy.notify("Lucinda appreciates your support!")
+            hide lucievil
+            show lucismirk at left
+            lu "Haha! Thanks so much~!"
+            lu "With [mcname] cheering me on, i'm sure to win~"
+            k "Yeah yeah, whatever..."
+        "Support Katelyn":
+            $ katwin = True
+            $ luciwin = False
+            $ katflag += 1
+            mc "I think Katelyn's gonna win, so Go Katelyn!!!"
+            $ renpy.notify("Katelyn appreciates your support!")
+            hide katdis
+            show katsmile at right
+            k "Hell yea! See, Lucinda? Even [mcname] thinks i'll win!"
+            hide lucievil
+            show lucisad at left
+            lu "Aww..whatever.."
+    stop music
+    play music shitgetsserious loop
+    k "Let's bowl!!"
+    scene bowling_cg with fade
+    lu "HYAH!!" with hpunch
+    k "WOAH!!" with vpunch
+    "Man...these guys are really serious when it comes to bowling..."
+    if luciwin == True:
+        mc "GO LUCINDA!! YOU GOT THIS!!"
+        lu "Haha! Thanks!!"
+    else:
+        mc "GO KATELYN!! YOU GOT THIS!!"
+        k "You know it!!"
+    "People are starting to gather around..this is serious!"
+    "Annd the winner iis...."
+    if luciwin == True:
+        scene lucinda_bowling_cg_1 with fade
+        pause (3.0)
+        lu "HAHAA! I WONN!"
+        mc "WOOHOOOO!!"
+        play sound katgrr
+        k "ARGH! I'll get you next time!!"
+        scene lucinda_bowling_cg_2 with dissolve
+        lu "Haha, I couldn't have done it without the support from [mcname]~"
+        mc "Oh come on, I didn't do anything..."
+        lu "No no! It was with your cheering that I was able to win!"
+        mc "Well, if you say so..."
+        scene bowlinglane with fade
+        show lucinorm with dissolve
+        lu "Ah, how exhilarating~"
+        show katsmile at left with dissolve
+        k "I have to give credit where it's due, that was some great gameplay, Luci."
+        hide lucinorm
+        show lucismirk
+        lu "So I guess it's settled? I'm the better bowler?"
+        k "Hmmm, I don't know...we might have to revisit this in the future."
+        play sound lucilaugh
+        lu "Haha, you never change, Katelyn~"
+    else:
+        scene katelyn_bowling_cg_1 with fade
+        pause (3.0)
+        play sound katlaugh
+        k "YEEEESSSSS!!! SUCK ITT!!!!"
+        mc "WOOHOOOO!!!"
+        play sound lucisigh
+        lu "Oh, bummer.."
+        scene katelyn_bowling_cg_2 with dissolve
+        k "Thanks for the help, [mcname]! Couldn't have done it without you!"
+        mc "What? That's not true"
+        k "It is! I needed you to cheer me to victory!"
+        mc "Well, in that case, no problem!"
+        scene bowlinglane with fade
+        show katsmile with dissolve
+        k "Man, that was fun!"
+        show lucismirk at left with dissolve
+        lu "Wow, Katelyn, what a performance!"
+        lu "I suppose you won this fair and square."
+        hide katsmile
+        show katlaugh
+        k "Then you finally admit it? I'm the better bowler?"
+        lu "Hmm, let's not get ahead of ourselves now.."
+        k "Hah! So stubborn!"
+    stop music
+    play music day2song loop
+    mc "Now that that's settled... who's hungry???"
+    b "WOOOO!!"
+    scene bowlfoodcourt with fade
+    show lucinorm at left with dissolve
+    lu "[mcname], the chilli fries here are SUPERB! You need to try them!"
+    show katnorm at right with dissolve
+    k "She's lying, [mcname], the Bowler-Burger is the best, you should get that"
+    mc "Hmm...I don't know..."
+    show tylerbowl with dissolve
+    ty "Welcome to the Super-Duper X-treme Bowling Palooza Food Court, what can I get ya"
+    mc "Oh you work here too"
+    ty "economy's fucked"
+    mc "Preeach"
+    lu "I'd like the Chilli fries, please"
+    k "I'll take the Bowler-Burger"
+    ty "What do you want"
+    menu:
+        "Chilli fries":
+            $ luciflag += 1
+            $ renpy.notify("Lucinda's glad you took her suggestion!")
+            mc "I think I'll have the Chilli fries, please!"
+            ty "You think? Or you will?"
+            mc "...I will."
+            ty "That's what I thought"
+        "Bowler-Burger":
+            $ katflag += 1
+            $ renpy.notify("Katelyn's glad you took her suggestion!")
+            mc "I think I'll have the Bowler-Burger, please!"
+            ty "You think? Or you will?"
+            mc "...I will."
+            ty "That's what I thought"
+        "A secret third thing":
+            mc "You guys have anything else?"
+            ty "Uhhh....we have...."
+            ty "...ice?"
+            mc "You guys dont have more than 2 menu options?"
+            menu:
+            "Fuck you bitch":
+                mc "Um...I'll get something else.."
+                ty "Right, one Make-A-Choice Xtremity for you"
+                mc "What? I didn't even order-"
+                ty "It's what we give to our particularly non-decisive customers"
+            menu:
+                "Fuck you bitch":
+                    $ tylermean += 1
+                    mc "Okay wow fuck you bitch damn"
+                    ty "HEY I can call security on you"
+                    mc "Whatever"
+                "Thanks":
+                    mc "Thanks..."
+                    ty "No problem man it's actually a special i've been working on for a while"
+                    mc "Right yeah don't care"
+            "Say nothing":
+                mc "..."
+    k "Let's feast!"
+    scene black with fade
+    "We ate our food and conversed for a while..."
+    show bowlfoodcourt with fade
+    show lucinorm at left with dissolve
+    lu "Man! I'm stuffed!"
+    show katnorm at right with dissolve
+    k "Soooo true"
+    mc "Man, today's been a lot of fun! I'm glad I got to hang out with you guys!"
+    hide lucinorm
+    show lucismirk at left
+    lu "I'm glad too, you're really fun to talk to, [mcname]. We should hang more often"
+    k "Well obviously [mcname] would rather hang out with me, right?"
+    hide lucismirk 
+    show lucievil at left
+    lu "Wanna bet on that?"
+    hide katnorm
+    show katdis at right
+    k "Bring it."
+    mc "Oorrr I can hang out with both of you guys! We don't have to kill eachother!"
+    k "For now..."
+    mc "Right let's just go home"
+    scene housenight with fade
+    show lucinorm at right dissolve
+    show katnorm at left with dissolve
+    k "Hopefully we can do something like this again"
+    lu "Even if its one-on-one~"
+    k "Shut the fuck up omg"
+    mc "Ahaha i'd love to. I'll see you guys later! Goodnight!"
+        if tylermean == 4:
+        jump tylersecretend1
+    else:
+        jump dayend
+label laurpizza:
+    "I'"
 
 
 

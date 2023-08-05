@@ -30,9 +30,8 @@ define garflag = 0
 define danflag = 0
 define zaneflag = 0
 define travflag = 0
-define aphparty = 0
-define gardanflag = 0
-define kcconvflag = 0
+
+
 
 #audio
 
@@ -41,6 +40,7 @@ define nightsong = "audio/dream/vntrack08.mp3"
 define daysong2 = "audio/dream/vntrack04.mp3"
 define daydream = "audio/dream/vntrack06.mp3"
 define noonsong = "audio/dream/vntrack19.mp3"
+define shitgetsserious = "audio/dream/vntrack10.mp3"
 
 define aarlaugh = "audio/voice/AaronV/aarlaugh.mp3"
 define aartease = "audio/voice/AaronV/aartease.mp3"
@@ -54,6 +54,10 @@ define aphcry = "audio/voice/AphmauV/aphcry.mp3"
 define danfine = "audio/voice/DanteV/danfine.mp3"
 define danheybaby = "audio/voice/DanteV/danheybaby.mp3"
 define danhuh = "audio/voice/DanteV/danhuh.mp3"
+define dansigh = "audio/voice/DanteV/dansigh.mp3"
+define danlaugh = "audio/voice/DanteV/danlaugh.mp3"
+define dancry = "audio/voice/DanteV/dancry.mp3"
+define embarrasing = "audio/voice/DanteV/embarrasing.mp3"
 
 define garawesome = "audio/voice/GarrothV/garawesome.mp3"
 define garaww = "audio/voice/GarrothV/garawesome.mp3"
@@ -104,7 +108,21 @@ init:
 init:
     image laur_grocery_cg_2:
         "images/CGs/laur_grocery_cg_2.png"
-
+init:
+    image aphmau_party_cg:
+        "images/CGs/aphmau_party_cg.png"
+init:
+    image aphmau_coffee_cg_1:
+        "images/CGs/aphmau_coffee_cg_1.png"
+init:
+    image aphmau_coffee_cg_2:
+        "images/CGs/aphmau_coffee_cg_2.png"
+init:
+    image kawaiichan_coffee_cg_1:
+        "images/CGs/kawaiichan_coffee_cg_1.png"
+init:
+    image kawaiichan_coffee_cg_2:
+        "images/CGs/kawaiichan_coffee_cg_2.png"
 
 #sprites
 init:
@@ -361,6 +379,10 @@ init:
 init:
     image citynight:
         "images/Backgrounds/City_Night.png"
+init:
+    image coffeeshop:
+        "images/Backgrounds/coffeeshop.png"
+
 
 if aphchan == 1:
     $ aph = ("Aph")
