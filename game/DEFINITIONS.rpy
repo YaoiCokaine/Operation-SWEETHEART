@@ -41,6 +41,7 @@ define daysong2 = "audio/dream/vntrack04.mp3"
 define daydream = "audio/dream/vntrack06.mp3"
 define noonsong = "audio/dream/vntrack19.mp3"
 define shitgetsserious = "audio/dream/vntrack10.mp3"
+define romance = "audio/dream/romance.mp3"
 
 define aarlaugh = "audio/voice/AaronV/aarlaugh.mp3"
 define aartease = "audio/voice/AaronV/aartease.mp3"
@@ -321,8 +322,8 @@ init:
         "images/tylernorm.png"
         zoom 0.4
 init:
-    image namebox:
-        "gui/namebox.png"
+    image laurshock:
+        "images/laurence/laurshock.png"
         zoom 0.4
 
 

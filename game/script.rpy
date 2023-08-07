@@ -1204,12 +1204,12 @@ label aphchancoffee:
                     ty "No problem man it's actually a special i've been working on for a while"
                     mc "Right yeah don't care"
     ty "Anyway i'll get all of that squeezed out for ya"
-    hide kcnorm with dissolve
-    hide aphnorm with dissolve
-    hide kcsad with dissolve
-    hide aphsad with dissolve
-    hide kcstar with dissolve
-    hide aphlove with dissolve
+    hide kcnorm with easeoutleft
+    hide aphnorm with easeoutleft
+    hide kcsad with easeoutleft
+    hide aphsad with easeoutleft
+    hide kcstar with easeoutleft
+    hide aphlove with easeoutleft
     ty "[mcname]- stay back..."
     mc "Wsg gang"
     ty "Remember what I told you last night..."
@@ -1533,16 +1533,10 @@ label lucikatbowl:
             mc "...I will."
             ty "That's what I thought"
         "A secret third thing":
-            mc "You guys have anything else?"
-            ty "Uhhh....we have...."
-            ty "...ice?"
-            mc "You guys dont have more than 2 menu options?"
-            menu:
-            "Fuck you bitch":
-                mc "Um...I'll get something else.."
-                ty "Right, one Make-A-Choice Xtremity for you"
-                mc "What? I didn't even order-"
-                ty "It's what we give to our particularly non-decisive customers"
+            mc "Um...I'll get something else.."
+            ty "Right, one Make-A-Choice Xtremity for you"
+            mc "What? I didn't even order-"
+            "It's what we give to our particularly non-decisive customers"
             menu:
                 "Fuck you bitch":
                     $ tylermean += 1
@@ -1553,8 +1547,6 @@ label lucikatbowl:
                     mc "Thanks..."
                     ty "No problem man it's actually a special i've been working on for a while"
                     mc "Right yeah don't care"
-            "Say nothing":
-                mc "..."
     k "Let's feast!"
     scene black with fade
     "We ate our food and conversed for a while..."
@@ -1578,19 +1570,456 @@ label lucikatbowl:
     k "For now..."
     mc "Right let's just go home"
     scene housenight with fade
-    show lucinorm at right dissolve
+    show lucinorm at right with dissolve
     show katnorm at left with dissolve
     k "Hopefully we can do something like this again"
     lu "Even if its one-on-one~"
     k "Shut the fuck up omg"
     mc "Ahaha i'd love to. I'll see you guys later! Goodnight!"
-        if tylermean == 4:
+    if tylermean == 4:
         jump tylersecretend1
     else:
         jump dayend
 label laurpizza:
-    "I'"
-
+    scene pipinghotpizza with fade
+    "This should be the place! I wonder where Laurence is..."
+    la "[mcname]! Over here!"
+    show laursmile with dissolve
+    la "It's great to see you! You're looking good today"
+    mc "Thanks, Laurence!"
+    la "Let's head on in, shall we?"
+    scene pipinghotpizzainside with fade
+    stop music 
+    play music romance loop
+    show laurnorm with dissolve
+    play sound wow
+    mc "Ohh woow! It smells so good in here!"
+    play sound laurexactly
+    la "Right? Trust me, the pizzas taste just as great, if not better!"
+    la "Here, let's sit down"
+    show laurnorm at left with easeinleft
+    show tylerpizza with dissolve
+    ty "Hey guys welcome to Piping Hot Pizza Palace. What can I toss in the oven for ya"
+    mc "..you again?"
+    ty "Pardon? Idk you"
+    mc "You...last night...we.."
+    hide laurnorm
+    show laurdis at left
+    la "Are you two...familiar?"
+    mc "I- no...sorry...let's just order..."
+    la "Right, I think we're gonna need some time first"
+    ty "k"
+    hide tylerpizza with dissolve
+    show laurdis at center with ease
+    hide laurdis
+    show laurnorm
+    la "Hmm, any idea what you want?"
+    mc "Well, what do you recommend?"
+    hide laurnorm
+    show laursmile
+    la "Oo! They have this really good Everything Pizza. It's got a bunch of different topings, and each slice uses a different type of sauce and cheese. It sounds chaotic, but it's soo good!"
+    menu:
+        "Sounds Good!":
+            $ laurflag += 1
+            $ everythingpizza = True
+            mc "That sounds good! Let's get it!"
+            $ renpy.notify("Laurence is glad you took his suggestion!")
+            la "Haha! I knew you'd like it!"
+            mc "You think we can get some breadsticks on the side?"
+            play sound laurwhynot
+            la "Sure! Why not?"
+            show laursmile at left with easeinleft
+        "Sounds Awful!":
+            $ everythingpizza = False
+            mc "That sounds awful actually"
+            hide laursmile
+            show laurshock
+            la "Well- no- it's actually-"
+            mc "No let's just get cheese pizza"
+            hide laurshock
+            show laursad
+            la "Uh..sure...if that's what you want..."
+            show laursad at left with easeinleft
+    show tylerpizza with dissolve
+    ty "You guys finally ready to order?"
+    if everythingpizza == True:
+        mc "Yup! We'll have the Everything Pizza, please!"
+        ty "Mm, would you like a side of bitch with that?"
+        mc "Excuse me!?"
+        ty "You heard me"
+        menu:
+            "Fuck you bitch":
+                $ tylermean += 1
+                mc "Man fuck you bitch!"
+                ty "HEYY HOSTILITY!! I can call security on you for that!!"
+                mc "Whatever.."
+                hide laursmile
+                show laurnorm at left
+                la "For real though can we get some breadsticks on the side"
+                ty "Anything for you Laurence"
+                la "What"
+            "Breadsticks":
+                mc "Actually I'd like that with a side of breadsticks, please"
+                ty "Okay"
+    else:
+        mc "Yup! We'll have the Cheese Pizza, please!"
+        ty "Mm, would you like a side of bitch with that?"
+        mc "Excuse me!?"
+        ty "You heard me"
+        menu:
+            "Fuck you bitch":
+                $ tylermean += 1
+                mc "Man fuck you bitch!"
+                ty "HEYY HOSTILITY!! I can call security on you for that!!"
+                mc "Whatever.."
+                hide laursad
+                show laurnorm at left
+                la "For real though can we get some breadsticks on the side"
+                ty "Anything for you Laurence"
+                la "What"
+            "Breadsticks":
+                mc "Actually I'd like that with a side of breadsticks, please"
+                ty "Okay"
+    ty "[mcname], I need you to come with me."
+    mc "What?"
+    ty "JUST COME"
+    mc "Oh, um, Laurance, I'll be right back.."
+    hide laurnorm
+    hide laursmile
+    hide laursad
+    show laurdis at left
+    play sound lauruhh
+    la "Uh huh..."
+    scene pizzakitchen with fade
+    show tylerpizza with dissolve
+    mc "Is this the pizza kitchen? Am I even allowed in here?"
+    ty "Remember what I told you last night..."
+    mc "Wait! So you do acknowledge yesterday!"
+    ty "Just don't fumble this, bad things will happen"
+    mc "Why...why are you helping me like this"
+    ty "Let's just say...I lost someone close to me who was just like you..."
+    mc "..right"
+    menu:
+        "I don't need your help":
+            $ tylermean +=1 
+            mc "Listen, Tyler, I don't need your help. Quite frankly, you're freaking me out, so just leave me alone, okay?"
+            if tylermean == 4:
+                ty "...."
+                ty "if that's what you wish for...Tyler will comply..."
+                mc "Ohkay. You know what I- goodbye"
+            else:
+                ty "You don't get it, man! You need this! You need me!"
+                mc "Whatever you say man"
+        "Thanks for your help":
+            mc "Thanks for the help, even if i'm not sure what you're talking about, i'll keep your advice in mind"
+            ty "Good...now go get em tiger!"
+            mc "Don't ever call me that ever again"
+    scene pipinghotpizzainside with fade
+    show laurdis with dissolve
+    play sound laurokay
+    la "What's up? Everything alright?"
+    mc "Yeah, no, don't worry about it, he was just...showing us our pizza....it's coming soon"
+    la "Uh huh..."
+    hide laurdis
+    show laursmile
+    la "So, while we wait, let's talk about something!"
+    menu:
+        "What are your hobbies?":
+            mc "Do you have any hobbies? Interests?"
+            la "Let's see...I used to play soccer a lot back in highschool, me and the others still play occassionally on weekends."
+            la "Oh! I do a lot of cooking! Not to toot my own horn, but if you were to ask anyone, they'd agree that i'm kind of a master cook."
+            mc "Haha! I'd love to try some of your food one day!"
+            hide laursmile
+            show laurnorm
+            la "What about you? What are you into?"
+            menu:
+                "Music":
+                    $ laurflag += 1
+                    mc "I'm pretty into music!"
+                    $ renpy.notify("You two have a common interest!")
+                    hide laurnorm
+                    show laursmile
+                    la "Hey, me too! Do you play?"
+                    mc "Ah, not really, I just like listening to tons of different stuff, you know?"
+                    la "I get that, I play the guitar sometimes, but I also just like listening to stuff. Have you heard of Trans Siberian Orchestra? They're my favourite band!"
+                    mc "I'll have to give them a listen!"
+                    show laursmile at left with easeinleft
+                    show tylerpizza with dissolve
+                    if everythingpizza == True:
+                        ty "Here's your Everything Pizza. Bone apple teeth"
+                    else:
+                        ty "Here's your cheese pizza. Bone apple teeth"
+                        mc "Don't you mean...Bon Apetit?"
+                        ty "I'm not fucking perfect Okay!!!!"
+                    hide tylerpizza
+                    show laursmile at center with ease
+                "Film":
+                    $ laurflag += 1
+                    mc "I'm pretty into film!"
+                    $ renpy.notify("You two have a common interest!")
+                    hide laurnorm
+                    show laursmile
+                    la "Hey, me too! I love watching movies!"
+                    la "I guess everyone does, but I don't know, I reallyy just love film."
+                    mc "I get what you mean! I just love being able to appreciate different genres"
+                    la "Haha, it's nice to meet a fellow film enthusiast, we should definitely watch some movies together! You can show me your favourites, and I can show you mine"
+                    mc "That sounds fun! I'd love to" 
+                    show laursmile at left with easeinleft
+                    show tylerpizza with dissolve
+                    if everythingpizza == True:
+                        ty "Here's your Everything Pizza. Bone apple teeth"
+                    else:
+                        ty "Here's your cheese pizza. Bone apple teeth"
+                        mc "Don't you mean...Bon Apetit?"
+                        ty "I'm not fucking perfect Okay!!!!"
+                    hide tylerpizza
+                    show laursmile at center with ease
+                "Video Games":
+                    mc "I like playing video games!"
+                    la "Ohh, that's cool. I don't really play video games, sometimes with the guys or Aphmau, but that's really it."
+                    la "You should play with Aphmau or Aaron sometime! They're both awesome at anything they get their hands on"
+                    mc "I'll have to do that..."
+                    show laurnorm at left with easeinleft
+                    show tylerpizza with dissolve
+                    if everythingpizza == True:
+                        ty "Here's your Everything Pizza. Bone apple teeth"
+                    else:
+                        ty "Here's your cheese pizza. Bone apple teeth"
+                        mc "Don't you mean...Bon Apetit?"
+                        ty "I'm not fucking perfect Okay!!!!"
+                    hide tylerpizza
+                    show laurnorm at center with ease
+                "Art":
+                    mc "I'm pretty into art! I like to draw a lot"
+                    la "That's cool! I'm not too into art. People have said that i'm pretty good, but i've never had a huge interest in it."
+                    la "Hey, you should see some of Kawaii-chans art though! She's a wizard with a pencil. She could honestly go professional if she wanted to!"
+                    mc "I'll have to do that..."
+                    show laurnorm at left with easeinleft
+                    show tylerpizza with dissolve
+                    if everythingpizza == True:
+                        ty "Here's your Everything Pizza. Bone apple teeth"
+                    else:
+                        ty "Here's your cheese pizza. Bone apple teeth"
+                        mc "Don't you mean...Bon Apetit?"
+                        ty "I'm not fucking perfect Okay!!!!"
+                    hide tylerpizza
+                    show laurnorm at center with ease
+                "I hate everything in this awful world":
+                    mc "This world is garbage and theres nothing about it that I enjoy"
+                    hide laurnorm
+                    show laursad
+                    la "Oh...that's..a shame..."
+                    la "Have you been talking to Zane lately? That sounds like something he'd say..."
+                    show laursad at left with easeinleft
+                    show tylerpizza with dissolve
+                    if everythingpizza == True:
+                        ty "Here's your Everything Pizza. Bone apple teeth"
+                    else:
+                        ty "Here's your cheese pizza. Bone apple teeth"
+                        mc "Don't you mean...Bon Apetit?"
+                        ty "I'm not fucking perfect Okay!!!!"
+                    hide tylerpizza
+                    show laursad at center with ease
+        "What do you think of the other residents?":
+            mc "What do you think of the other people in our neighbourhood?"
+            la "Well, we're all really good friends! I've known pretty much everyone since high school."
+            la "We've all supported eachother through our hardships, i'm glad to have them all in my life"
+            la "I would say i'm closest with Garroth. He's my bestest friend in the entire world, I don't know what I'd do without him!"
+            la "What about you, what do you think of everyone?"
+            menu:
+                "I like them all":
+                    $ laurflag += 1
+                    mc "I know we haven't talked much, but I really like everyone! They all seem so fun and unique, it's refreshing to have such a vibrant friendgroup"
+                    $ renpy.notify("Laurence finds you admirable!")
+                    la "Wow, you've only been here for a couple days and you already like them! You're right though, they are great"
+                    la "I like people who are able to get along quickly! They're always the most fun to be around."
+                    mc "Then I guess you'll be having lots of fun with me~"
+                    play sound laurlaugh
+                    la "Haha, we'll see."
+                    show laursmile at left with easeinleft
+                    show tylerpizza with dissolve
+                    if everythingpizza == True:
+                        ty "Here's your Everything Pizza. Bone apple teeth"
+                    else:
+                        ty "Here's your cheese pizza. Bone apple teeth"
+                        mc "Don't you mean...Bon Apetit?"
+                        ty "I'm not fucking perfect Okay!!!!"
+                    hide tylerpizza
+                    show laursmile at center with ease    
+                "I have no opinion":
+                    mc "Hmm...I don't really have any strong opinions. I haven't really talked to anyone that much"
+                    hide laursmile
+                    show laurnorm
+                    la "Yeah..that makes sense. I don't know why I asked, ahah."
+                    la "Trust me, though, you're gonna love everyone here"
+                    la "...besides Dante, he's kinda weird. And Travis, they're both...yeah..."
+                    la "And Zane can be pretty mean sometimes, Katelyn too, and Aaron can be a bit off-putting.."
+                    la "And I guess Kawaii-chan can be a bit much sometimes, Garroth too, oh, and be careful of Lucinda! She's kind of a trickster, and-"
+                    mc "You know what? I'll just form my own opinion as time goes on"
+                    la "That makes sense.."
+                    show laurnorm at left with easeinleft
+                    show tylerpizza with dissolve
+                    if everythingpizza == True:
+                        ty "Here's your Everything Pizza. Bone apple teeth"
+                    else:
+                        ty "Here's your cheese pizza. Bone apple teeth"
+                        mc "Don't you mean...Bon Apetit?"
+                        ty "I'm not fucking perfect Okay!!!!"
+                    hide tylerpizza
+                    show laurnorm at center with ease
+                "I hate them all":
+                    mc "I honestly really don't like anyone here. They're kind of annoying..."
+                    hide laursmile
+                    show laursad
+                    la "Oh....that's....uh.."
+                    la "I hope you get to know them better, I guess..."
+                    show laursad at left with easeinleft
+                    show tylerpizza with dissolve
+                    if everythingpizza == True:
+                        ty "Here's your Everything Pizza. Bone apple teeth"
+                    else:
+                        ty "Here's your cheese pizza. Bone apple teeth"
+                        mc "Don't you mean...Bon Apetit?"
+                        ty "I'm not fucking perfect Okay!!!!"
+                    hide tylerpizza
+                    show laursad at center with ease
+        "Are you looking for love?":
+            mc "Are you looking for love? Or wait, do you already have someone??"
+            hide laursmile
+            show laurshock
+            play sound lauruhh
+            la "Oh! Um...no...or- no, I don't have a partner right now.."
+            la "But...I guess i'm looking for love? I don't know, I haven't really been thinking about it.."
+            mc "Sorry, that was kind of a personal question.."
+            la "No, it's fine. What about you? Are you looking for anyone?"
+            menu:
+                "Yes":
+                    $ laurflag += 1
+                    mc "I am! I would like to find somebody"
+                    $ renpy.notify("Laurence is glad he has a chance with you!")
+                    hide laurshock
+                    show laursmile
+                    la "Cool! I guess we're both on the search...haha.."
+                    mc "Haha looks like you could help me with my OPERATION to find a SWEETHEART"
+                    hide laursmile
+                    show laurdis
+                    la "...what?"
+                    mc "Nothing"
+                    show laurdis at left with easeinleft
+                    show tylerpizza with dissolve
+                    if everythingpizza == True:
+                        ty "Here's your Everything Pizza. Bone apple teeth"
+                    else:
+                        ty "Here's your cheese pizza. Bone apple teeth"
+                        mc "Don't you mean...Bon Apetit?"
+                        ty "I'm not fucking perfect Okay!!!!"
+                    hide tylerpizza
+                    show laurdis at center with ease
+                "No":
+                    mc "Not really, honestly. Just wanting to go solo for now"
+                    hide laurshock
+                    show laursad
+                    la "Oh...that's..cool, I guess..."
+                    "Am I lying to him or myself right now"
+                    show laursad at left with easeinleft
+                    show tylerpizza with dissolve
+                    if everythingpizza == True:
+                        ty "Here's your Everything Pizza. Bone apple teeth"
+                    else:
+                        ty "Here's your cheese pizza. Bone apple teeth"
+                        mc "Don't you mean...Bon Apetit?"
+                        ty "I'm not fucking perfect Okay!!!!"
+                    hide tylerpizza
+                    show laursad at center with ease
+    hide laursad
+    hide laursmile
+    hide laurdis
+    show laurnorm
+    if everythingpizza == True:
+        mc "Woah...this looks awesome..."
+        play sound laurexactly
+        la "Right? Let's dig in."
+        scene laur_pizza_cg_1 with fade
+        pause (3.0)
+        play sound wow
+        la "Deliiciooussss~~...."
+        mc "I can't believe it...I didn't know pizza could be this good...."
+        scene laur_pizza_cg_2 with dissolve
+        la "I told you it'd be good!"
+        la "This place truly is the best..."
+        mc "Haha, i'm glad I chose to come here with you!"
+        la "You made the right decision!"
+        scene pipinghotpizzainside with fade
+        show laursmile with dissolve
+    else:
+        mc "This looks good!"
+        la "It does! But it's just cheese pizza..."
+        la "The Everything Pizza, however..."
+        mc "We can get that next time!"
+        hide laurnorm
+        show laurshock
+        la "Is there...a next time?"
+        mc "If you want to, I'd like to do this again!"
+        hide laurshock
+        show laursmile
+        la "I would really like that!"
+    la "I'm glad that you like the food here. You agree with me now, right? This is the best restaurant around here?"
+    mc "Well, I still have to try the others...but this is definitely winning so far!"
+    play sound laurlaugh
+    la "Knew it! I-"
+    hide laursmile
+    show laurshock
+    la "Uh- [mcname]- Don't look behind you?"
+    mc "What? What's behind me?"
+    la "It's uh- No they're coming here."
+    show garsad at left with easeinbottom
+    show aarsad at right with easeinbottom
+    play sound garaww
+    g "We didn't think we'd get caught..."
+    mc "What the- Garroth?? Aaron?? What are you guys doing here??"
+    ar "We...wanted to see how this was going.."
+    mc "What? Why?"
+    hide garsad
+    show garmad at left
+    g "BECAUSE PIPING HOT PIZZA PALACE ISN'T THE BEST RESTAURANT!! IT'S CLOUD 9 NICE ICE CREAM PARLOUR!!!!"
+    mc "Jesus fucking christ"
+    mc "Aaron, you don't even like the ice cream place, why are you with Garroth?"
+    ar "An enemy of my enemy is my friend"
+    mc "Got it"
+    hide laurshock
+    show laursad
+    la "Can you guys leave us alone?? We're just trying to have a nice dinner.."
+    g "If you want a nice dinner, then you go to Cloud 9 Nice Ice Cream Parlour!"
+    ar "Who has ice cream for dinner?"
+    hide garmad
+    show garshock at left
+    g "..you guys haven't had ice cream for dinner?"
+    la "Okay just get out of here!!"
+    g "SORRY! Sorry!"
+    ar "[mcname], have a great rest of your night!!"
+    mc "You too..."
+    hide garshock with easeoutbottom
+    hide aarsad with easeoutbottom
+    la "I'm sorry about that..."
+    mc "It's okay, ahaha. Let's just finish our pizza."
+    scene black with fade
+    "We finished our dinner..."
+    show housenight with fade
+    show laursmile with dissolve
+    la "I hope you had a great time, [mcname]"
+    hide laursmile
+    show laursad
+    la "Even though Garroth and Aaron kinda ruined it at the end..."
+    mc "Haha, it wasn't ruined. I had a lot of fun today, Laurance"
+    hide laursad
+    show laursmile
+    la "That's great to hear! I had fun too."
+    mc "I'll see you around! Good night!"
+    la "Night!"
+    if tylermean == 4:
+        jump tylersecretend1
+    else:
+        jump dayend
 
 
 return

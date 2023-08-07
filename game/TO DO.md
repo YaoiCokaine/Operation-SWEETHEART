@@ -5,8 +5,12 @@ IMAGES
 -bowling food court
 -bowling outside
 -bowling inside
+-pizza hot + kitchen
+-black
+
 -luci v katelyn bowling cg
 -katlrny winnong cg
+-laurence pizza cg
 
 -tyler coffee sprite
 -tyler bowl sprite
@@ -46,6 +50,8 @@ Laurence:
     -keep flowers
     -talk to him aaron and garroth
     -pizza
+    -veverythign pizza
+    - good opinion
 
 Aaron:
     -escape from past

@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 166: expected statement.
-    kcconv = True
-           ^
+File "game/script.rpy", line 1975: end of line expected.
+    show garsad at left with easeinbottom with
+                                          ^
 
 Ren'Py Version: Ren'Py 8.0.1.22070801
-Fri Aug  4 18:11:28 2023
+Sun Aug  6 21:05:12 2023
