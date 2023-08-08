@@ -1,28 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1975, in script
-    show garsad at left with easeinup
-  File "game/script.rpy", line 1975, in <module>
-    show garsad at left with easeinup
-NameError: name 'easeinup' is not defined
+  File "game/script.rpy", line 2694, in script
+    show tylercream with easineright
+  File "game/script.rpy", line 2694, in <module>
+    show tylercream with easineright
+NameError: name 'easineright' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1975, in script
-    show garsad at left with easeinup
+  File "game/script.rpy", line 2694, in script
+    show tylercream with easineright
   File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\ast.py", line 1654, in execute
     paired = renpy.python.py_eval(self.paired)
   File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\python.py", line 1080, in py_eval
     return py_eval_bytecode(code, globals, locals)
   File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\python.py", line 1073, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 1975, in <module>
-    show garsad at left with easeinup
-NameError: name 'easeinup' is not defined
+  File "game/script.rpy", line 2694, in <module>
+    show tylercream with easineright
+NameError: name 'easineright' is not defined
 
 Windows-10-10.0.22000 AMD64
 Ren'Py 8.0.1.22070801
-Operation SWEETHEART 1.0
-Sun Aug  6 20:38:35 2023
+Operation: SWEETHEART!!! ~A Mystreet Dating Simulator~ 1.0
+Mon Aug  7 23:17:28 2023

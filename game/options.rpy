@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("Operation SWEETHEART")
+define config.name = _("Operation: SWEETHEART!!! ~A Mystreet Dating Simulator~")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -74,7 +74,7 @@ define config.main_menu_music = "audio/dream/vntrack07.mp3"
 ## Entering or exiting the game menu.
 
 define config.enter_transition = dissolve
-define config.exit_transition = dissolve
+define config.exit_transition = new
 
 
 ## Between screens of the game menu.
@@ -84,12 +84,12 @@ define config.intra_transition = dissolve
 
 ## A transition that is used after a game has been loaded.
 
-define config.after_load_transition = None
+define config.after_load_transition = fade
 
 
 ## Used when entering the main menu after the game has ended.
 
-define config.end_game_transition = None
+define config.end_game_transition = fade
 
 
 ## A variable to set the transition used when the game starts does not exist.

@@ -7,13 +7,15 @@ IMAGES
 -pizza hot + kitchen
 -black
 -sausage shack 
-
+-cloud 9
 
 -laurence pizza cg
+-aaron sausage cg
 
 -tyler coffee sprite
 -tyler bowl sprite
 -tyler waiter
+-tyler cream
 
 
     if aphchan == 1:

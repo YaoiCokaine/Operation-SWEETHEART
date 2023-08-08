@@ -899,7 +899,7 @@ label choices1cont:
                 g "[mcname], we'll go get ice cream together so you can see just how good it is!"
                 mc "That sounds fun, let's do that!"
                 g "Yippee!"
-                a "Yippee..?"
+                ar "Yippee..?"
         t "EVERYONE! I'D LIKE TO MAKE A TOAST!"
         jump travtoast
     label travzandanconv:
@@ -1010,7 +1010,10 @@ label choices1cont:
         mc "No that's not necessary-"
         t "EVERYONE! I'D LIKE TO MAKE A TOAST!"
     label travtoast:
-        scene houseinsidedecornoon with fade
+        if aphparty == True:
+            scene houseinsidedecornoon with fade
+        else:
+            scene houseinsidenoon with fade
         show travnorm with dissolve
         t "Here's a toast, to our new beloved friend, [mcname]!"
         define e = Character("Everyone",color="#FFFFFF")
@@ -2044,7 +2047,7 @@ label aarsausage:
     ar "Come on, let's sit down"
     show aarnorm at left with easeinleft
     show tylerwaiter with dissolve
-    ty "Hey guys welcome to Piping Hot Pizza Palace. What can I toss in the oven for ya"
+    ty "Hey guys welcome to the Sizzling Sausage Shack. What can I put in a bun for ya"
     mc "..you again?"
     ty "Pardon? Idk you"
     mc "You...last night...we.."
@@ -2638,6 +2641,510 @@ label aarsausage:
         jump tylersecretend1
     else:
         jump dayend
+label garcream:
+    scene houseday with fade
+    "I wonder if Garroth's been waiting for me?"
+    show garnorm with dissolve
+    g "[mcname]! There you are!"
+    g "Ready to go?"
+    mc "Haha, I was born ready!"
+    g "Loving the spirit!"
+    scene cloud9 with fade
+    show garnorm with dissolve
+    mc "Woah..This place has tons of flavours!"
+    g "Uh huh! It's got something for everyone! I guarantee you'll love at least ONE flavour"
+    mc "We'll have to see"
+    show garnorm at left with easeinleft
+    show tylercream with dissolve
+    ty "Hey guys welcome to Cloud 9 Nice Ice Cream Parlour. What can I scoop up for ya"
+    mc "..you again?"
+    ty "Pardon? Idk you"
+    mc "You...last night...we.."
+    hide garnorm
+    show garshock at left
+    g "Woah! You guys have met??"
+    mc "I- no...sorry...let's just order..."
+    hide garshock
+    show garnorm at left
+    g "Alright! Sorry, Tyler is it? We're gonna need a couple minutes to look at this menu!"
+    ty "Then don't come up to the fucking counter how about that"
+    hide tylercream with dissolve
+    show garnorm at center with ease
+    g "Got any idea what you want?"
+    mc "I don't know...there's so much to choose from....what do you suggest?"
+    g "Oo! You see, they have this super cool special, it's called the Empire State Creamy Supreme. It's one scoop of every flavour, so it's 30 scoops tall!"
+    mc "Genuinely how would you even eat that"
+    g "Trust me....you just do"
+    menu:
+        "Too delicious":
+            $ empirestate = True
+            $ garflag += 1
+            mc "That sounds crazy. Let's get it!"
+            $ renpy.notify("Garroth is glad you took his suggestion!")
+            g "Woohoo! Trust me, when you try this, you'll never want to get normal ice cream again!"
+            show garnorm at left with easeinleft
+        "Too inconvenient":
+            $ empirestate = False
+            mc "Sounds too inconvenient...I'll just get Vanilla."
+            hide garnorm
+            show garsad
+            play sound garaww
+            g "Aww shucks..."
+            show garsad at left with easeinleft
+    show tylercream with easeinright
+    ty "You guys finally ready to order?"
+    if empirestate == True:
+        g "Two Empire State Creamy Supremes pleeeaaaaseee"
+        ty "I'm quitting my job tonight"
+        hide tylercream with easeoutright
+        show garnorm at center with ease
+    else:
+        g "One Empire State Creamy Supreme! And one Vanilla...single scoop.."
+        ty "god. Okay"
+        hide tylercream with easeoutright
+        show garsad at center with ease
+    mc "While he does that, why don't we-"
+    if empirestate == True:
+        show garnorm at left with easeinleft
+    else:
+        show garsad at left with easeinleft
+    show tylercream with easeinright
+    ty "Here's your ice cream"
+    mc "Woah! That was...a little too fast"
+    hide garsad
+    show garnorm
+    g "That's the best thing about this place! The service is super fast!"
+    mc "Right.."
+    ty "Oh yeah, I spit in yours, btw"
+    mc "WHA- Why would you do that!?"
+    ty "Idk"
+    menu:
+        "Yell at him":
+            $ tylermean +=1
+            mc "YOU FUCKING LOSER!! I HATE YOU. I HOPE YOU ARE CURSED FOR A THOUSAND YEARS YOU DICK"
+            ty "CALM DOWN OH MY GOD I WAS FUCKING JOKING"
+        "Call his bluff":
+            mc "Are you lying"
+            ty "Ya"
+    g "Come on [mcname], let's go sit!"
+    hide garnorm with easeoutleft
+    ty "[mcname]- stay back..."
+    mc "Wsg gang"
+    ty "Remember what I told you last night..."
+    mc "Wait! So you do acknowledge yesterday!"
+    ty "Just don't fumble this, bad things will happen"
+    mc "Why...why are you helping me like this"
+    ty "Let's just say...I lost someone close to me who was just like you..."
+    mc "..right"
+    g "[mcname]! I found a seat!"
+    mc "I'm coming Garroth, one second!"
+    menu:
+        "I don't need your help":
+            $ tylermean +=1 
+            mc "Listen, Tyler, I don't need your help. Quite frankly, you're freaking me out, so just leave me alone, okay?"
+            if tylermean == 4:
+                ty "...."
+                ty "if that's what you wish for...Tyler will comply..."
+                mc "Ohkay. You know what I- goodbye"
+            else:
+                ty "You don't get it, man! You need this! You need me!"
+                mc "Whatever you say man"
+        "Thanks for your help":
+            mc "Thanks for the help, even if i'm not sure what you're talking about, i'll keep your advice in mind"
+            ty "Good...now go get em tiger!"
+            mc "Don't ever call me that ever again"
+    scene garroth_ice_cream_cg_1 with fade
+    stop music
+    play music daydream loop
+    pause (2.0)
+    play sound wow
+    mc "It's so......tall...."
+    g "AND SO GOOD!!! >~<"
+    mc "How did you do that"
+    g "Hm?"
+    mc "Nothing..."
+    if empirestate == True:
+        mc "This really is awesome, though!"
+        g "Told youuu!"
+    else:
+        g "You would understand if you also got the Empire State Creamy Supreme!"
+        mc "Maybe next time.."
+    scene garroth_ice_cream_cg_2 with dissolve
+    g "God, I love this place!!"
+    mc "Haha, I can tell!"
+    scene cloud9 with fade
+    stop music
+    play music daysong2 loop
+    show garsad with dissolve
+    g "Well, it's gonna take me a minute to finish this...we're gonna be here for a while..."
+    mc "Don't worry! Let's talk a bit about ourselves while we wait!"
+    hide garsad
+    show garnorm
+    g "Ooo, I like that! What do you wanna know about me?"
+    label garcreamconv:
+    define garconv = 0
+    menu:
+        "What are your hobbies?":
+            define hobby = 0
+            $ hobby += 1
+            mc "Do you have any hobbies? Interests?"
+            if hobby == 1:
+                g "Didn't you already ask me that?"
+                jump garcreamconv
+            else:
+                g "Let's see...i'm pretty good at cooking! I've been getting into it a lot more recently, I think because lots of my friends cook too, and they look like they're having so much fun!"
+                g "I also enjoy fanfiction, it's just so fun to see what passionate people can create!"
+                g "I personally believe the most dedicated people in the world are fans. They can do crazy things! Like making Dating Simulators, for example"
+                mc "Oddly specific example"
+                g "What about you?"
+                menu:
+                    "Art":
+                        $ garconv += 1
+                        mc "I really like to draw!"
+                        hide garnorm
+                        show garsad
+                        g "Yeesh...I suck at drawing....I can't even make a circle..."
+                        hide garsad
+                        show garnorm
+                        g "It's cool that you like to draw, though!"
+                        g "You know, Kawaii-chan's pretty great at drawing! I should get her to teach me, maybe..."
+                        if garconv == 3:
+                            jump garcreamcont
+                        else:
+                            jump garcreamconv
+                    "Music":
+                        $ garconv += 1
+                        mc "I really like music!"
+                        g "That's fun! I don't really listen to music all that much, just whatever's playing on the radio"
+                        g "My brother Zane know lots more about music than I do, he's a complete nerd for that kind of stuff!"
+                        g "I think Laurance and Aaron both play the guitar, too? I'm not too sure."
+                        if garconv == 3:
+                            jump garcreamcont
+                        else:
+                            jump garcreamconv
+                    "Video Games":
+                        $ garconv += 1
+                        mc "I really like video games!"
+                        g "Ohh, really?? What do you think of Legend of Zelda?"
+                        menu:
+                            "Love it":
+                                mc "I love it!"
+                                $ garflag += 1
+                                $ renpy.notify("You and Garroth have a common interest!")
+                                g "YIPPEE! That's my favourite video game! It's just so fun! I love everything about it, really!"
+                                mc "You kind of look like Link, y'know!"
+                                g "Haha, I've cosplayed him a couple times, actually!"
+                            "Hate it":
+                                mc "I hate it.."
+                                hide garnorm
+                                show garmad
+                                g "WHAT!? WHAT DO YOU HATE ABOUT IT!?"
+                                g "Is it the puzzling yet innovative gameplay? The intriguing narrative and compelling storytelling? The beautiful and stellar artwork? The originality that sets it apart from other franchises? The attention to detail that can only be done by the best of game creators?"
+                                mc "Sorry, didn't realize that was a soft spot for you..."
+                        if garconv == 3:
+                            jump garcreamcont
+                        else:
+                            jump garcreamconv
+                    "Writing":
+                        $ aarflag +=1
+                        mc "I'm pretty into reading! Especially manga."
+                        $ renpy.notify("You and Aaron have a common interest!")
+                        hide aarnorm
+                        show aarsmile
+                        ar "Ahh, cool! I like manga too!"
+                        ar "I've always preferred it over anime, not sure why"
+                        ar "I could show you some of my favourites and you could show me yours!"
+                        mc "I'd love that!"
+                        show aarsmile at left with easeinleft
+                        show tylerwaiter with dissolve
+                        ty "here are your dogs. Bone Apple Teeth"
+                        mc "Don't you mean...Bon Apetit?"
+                        ty "I'm not fucking perfect Okay!!!!"
+                        menu:
+                            "You a bitch":
+                                mc "YOU A BITCH!"
+                                $ tylermean += 1
+                                ty "WHAT'S WRONG WITH YOU"
+                                mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
+                                if tylermean == 4:
+                                    ty "You're gonna fucking regret this mark my words"
+                                else:
+                                    ty "YOU'RE SO MEAN I HATE YOU"
+                                hide tylerwaiter with dissolve
+                                show aarsmile at center with ease
+                                hide aarsmile
+                                show aarnorm
+                                mc "I hate that guy so much...."
+                                ar "Uh huh..."
+                            "It's okay":
+                                mc "It's okay. We all make mistakes"
+                                ty "Really..? You understand...?"
+                                mc "Yea man this job is hard"
+                                ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
+                                mc "Yeah yeah thats great let's talk about this later"
+                                hide tylerwaiter with dissolve
+                                show aarsmile at center with ease
+                                hide aarsmile
+                                show aarnorm
+                                ar "He's a weird one, isn't he?"
+                                mc "Yeah..."
+                    "I hate everything in this awful world":
+                        mc "This world is garbage and theres nothing about it that I enjoy"
+                        hide aarnorm
+                        show aarsad
+                        ar "Oh...uh....I'm not too sure what to say about that..."
+                        ar "Maybe you should hang out with Zane more often, you guys sound similar..."
+                        show aarsad at left with easeinleft
+                        show tylerwaiter with dissolve
+                        ty "here are your dogs. Bone Apple Teeth"
+                        mc "Don't you mean...Bon Apetit?"
+                        ty "I'm not fucking perfect Okay!!!!"
+                        menu:
+                            "You a bitch":
+                                mc "YOU A BITCH!"
+                                $ tylermean += 1
+                                ty "WHAT'S WRONG WITH YOU"
+                                mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
+                                if tylermean == 4:
+                                    ty "You're gonna fucking regret this mark my words"
+                                else:
+                                    ty "YOU'RE SO MEAN I HATE YOU"
+                                hide tylerwaiter with dissolve
+                                show aarsad at center with ease
+                                hide aarsad
+                                show aarnorm
+                                mc "I hate that guy so much...."
+                                ar "Uh huh..."
+                            "It's okay":
+                                mc "It's okay. We all make mistakes"
+                                ty "Really..? You understand...?"
+                                mc "Yea man this job is hard"
+                                ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
+                                mc "Yeah yeah thats great let's talk about this later"
+                                hide tylerwaiter with dissolve
+                                show aarsad at center with ease
+                                hide aarsad
+                                show aarnorm
+                                ar "He's a weird one, isn't he?"
+                                mc "Yeah..."
+        "What do you think of the other residents?":
+            mc "What do you think of the other people in our neighbourhood?"
+            ar "Ah, well, we're all great friends. I've known them all for a while now"
+            hide aarnorm
+            show aarsad
+            ar "Although, it took a while for us to get along.."
+            mc "Really? How come?"
+            ar "Just, uhh...drama.."
+            hide aarsad
+            show aarnorm
+            ar "I've always been good friends with Aphmau, though. We're great friends. She's probably the one im closest with. I'm also pretty close with Dante"
+            mc "Really? Dante? I didn't expect that."
+            ar "Haha, I know, we seem different, but I don't know...something about Dante draws me into him."
+            ar "Uhh..what about you? What do you think of everyone?"
+            menu:
+                "I like them all":
+                    $ aarflag += 1
+                    mc "I know we haven't talked much, but I really like everyone! They all seem so fun and unique, it's refreshing to have such a vibrant friendgroup"
+                    $ renpy.notify("Aaron finds you admirable!")
+                    hide aarnorm
+                    show aarsmile
+                    ar "That's great! I'm glad you're getting along with everyone!"
+                    ar "I can tell everyone already really likes you too, it's kinda incredible.."
+                    mc "Really? You can tell?"
+                    play sound aarlaugh
+                    ar "Yeah! Dante was telling me he thought you were really cool. I have to agree wit him, you are pretty awesome"
+                    mc "Ohhh...stawp it..."
+                    play sound aartease
+                    ar "Haha, I'm just teasing"
+                    show aarsmile at left with easeinleft
+                    show tylerwaiter with dissolve
+                    ty "here are your dogs. Bone Apple Teeth"
+                    mc "Don't you mean...Bon Apetit?"
+                    ty "I'm not fucking perfect Okay!!!!"
+                    menu:
+                        "You a bitch":
+                            mc "YOU A BITCH!"
+                            $ tylermean += 1
+                            ty "WHAT'S WRONG WITH YOU"
+                            mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
+                            if tylermean == 4:
+                                ty "You're gonna fucking regret this mark my words"
+                            else:
+                                ty "YOU'RE SO MEAN I HATE YOU"
+                            hide tylerwaiter with dissolve
+                            show aarsmile at center with ease
+                            hide aarsmile
+                            show aarnorm
+                            mc "I hate that guy so much...."
+                            ar "Uh huh..."
+                        "It's okay":
+                            mc "It's okay. We all make mistakes"
+                            ty "Really..? You understand...?"
+                            mc "Yea man this job is hard"
+                            ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
+                            mc "Yeah yeah thats great let's talk about this later"
+                            hide tylerwaiter with dissolve
+                            show aarsmile at center with ease
+                            hide aarsmile
+                            show aarnorm
+                            ar "He's a weird one, isn't he?"
+                            mc "Yeah..."
+                "I have no opinion":
+                    mc "Hmm...I don't really have any strong opinions. I haven't really talked to anyone that much"
+                    ar "Oh yeah, you're right, I guess it'll take some time before you really get settled in with everyone"
+                    show aarnorm at left with easeinleft
+                    show tylerwaiter with dissolve
+                    ty "here are your dogs. Bone Apple Teeth"
+                    mc "Don't you mean...Bon Apetit?"
+                    ty "I'm not fucking perfect Okay!!!!"
+                    menu:
+                        "You a bitch":
+                            mc "YOU A BITCH!"
+                            $ tylermean += 1
+                            ty "WHAT'S WRONG WITH YOU"
+                            mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
+                            if tylermean == 4:
+                                ty "You're gonna fucking regret this mark my words"
+                            else:
+                                ty "YOU'RE SO MEAN I HATE YOU"
+                            hide tylerwaiter with dissolve
+                            show aarnorm at center with ease
+                            mc "I hate that guy so much...."
+                            ar "Uh huh..."
+                        "It's okay":
+                            mc "It's okay. We all make mistakes"
+                            ty "Really..? You understand...?"
+                            mc "Yea man this job is hard"
+                            ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
+                            mc "Yeah yeah thats great let's talk about this later"
+                            hide tylerwaiter with dissolve
+                            show aarnorm at center with ease
+                            ar "He's a weird one, isn't he?"
+                            mc "Yeah..."
+                "I hate them all":
+                    mc "I honestly really don't like anyone here. They're kind of annoying..."
+                    hide aarnorm
+                    show aarmad
+                    ar "....alright"
+                    show aarmad at left with easeinleft
+                    show tylerwaiter with dissolve
+                    ty "here are your dogs. Bone Apple Teeth"
+                    mc "Don't you mean...Bon Apetit?"
+                    ty "I'm not fucking perfect Okay!!!!"
+                    menu:
+                        "You a bitch":
+                            mc "YOU A BITCH!"
+                            $ tylermean += 1
+                            ty "WHAT'S WRONG WITH YOU"
+                            mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
+                            if tylermean == 4:
+                                ty "You're gonna fucking regret this mark my words"
+                            else:
+                                ty "YOU'RE SO MEAN I HATE YOU"
+                            hide tylerwaiter with dissolve
+                            show aarmad at center with ease
+                            hide aarmad
+                            show aarnorm
+                            mc "I hate that guy so much...."
+                            ar "Uh huh..."
+                        "It's okay":
+                            mc "It's okay. We all make mistakes"
+                            ty "Really..? You understand...?"
+                            mc "Yea man this job is hard"
+                            ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
+                            mc "Yeah yeah thats great let's talk about this later"
+                            hide tylerwaiter with dissolve
+                            show aarmad at center with ease
+                            hide aarmad
+                            show aarnorm
+                            ar "He's a weird one, isn't he?"
+                            mc "Yeah..."
+        "Are you looking for love?":
+            mc "Are you looking for love? Or wait, do you already have someone??"
+            hide aarnorm
+            show aarshock
+            ar "d-do you think I have someone?"
+            mc "I mean...I don't know...that's why i'm asking"
+            ar "No, I don't have anyone...and I don't know if i'm actively looking, I guess I'm just waiting to meet the right person"
+            hide aarshock
+            show aarnorm
+            ar "What about you?"
+            menu:
+                "Yes":
+                    $ aarflag += 1
+                    mc "I am! I would like to find somebody"
+                    $ renpy.notify("Aaron is glad he has a chance with you!")
+                    hide aarnorm
+                    show aarsmile
+                    ar "I'm sure someone like you is able to have anyone they wanted"
+                    mc "W-what!?"
+                    play sound aartease
+                    ar "Haha, too much..?"
+                    show aarsmile at left with easeinleft
+                    show tylerwaiter with dissolve
+                    ty "here are your dogs. Bone Apple Teeth"
+                    mc "Don't you mean...Bon Apetit?"
+                    ty "I'm not fucking perfect Okay!!!!"
+                    menu:
+                        "You a bitch":
+                            mc "YOU A BITCH!"
+                            $ tylermean += 1
+                            ty "WHAT'S WRONG WITH YOU"
+                            mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
+                            if tylermean == 4:
+                                ty "You're gonna fucking regret this mark my words"
+                            else:
+                                ty "YOU'RE SO MEAN I HATE YOU"
+                            hide tylerwaiter with dissolve
+                            show aarsmile at center with ease
+                            hide aarsmile
+                            show aarnorm
+                            mc "I hate that guy so much...."
+                            ar "Uh huh..."
+                        "It's okay":
+                            mc "It's okay. We all make mistakes"
+                            ty "Really..? You understand...?"
+                            mc "Yea man this job is hard"
+                            ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
+                            mc "Yeah yeah thats great let's talk about this later"
+                            hide tylerwaiter with dissolve
+                            show aarsmile at center with ease
+                            hide aarsmile
+                            show aarnorm
+                            ar "He's a weird one, isn't he?"
+                            mc "Yeah..."
+                "No":
+                    mc "Not really, honestly. Just wanting to go solo for now"
+                    ar "Hmm....I can respect that. Independence can be good"
+                    show aarnorm at left with easeinleft
+                    show tylerwaiter with dissolve
+                    ty "here are your dogs. Bone Apple Teeth"
+                    mc "Don't you mean...Bon Apetit?"
+                    ty "I'm not fucking perfect Okay!!!!"
+                    menu:
+                        "You a bitch":
+                            mc "YOU A BITCH!"
+                            $ tylermean += 1
+                            ty "WHAT'S WRONG WITH YOU"
+                            mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
+                            if tylermean == 4:
+                                ty "You're gonna fucking regret this mark my words"
+                            else:
+                                ty "YOU'RE SO MEAN I HATE YOU"
+                            hide tylerwaiter with dissolve
+                            show aarnorm at center with ease
+                            mc "I hate that guy so much...."
+                            ar "Uh huh..."
+                        "It's okay":
+                            mc "It's okay. We all make mistakes"
+                            ty "Really..? You understand...?"
+                            mc "Yea man this job is hard"
+                            ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
+                            mc "Yeah yeah thats great let's talk about this later"
+                            hide tylerwaiter with dissolve
+                            show aarnorm at center with ease
+                            ar "He's a weird one, isn't he?"
+                            mc "Yeah..."
     
 
 
