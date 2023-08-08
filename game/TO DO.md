@@ -4,16 +4,16 @@ IMAGES
 
 -bowling food court
 -bowling outside
--bowling inside
 -pizza hot + kitchen
 -black
+-sausage shack 
 
--luci v katelyn bowling cg
--katlrny winnong cg
+
 -laurence pizza cg
 
 -tyler coffee sprite
 -tyler bowl sprite
+-tyler waiter
 
 
     if aphchan == 1:
@@ -57,6 +57,8 @@ Aaron:
     -escape from past
     -talk to him garroth and laurence
     -sausage
+    -sausage
+    -good opinion
 
 Lucinda:
     -Start new
@@ -76,3 +78,4 @@ Travis:
 Zane:
     -talk to him dante and travis
     -not find travis' joke funny
+

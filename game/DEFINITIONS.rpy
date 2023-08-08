@@ -1,19 +1,19 @@
 #characters
 
-define mc = Character("[mcname]")
-define a = Character("Aphmau")
-define ar = Character("Aaron")
-define kc = Character("Kawaii-chan")
-define k = Character("Katelyn")
-define lu = Character("Lucinda")
-define la = Character("Laurence")
-define g = Character("Garroth")
-define d = Character("Dante")
-define t = Character("Travis")
-define z = Character("Zane")
-define q = Character("?")
-define qq = Character("??")
-define ty = Character("Tyler")
+define mc = Character("[mcname]",color="#FFFFFF")
+define a = Character("Aphmau",color="#FFFFFF")
+define ar = Character("Aaron",color="#FFFFFF")
+define kc = Character("Kawaii-chan",color="#FFFFFF")
+define k = Character("Katelyn",color="#FFFFFF")
+define lu = Character("Lucinda",color="#FFFFFF")
+define la = Character("Laurence",color="#FFFFFF")
+define g = Character("Garroth",color="#FFFFFF")
+define d = Character("Dante",color="#FFFFFF")
+define t = Character("Travis",color="#FFFFFF")
+define z = Character("Zane",color="#FFFFFF")
+define q = Character("?",color="#FFFFFF")
+define qq = Character("??",color="#FFFFFF")
+define ty = Character("Tyler",color="#FFFFFF")
 
 
 define new = Dissolve(0.3)
@@ -124,6 +124,18 @@ init:
 init:
     image kawaiichan_coffee_cg_2:
         "images/CGs/kawaiichan_coffee_cg_2.png"
+init:
+    image lucinda_bowling_cg_1:
+        "images/CGs/lucinda_bowling_cg_1.png"
+init:
+    image lucinda_bowling_cg_2:
+        "images/CGs/lucinda_bowling_cg_2.png"
+init:
+    image katelyn_bowling_cg_1:
+        "images/CGs/katelyn_bowling_cg_1.png"   
+init:
+    image katelyn_bowling_cg_2:
+        "images/CGs/katelyn_bowling_cg_2.png"   
 
 #sprites
 init:
@@ -383,6 +395,9 @@ init:
 init:
     image coffeeshop:
         "images/Backgrounds/coffeeshop.png"
+init:
+    image bowlinginside:
+        "images/Backgrounds/bowlinglane.png"
 
 
 if aphchan == 1:
