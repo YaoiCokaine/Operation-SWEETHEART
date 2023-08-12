@@ -2,28 +2,20 @@ TO DO
 
 IMAGES
 
--bowling food court
--bowling outside
--pizza hot + kitchen
--black
--sausage shack 
--cloud 9
-
--laurence pizza cg
+-garroth ice cream cg
 -aaron sausage cg
+-zane cg
+-travis cg
+-dante cg
+-killer babez vs MICHAEL
 
--tyler coffee sprite
--tyler bowl sprite
--tyler waiter
--tyler cream
+-park 
+-movie theatre outside + inside + inside
+
+-aph costume
+-tyler movie sprite
 
 
-    if aphchan == 1:
-        $ aph = ("Aph")
-        $ lol = (nick)
-    else:
-        $ aph = ("Aphmau")
-        $ lol = (mcname)
 
 flags:
 
@@ -31,17 +23,9 @@ Aphmau:
     -Organize party
     -Talk to her and kc
     -get her coffee
-
-Dante:
-    -Side with rent
-    -keep flowers
-    -talk to him zane and travis
-
-Garroth:
-    -Side with rent
-    -keep flowers
-    -talk to him aaron and laurence
-    -ice cream
+    -help her
+    -its awesome
+    
 
 Kawaii Chan:
     -Eat cookies
@@ -76,8 +60,27 @@ Katelyn:
 Travis:
     -talk to him dante and zane
     -find his joke funny
+    -seat
+    -good opinion
 
 Zane:
     -talk to him dante and travis
     -not find travis' joke funny
+    -seat
+    -good opinion
+
+Dante:
+    -Side with rent
+    -keep flowers
+    -talk to him zane and travis
+    -seat
+    -opinion
+
+Garroth:
+    -Side with rent
+    -keep flowers
+    -talk to him aaron and laurence
+    -ice cream
+    -ice cream
+    -good opinion
 

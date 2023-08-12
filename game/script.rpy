@@ -12,8 +12,8 @@
     "I was able to get a spacious home in a nice neighbourhood, woohoo!"
     "Except...this is a completely new area...I don't know anyone here.."
     "I guess that's my new mission! Meet new people and make some friends! Maybe even find a sweetheart..."
-    play sound doorbell
     "I should probably start unpacking my stuff, and then-"
+    play sound doorbell
     "Hm? Who could that be?"
     scene frontdoorday with fade
     mc "If you're from the IRS, then I told you, I need a little bit more time-"
@@ -246,14 +246,13 @@ label choices1cont:
         mc "Oh, alright then! Thanks for everything!"
         a "Anytime! Now, I've gotta get back to what I was doing. I'll pop by tomorrow afternoon to help set up! Bye byeee!"
         "Glad to know she's got all of that taken care of"
-        play sound doorbell
         "Food and drinks...I could make some pasta for everyone!"
     if aphparty == False:
         "How do you even organize a housewarming party? I guess I could cook some food for everyone.."
         "Hopefully pasta works..."
         "I can't wait to meet everyone. It seems like Aphmau will tell all her friends to come over, so maybe I can make some new friends too!"
-        play sound doorbell
         "Right, I also need to look for a job here...that's gonna be tough..."
+    play sound doorbell
     "Oh wow, the pizza is already here!"
     scene frontdoornight with fade
     show tylerpizza with dissolve
@@ -348,8 +347,8 @@ label choices1cont:
         jump partyplan
     label aphpartyplan:
     scene houseinside with fade
-    play sound doorbell
     "Aphmau should be coming soon to help out with the party-"
+    play sound doorbell
     "Oop! That's her!"
     scene frontdoorday with fade
     show aphnorm with dissolve
@@ -382,8 +381,8 @@ label choices1cont:
     "Boom! Meal is ready! I should also leave out some snacks as well.."
     "people should be coming soon"
     label partycont:
-    play sound doorbell
     "I'm really excited to meet everyone!"
+    play sound doorbell
     "Oh, that's them...I'm so nervous!"
     scene frontdoorday with fade
     if aphparty == False:
@@ -393,8 +392,9 @@ label choices1cont:
         a "No problem! I got you this cool scented candle as a gift. I hope you like it!"
         mc "It's lovely, thank you"
         hide aphnorm with dissolve 
-    show katnorm at left with dissolve
-    show kcnorm at right with dissolve
+    show katnorm at left
+    show kcnorm at right
+    with dissolve
     if kcconv == True:
         kc "Hey [mcname]-san!! Thanks for inviting us!"
         mc "Of course! I'm so glad you made it!"
@@ -434,10 +434,11 @@ label choices1cont:
         show kcmad at right
         play sound kchey
         kc "Ohhh, come on! It's not THAT much!!"
-    hide kcmad with dissolve
-    hide katdis with dissolve       
-    hide kcnorm with dissolve
-    hide katnorm with dissolve 
+    hide kcmad
+    hide katdis     
+    hide kcnorm
+    hide katnorm
+    with dissolve
     show lucinorm with dissolve
     lu "Hey [mcname], i'm Lucinda. I'm a couple houses down from here, nice to meet you"
     mc "Nice to meet you too! Come in."
@@ -446,8 +447,9 @@ label choices1cont:
     hide lucinorm with dissolve
     show laursmile with dissolve
     la "Hey again, [mcname]!"
-    show garnorm at left with dissolve
-    show dannorm at right with dissolve
+    show garnorm at left
+    show dannorm at right
+    with dissolve
     if gardan:
         if garflag == 1:
             g "Hiya [mcname]!"
@@ -533,12 +535,13 @@ label choices1cont:
             play sound garthanks
             g "Right! We did work hard!"
             d "We're glad you like them!"
-    hide danmad with dissolve
-    hide garsad with dissolve
-    hide laursad with dissolve
-    hide garnorm with dissolve
-    hide laursmile with dissolve
-    hide dannorm with dissolve
+    hide danmad
+    hide garsad
+    hide laursad
+    hide garnorm
+    hide laursmile
+    hide dannorm
+    with dissolve
     show zanenorm with dissolve
     z "Hello...i'm Zane. Aphmau's friend."
     mc "Nice to meet you Zane! I'm [mcname], i'm glad you could make it"
@@ -649,9 +652,8 @@ label choices1cont:
                     hide travshock
                     show danscare at left
                     show travscare at right
-                    define b = Character("Both",color="#FFFFFF")
                     play sound dancry
-                    play sound travcry
+                    define b = Character("Both",color="#FFFFFF")
                     b "AAAAAAAAAAAAAAAAAAAAAAAA!!!!!!!!!!" with hpunch
                     hide aarmad
                     show laurdis with new
@@ -660,7 +662,7 @@ label choices1cont:
                     hide travscare
                     show danmad at left
                     show travshock at right
-                    t "yeah.. obviously we knew that"
+                    t "yeah.. obviously we knew that...haha..."
                     d "totally"
                 "What are you talking about":
                     mc "No i'm literally just some guy"
@@ -756,13 +758,15 @@ label choices1cont:
         $ kcflag += 1
         "Let's see what Aphmau and Kawaii-chan are up to!"
         if kcflag == 2:
-            show aphlove at left with dissolve
-            show kcnorm at right with dissolve
+            show aphlove at left
+            show kcnorm at right
+            with dissolve
             a "Kawaii-chan!! These cookies are absolutely awesome!!!"
             kc "Hehe! Kawaii-chan is so glad Aphmau-senpai loves them!"
         else:
-            show aphnorm at left with dissolve
-            show kcnorm at right with dissolve
+            show aphnorm at left
+            show kcnorm at right
+            with dissolve
         a "Oh, [mcname]! Hey!"
         kc "This party is great, [mcname]!"
         mc "Haha I didn't do much, but i'm glad you like it, Kawaii-chan!"
@@ -791,8 +795,9 @@ label choices1cont:
         $ luciflag += 1
         $ katflag += 1
         "Let's see what Lucinda and Katelyn are up to!"
-        show lucinorm at left with dissolve
-        show katnorm at right with dissolve
+        show lucinorm at left
+        show katnorm at right
+        with dissolve
         lu "You don't know what you're talking about"
         k "Oh yeah? We should put this to the test, then!"
         mc "Hey guys! What are you two talking about?"
@@ -822,9 +827,10 @@ label choices1cont:
         $ aarflag += 1
         $ renpy.notify("Laurance, Garroth, and Aaron are glad to talk to you!")
         "Let's see with Laurance, Garroth, and Aaron are up to!"
-        show aarnorm at left with dissolve
-        show laurnorm with dissolve
-        show garnorm at right with dissolve 
+        show aarnorm at left
+        show laurnorm 
+        show garnorm at right
+        with dissolve
         g "Hey [mcname]! We're all having a blast at your party!"
         mc "Ahaha, thanks. I'd hardly call this a party, though"
         ar "We're all enjoying ourselves nonetheless, so I'd call that a job well-done"
@@ -876,8 +882,11 @@ label choices1cont:
                 show garshock at right
                 g "Nothing! Nothing, Big Man!"
                 ar "Anyway..."
+                show aarmad at center 
+                show laurdis at left
+                with ease
                 hide aarmad
-                show aarsmile at left
+                show aarsmile
                 $ renpy.notify("Aaron is glad you like his suggestion!")
                 ar "It is the best! Guess you could say Real Recognizes Real"
                 ar "Why don't I take you there tomorrow? It truly is great"
@@ -888,8 +897,11 @@ label choices1cont:
                 $ aarrest = False
                 $ garflag += 1
                 mc "Who said it shouldn't count? I think Cloud 9 Nice Ice Cream Parlour sounds the best. Love me some ice cream!"
+                show garsad at center
+                show laurdis at right 
+                with ease
                 hide garsad
-                show garnorm at right
+                show garnorm
                 play sound garawesome
                 $ renpy.notify("Garroth is glad you like his suggestion!")
                 g "I knew you'd agree with me, [mcname]!"
@@ -908,9 +920,10 @@ label choices1cont:
         $ danflag += 1
         $ renpy.notify("Travis, Zane, and Dante are glad to talk to you!")
         mc "Let's go see what Travis, Zane, and Dante are up to!" 
-        show travnorm at left with dissolve
-        show zanenorm with dissolve
-        show dannorm at right with dissolve
+        show travnorm at left
+        show zanenorm
+        show dannorm at right
+        with dissolve
         t "-and then I said, that's not a camel, that's my wife!"
         hide dannorm
         hide travnorm
@@ -1049,8 +1062,8 @@ if garrest == True:
 if travzandan == True :
     "I can't wait to go to the movies with Zane, Travis, and Dante tomorrow!"
     "Sounds like it'll be a really funny movie, and hopefully I can bond with the guys more!"
-play sound doorbell
 "I should probably go to bed now.."
+play sound doorbell
 "? Who's here at this time?"
 scene frontdoornight with fade
 show tylernorm with dissolve
@@ -1337,7 +1350,7 @@ label aphchancoffee:
     a "You should definitely call us if you ever wanna hang out again!"
     mc "Definitely! I'll see you guys later, goodnight!"
     if tylermean == 4:
-        jump tylersecretend1
+        jump tylersecretend
     else:
         jump dayend
 label lucikatbowl:
@@ -1384,8 +1397,9 @@ label lucikatbowl:
     k "Hey [mcname], you can go grab some food if you want"
     mc "I think i'll do that later"
     lu "Alright, let's go to our lane then!"
-    hide lucisad with dissolve
-    hide katnorm with dissolve
+    hide lucisad
+    hide katnorm 
+    with dissolve
     ty "[mcname]- stay back..."
     mc "Wsg gang"
     ty "Remember what I told you last night..."
@@ -1584,7 +1598,7 @@ label lucikatbowl:
     k "Shut the fuck up omg"
     mc "Ahaha i'd love to. I'll see you guys later! Goodnight!"
     if tylermean == 4:
-        jump tylersecretend1
+        jump tylersecretend
     else:
         jump dayend
 label laurpizza:
@@ -1979,8 +1993,9 @@ label laurpizza:
     la "Uh- [mcname]- Don't look behind you?"
     mc "What? What's behind me?"
     la "It's uh- No they're coming here."
-    show garsad at left with easeinbottom
-    show aarsad at right with easeinbottom
+    show garsad at left
+    show aarsad at right
+    with easeinbottom
     play sound garaww
     g "We didn't think we'd get caught..."
     mc "What the- Garroth?? Aaron?? What are you guys doing here??"
@@ -2005,8 +2020,9 @@ label laurpizza:
     g "SORRY! Sorry!"
     ar "[mcname], have a great rest of your night!!"
     mc "You too..."
-    hide garshock with easeoutbottom
-    hide aarsad with easeoutbottom
+    hide garshock
+    hide aarsad
+    with easeoutbottom
     la "I'm sorry about that..."
     mc "It's okay, ahaha. Let's just finish our pizza."
     scene black with fade
@@ -2026,7 +2042,7 @@ label laurpizza:
     mc "I'll see you around! Good night!"
     la "Night!"
     if tylermean == 4:
-        jump tylersecretend1
+        jump tylersecretend
     else:
         jump dayend
 label aarsausage: 
@@ -2594,8 +2610,9 @@ label aarsausage:
     ar "Uhhh....I think I might have a pretty good idea..."
     mc "Hm? What do you mean?"
     ar "Well-"
-    show garmad at left with easeinbottom
-    show laurdis at right with easeinbottom
+    show garmad at left
+    show laurdis at right
+    with easeinbottom
     g "STOP RIGHT THERE! YOU'RE INDOCTRINATING THEM!"
     mc "OH MY GOD! Laurance? Garroth?? What're you guys doing here??"
     g "We had to make sure Aaron wasn't succeeding with his propaganda!"
@@ -2616,8 +2633,9 @@ label aarsausage:
     la "Let's go get some ice cream...my treat..."
     g "Okayy...."
     g "Goodnight, Aaron and [mcname]..."
-    hide garsad with easeoutbottom
-    hide laurdis with easeoutbottom
+    hide garsad
+    hide laurdis
+    with easeoutbottom
     ar "...I'm sorry about them, those guys are..."
     mc "Haha, don't worry about it, I thought it was kinda funny."
     mc "Let's just enjoy the rest of our night"
@@ -2638,7 +2656,7 @@ label aarsausage:
     mc "I'll see you around! Good night!"
     ar "Goodnight!"
     if tylermean == 4:
-        jump tylersecretend1
+        jump tylersecretend
     else:
         jump dayend
 label garcream:
@@ -2712,7 +2730,7 @@ label garcream:
     ty "Here's your ice cream"
     mc "Woah! That was...a little too fast"
     hide garsad
-    show garnorm
+    show garnorm at left
     g "That's the best thing about this place! The service is super fast!"
     mc "Right.."
     ty "Oh yeah, I spit in yours, btw"
@@ -2831,6 +2849,7 @@ label garcream:
                                 mc "I love it!"
                                 $ garflag += 1
                                 $ renpy.notify("You and Garroth have a common interest!")
+                                play sound garawesome
                                 g "YIPPEE! That's my favourite video game! It's just so fun! I love everything about it, really!"
                                 mc "You kind of look like Link, y'know!"
                                 g "Haha, I've cosplayed him a couple times, actually!"
@@ -2846,309 +2865,754 @@ label garcream:
                         else:
                             jump garcreamconv
                     "Writing":
-                        $ aarflag +=1
-                        mc "I'm pretty into reading! Especially manga."
-                        $ renpy.notify("You and Aaron have a common interest!")
-                        hide aarnorm
-                        show aarsmile
-                        ar "Ahh, cool! I like manga too!"
-                        ar "I've always preferred it over anime, not sure why"
-                        ar "I could show you some of my favourites and you could show me yours!"
-                        mc "I'd love that!"
-                        show aarsmile at left with easeinleft
-                        show tylerwaiter with dissolve
-                        ty "here are your dogs. Bone Apple Teeth"
-                        mc "Don't you mean...Bon Apetit?"
-                        ty "I'm not fucking perfect Okay!!!!"
-                        menu:
-                            "You a bitch":
-                                mc "YOU A BITCH!"
-                                $ tylermean += 1
-                                ty "WHAT'S WRONG WITH YOU"
-                                mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
-                                if tylermean == 4:
-                                    ty "You're gonna fucking regret this mark my words"
-                                else:
-                                    ty "YOU'RE SO MEAN I HATE YOU"
-                                hide tylerwaiter with dissolve
-                                show aarsmile at center with ease
-                                hide aarsmile
-                                show aarnorm
-                                mc "I hate that guy so much...."
-                                ar "Uh huh..."
-                            "It's okay":
-                                mc "It's okay. We all make mistakes"
-                                ty "Really..? You understand...?"
-                                mc "Yea man this job is hard"
-                                ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
-                                mc "Yeah yeah thats great let's talk about this later"
-                                hide tylerwaiter with dissolve
-                                show aarsmile at center with ease
-                                hide aarsmile
-                                show aarnorm
-                                ar "He's a weird one, isn't he?"
-                                mc "Yeah..."
+                        $ garconv += 1
+                        mc "I really like to write stories!"
+                        $ garflag += 1
+                        $ renpy.notify("You and Garroth have a common interest!")
+                        g "Woah! That's so awesome! I'd love to read your work one day!"
+                        g "I've always appreciated authors, they do such a great service for us"
+                        if garconv == 3:
+                            jump garcreamcont
+                        else:
+                            jump garcreamconv
                     "I hate everything in this awful world":
+                        $ garconv += 1
                         mc "This world is garbage and theres nothing about it that I enjoy"
-                        hide aarnorm
-                        show aarsad
-                        ar "Oh...uh....I'm not too sure what to say about that..."
-                        ar "Maybe you should hang out with Zane more often, you guys sound similar..."
-                        show aarsad at left with easeinleft
-                        show tylerwaiter with dissolve
-                        ty "here are your dogs. Bone Apple Teeth"
-                        mc "Don't you mean...Bon Apetit?"
-                        ty "I'm not fucking perfect Okay!!!!"
-                        menu:
-                            "You a bitch":
-                                mc "YOU A BITCH!"
-                                $ tylermean += 1
-                                ty "WHAT'S WRONG WITH YOU"
-                                mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
-                                if tylermean == 4:
-                                    ty "You're gonna fucking regret this mark my words"
-                                else:
-                                    ty "YOU'RE SO MEAN I HATE YOU"
-                                hide tylerwaiter with dissolve
-                                show aarsad at center with ease
-                                hide aarsad
-                                show aarnorm
-                                mc "I hate that guy so much...."
-                                ar "Uh huh..."
-                            "It's okay":
-                                mc "It's okay. We all make mistakes"
-                                ty "Really..? You understand...?"
-                                mc "Yea man this job is hard"
-                                ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
-                                mc "Yeah yeah thats great let's talk about this later"
-                                hide tylerwaiter with dissolve
-                                show aarsad at center with ease
-                                hide aarsad
-                                show aarnorm
-                                ar "He's a weird one, isn't he?"
-                                mc "Yeah..."
+                        hide garnorm
+                        show garshock
+                        g "Oh! Um....yea! Totally!"
+                        g "Unrelated question, what has Zane been telling you?"
+                        if garconv == 3:
+                            jump garcreamcont
+                        else:
+                            jump garcreamconv
         "What do you think of the other residents?":
+            define resident = 0
+            $ resident += 1
             mc "What do you think of the other people in our neighbourhood?"
-            ar "Ah, well, we're all great friends. I've known them all for a while now"
-            hide aarnorm
-            show aarsad
-            ar "Although, it took a while for us to get along.."
-            mc "Really? How come?"
-            ar "Just, uhh...drama.."
-            hide aarsad
-            show aarnorm
-            ar "I've always been good friends with Aphmau, though. We're great friends. She's probably the one im closest with. I'm also pretty close with Dante"
-            mc "Really? Dante? I didn't expect that."
-            ar "Haha, I know, we seem different, but I don't know...something about Dante draws me into him."
-            ar "Uhh..what about you? What do you think of everyone?"
-            menu:
-                "I like them all":
-                    $ aarflag += 1
-                    mc "I know we haven't talked much, but I really like everyone! They all seem so fun and unique, it's refreshing to have such a vibrant friendgroup"
-                    $ renpy.notify("Aaron finds you admirable!")
-                    hide aarnorm
-                    show aarsmile
-                    ar "That's great! I'm glad you're getting along with everyone!"
-                    ar "I can tell everyone already really likes you too, it's kinda incredible.."
-                    mc "Really? You can tell?"
-                    play sound aarlaugh
-                    ar "Yeah! Dante was telling me he thought you were really cool. I have to agree wit him, you are pretty awesome"
-                    mc "Ohhh...stawp it..."
-                    play sound aartease
-                    ar "Haha, I'm just teasing"
-                    show aarsmile at left with easeinleft
-                    show tylerwaiter with dissolve
-                    ty "here are your dogs. Bone Apple Teeth"
-                    mc "Don't you mean...Bon Apetit?"
-                    ty "I'm not fucking perfect Okay!!!!"
-                    menu:
-                        "You a bitch":
-                            mc "YOU A BITCH!"
-                            $ tylermean += 1
-                            ty "WHAT'S WRONG WITH YOU"
-                            mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
-                            if tylermean == 4:
-                                ty "You're gonna fucking regret this mark my words"
-                            else:
-                                ty "YOU'RE SO MEAN I HATE YOU"
-                            hide tylerwaiter with dissolve
-                            show aarsmile at center with ease
-                            hide aarsmile
-                            show aarnorm
-                            mc "I hate that guy so much...."
-                            ar "Uh huh..."
-                        "It's okay":
-                            mc "It's okay. We all make mistakes"
-                            ty "Really..? You understand...?"
-                            mc "Yea man this job is hard"
-                            ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
-                            mc "Yeah yeah thats great let's talk about this later"
-                            hide tylerwaiter with dissolve
-                            show aarsmile at center with ease
-                            hide aarsmile
-                            show aarnorm
-                            ar "He's a weird one, isn't he?"
-                            mc "Yeah..."
-                "I have no opinion":
-                    mc "Hmm...I don't really have any strong opinions. I haven't really talked to anyone that much"
-                    ar "Oh yeah, you're right, I guess it'll take some time before you really get settled in with everyone"
-                    show aarnorm at left with easeinleft
-                    show tylerwaiter with dissolve
-                    ty "here are your dogs. Bone Apple Teeth"
-                    mc "Don't you mean...Bon Apetit?"
-                    ty "I'm not fucking perfect Okay!!!!"
-                    menu:
-                        "You a bitch":
-                            mc "YOU A BITCH!"
-                            $ tylermean += 1
-                            ty "WHAT'S WRONG WITH YOU"
-                            mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
-                            if tylermean == 4:
-                                ty "You're gonna fucking regret this mark my words"
-                            else:
-                                ty "YOU'RE SO MEAN I HATE YOU"
-                            hide tylerwaiter with dissolve
-                            show aarnorm at center with ease
-                            mc "I hate that guy so much...."
-                            ar "Uh huh..."
-                        "It's okay":
-                            mc "It's okay. We all make mistakes"
-                            ty "Really..? You understand...?"
-                            mc "Yea man this job is hard"
-                            ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
-                            mc "Yeah yeah thats great let's talk about this later"
-                            hide tylerwaiter with dissolve
-                            show aarnorm at center with ease
-                            ar "He's a weird one, isn't he?"
-                            mc "Yeah..."
-                "I hate them all":
-                    mc "I honestly really don't like anyone here. They're kind of annoying..."
-                    hide aarnorm
-                    show aarmad
-                    ar "....alright"
-                    show aarmad at left with easeinleft
-                    show tylerwaiter with dissolve
-                    ty "here are your dogs. Bone Apple Teeth"
-                    mc "Don't you mean...Bon Apetit?"
-                    ty "I'm not fucking perfect Okay!!!!"
-                    menu:
-                        "You a bitch":
-                            mc "YOU A BITCH!"
-                            $ tylermean += 1
-                            ty "WHAT'S WRONG WITH YOU"
-                            mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
-                            if tylermean == 4:
-                                ty "You're gonna fucking regret this mark my words"
-                            else:
-                                ty "YOU'RE SO MEAN I HATE YOU"
-                            hide tylerwaiter with dissolve
-                            show aarmad at center with ease
-                            hide aarmad
-                            show aarnorm
-                            mc "I hate that guy so much...."
-                            ar "Uh huh..."
-                        "It's okay":
-                            mc "It's okay. We all make mistakes"
-                            ty "Really..? You understand...?"
-                            mc "Yea man this job is hard"
-                            ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
-                            mc "Yeah yeah thats great let's talk about this later"
-                            hide tylerwaiter with dissolve
-                            show aarmad at center with ease
-                            hide aarmad
-                            show aarnorm
-                            ar "He's a weird one, isn't he?"
-                            mc "Yeah..."
+            if resident == 1:
+                g "Didn't you already ask me that?"
+                jump garcreamconv
+            else:
+                g "Ahh, well, they're all my greatest friends!"
+                g "I've known them all for so long...it's kinda crazy to think about, actually! I've seen everyone at their best and worst..."
+                g "Did you know Laurance used to have bright orange hair back in highschool?"
+                mc "Really?"
+                g "Yeah! It was only for a year..but his sister dyed his hair so that they could look more alike. He looked sooo funny."
+                g "And, same year, he was SOOO obsessed with Twilight! He was convinced he was Edward! He even bought fangs at some point"
+                mc "No way! That doesn't sound like him"
+                g "Everyone's different in highschool!"
+                g "You know, next time you see him, ask him what he thinks about Twilight, and watch the colour drop out of his face!"
+                mc "Man, sounds like you and Laurance are close"
+                g "The closest! We're best buddies! I don't know what I'd do without him."
+                g "He has this power where when you talk to him, you can't help but feel all warm inside...and your heart starts racing..."
+                "That might just be you..."
+                g "But what do you think of everyone?"
+                menu:   
+                    "I like them all":
+                        $ garconv += 1
+                        mc "I know we haven't talked much, but I really like everyone! They all seem so fun and unique, it's refreshing to have such a vibrant friendgroup"
+                        $ garflag += 1
+                        $ renpy.notify("Garroth finds you admirable!")
+                        hide garnorm
+                        show garshock
+                        g "Wow! I didn't expect you to like everyone already."
+                        hide garshock
+                        show garnorm
+                        play sound garawesome
+                        g "That's awesome though! That you're already settling in with everyone!"
+                        g "I find it great that you're able to bond with everyone so quickly"
+                        if garconv == 3:
+                            jump garcreamcont
+                        else:
+                            jump garcreamconv
+                    "I have no opinion":
+                        $ garconv += 1
+                        mc "Hmm...I don't really have any strong opinions. I haven't really talked to anyone that much"
+                        g "That's true....I guess it'll take some time before you really get to know everyone and become friends"
+                        g "They're all great people, though! So don't be shy to talk to them."
+                        if garconv == 3:
+                            jump garcreamcont
+                        else:
+                            jump garcreamconv
+                    "I hate them all":
+                        $ garconv += 1
+                        mc "I honestly really don't like anyone here. They're kind of annoying..."
+                        hide garnorm
+                        show garsad
+                        play sound garaww
+                        g "Awww...that sucks..."
+                        g "I hope you change your mind about everyone"
+                        hide garsad
+                        show garshock
+                        g "Wait...do you think i'm annoying too..?"
+                        if garconv == 3:
+                            jump garcreamcont
+                        else:
+                            jump garcreamconv
         "Are you looking for love?":
+            define love = 0
+            $ love += 1
             mc "Are you looking for love? Or wait, do you already have someone??"
-            hide aarnorm
-            show aarshock
-            ar "d-do you think I have someone?"
-            mc "I mean...I don't know...that's why i'm asking"
-            ar "No, I don't have anyone...and I don't know if i'm actively looking, I guess I'm just waiting to meet the right person"
-            hide aarshock
-            show aarnorm
-            ar "What about you?"
-            menu:
-                "Yes":
-                    $ aarflag += 1
-                    mc "I am! I would like to find somebody"
-                    $ renpy.notify("Aaron is glad he has a chance with you!")
-                    hide aarnorm
-                    show aarsmile
-                    ar "I'm sure someone like you is able to have anyone they wanted"
-                    mc "W-what!?"
-                    play sound aartease
-                    ar "Haha, too much..?"
-                    show aarsmile at left with easeinleft
-                    show tylerwaiter with dissolve
-                    ty "here are your dogs. Bone Apple Teeth"
-                    mc "Don't you mean...Bon Apetit?"
-                    ty "I'm not fucking perfect Okay!!!!"
-                    menu:
-                        "You a bitch":
-                            mc "YOU A BITCH!"
-                            $ tylermean += 1
-                            ty "WHAT'S WRONG WITH YOU"
-                            mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
-                            if tylermean == 4:
-                                ty "You're gonna fucking regret this mark my words"
-                            else:
-                                ty "YOU'RE SO MEAN I HATE YOU"
-                            hide tylerwaiter with dissolve
-                            show aarsmile at center with ease
-                            hide aarsmile
-                            show aarnorm
-                            mc "I hate that guy so much...."
-                            ar "Uh huh..."
-                        "It's okay":
-                            mc "It's okay. We all make mistakes"
-                            ty "Really..? You understand...?"
-                            mc "Yea man this job is hard"
-                            ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
-                            mc "Yeah yeah thats great let's talk about this later"
-                            hide tylerwaiter with dissolve
-                            show aarsmile at center with ease
-                            hide aarsmile
-                            show aarnorm
-                            ar "He's a weird one, isn't he?"
-                            mc "Yeah..."
-                "No":
-                    mc "Not really, honestly. Just wanting to go solo for now"
-                    ar "Hmm....I can respect that. Independence can be good"
-                    show aarnorm at left with easeinleft
-                    show tylerwaiter with dissolve
-                    ty "here are your dogs. Bone Apple Teeth"
-                    mc "Don't you mean...Bon Apetit?"
-                    ty "I'm not fucking perfect Okay!!!!"
-                    menu:
-                        "You a bitch":
-                            mc "YOU A BITCH!"
-                            $ tylermean += 1
-                            ty "WHAT'S WRONG WITH YOU"
-                            mc "WHAT'S WRONG WITH YOU??? YOU SHOULD BE FIRED RIGHT NOW"
-                            if tylermean == 4:
-                                ty "You're gonna fucking regret this mark my words"
-                            else:
-                                ty "YOU'RE SO MEAN I HATE YOU"
-                            hide tylerwaiter with dissolve
-                            show aarnorm at center with ease
-                            mc "I hate that guy so much...."
-                            ar "Uh huh..."
-                        "It's okay":
-                            mc "It's okay. We all make mistakes"
-                            ty "Really..? You understand...?"
-                            mc "Yea man this job is hard"
-                            ty "Thanks so much...you know, it's really tough out here..in the waitressing business...I-"
-                            mc "Yeah yeah thats great let's talk about this later"
-                            hide tylerwaiter with dissolve
-                            show aarnorm at center with ease
-                            ar "He's a weird one, isn't he?"
-                            mc "Yeah..."
-    
-
-
-
-
-
+            if resident == 1:
+                g "Didn't you already ask me that?"
+                jump garcreamconv
+            else:
+                hide garnorm
+                show garshock
+                g "Am I looking for love?? Geez, I don't know..."
+                g "I suppose I am! I would like to have someone I can care about, who can care about me..."
+                g "Err...what about you?"
+                menu:
+                    "Yes":
+                        $ garconv += 1
+                        $ garflag += 1
+                        mc "I am! I would like to find somebody"
+                        $ renpy.notify("Garroth is glad he has a chance with you!")
+                        hide garshock
+                        show garnorm
+                        play sound garawesome
+                        g "Sweet! Or, I mean, you know...cool"
+                        if garconv == 3:
+                            jump garcreamcont
+                        else:
+                            jump garcreamconv
+                    "No":
+                        mc "Not really, honestly. Just wanting to go solo for now"
+                        hide garshock
+                        show garsad
+                        g "Aww...alright"
+                        hide garsad
+                        show garshock
+                        g "Uhh...not that it matters to me...you know.."
+                        if garconv == 3:
+                            jump garcreamcont
+                        else:
+                            jump garcreamconv
+    label garcreamcont:
+        hide garsad
+        hide garshock
+        hide garmad
+        show garnorm
+        g "Oop! And wouldn't you know it, I'm done my ice cream!"
+        g "You have to admit, pretty delicious, right?"
+        mc "Oh, absolutely!"
+        mc "I'm so glad I came here instead of the pizza or sausage place"
+        g "Haha, you understand now!"
+        hide garnorm
+        show garshock
+        g "Uh oh...speak of the devil..."
+        mc "What?"
+        g "Don't look behind y- No they're over here now"
+        show aarsad at left
+        show laursad at right
+        with easeinbottom
+        la "Look's like we got caught.."
+        mc "What th- Laurance? Aaron? Why are you two here?"
+        ar "We just- well-"
+        la "We were spying on you guys..."
+        mc "Oh my god..were you listening to what we were talking about..?"
+        hide laursad
+        show laurdis at right
+        la "Yeah, actually. And Garroth, why the fuck would you tell [mcname] about the Twilight thing!?"
+        hide garshock
+        show garnorm
+        g "You have to admit, it was REALLY funny"
+        la "You promised that was gonna stay between us two.."
+        play sound garlaugh
+        g "hehehe"
+        ar "We just wanted to make sure you didn't like the ice cream place TOO much."
+        mc "But, you two don't even like the same restaurants?"
+        la "Yeah but we both agree that Cloud 9 Nice Ice Cream Parlour shouldn't even be part of the conversation"
+        ar "Exactly"
+        mc "Whatever, you guys! Just...leave!!"
+        la "Sorry"
+        ar "Have a great rest of your night guys"
+        hide aarsad
+        hide lardis
+        with easeoutbottom
+        mc "Those guys..."
+        mc "Wait, it's already night?"
+        g "Huh. Time sure flies when you're having fun!"
+        g "Come on, I can walk you home"
+        scene housenight with fade
+        stop music
+        play music nightsong loop
+        show garnorm with dissolve
+        g "Today was so great, [mcname]! Let's do this again!"
+        mc "Definitely! I'll see you around, goodnight!"
+        if tylermean == 4:
+            jump tylersecretend
+        else:
+            jump dayend
+label guymovie:
+    scene movietheatreoutside with fade
+    "Where are the guys? They should be here..."
+    d "YOOHOO! [mcname!u]! OVER HERE!"
+    show dannorm with dissolve
+    show travnorm at left with dissolve
+    show zanenorm at right with dissolve
+    t "Heyyy! You made it!"
+    hide dannorm
+    show dansmirk
+    play sound danheybaby
+    d "Looking fine as ever, of course"
+    z "Stop harrassing [mcname]."
+    z "Anyway, we're glad you made it on time"
+    z "Come on, let's go get our snacks"
+    scene movietheatreinside with fade
+    show dannorm with dissolve
+    d "I'll go get our food! Everyone's fine with a large popcorn and soda, right?"
+    show zanenorm at left with dissolve
+    z "That sounds good"
+    show travnorm at right with dissolve
+    t "Yup!"
+    mc "Dante, are you sure you wanna grab everything on your own? Want me to come?"
+    d "Thanks for the offer, but don't worry! I am EXTREMELY efficent and quick. They don't call me two-minute Dante for nothin!"
+    hide travnorm
+    show travlaugh at right
+    play sound travlaugh
+    t "Pfft....two-minute..."
+    play sound zanelaugh
+    z "I wonder what else he can do in two minutes?"
+    hide dannorm
+    show danmad
+    d "Haha. Very funny guys."
+    d "I'll be back"
+    hide danmad with easeoutleft
+    z "I made sure to get us the best seats. We're right in the middle"
+    hide travlaugh
+    show travnorm at right
+    t "Duuude, awesome! Knew we could count on you!"
+    z "Only because last time we tried watching a movie together, you forgot to even buy the tickets..."
+    hide travnorm
+    show travshock at right
+    t "Dude. That was one time"
+    hide zanenorm
+    show zanemad at left
+    z "YOU DID IT THREE TIMES!"
+    mc "No way.."
+    z "We had to sneak into the projector room to watch the movie, because of this guy"
+    t "You have to admit, that was really fun"
+    hide zanemad
+    show zanesad at left
+    z "... Maybe a little..."
+    show danlaugh with easeinleft
+    d "Oo yeah! I'm back baby! In two minutes!"
+    mc "Wow! That's impressive!"
+    hide danlaugh
+    show dannorm
+    d "Hah, thanks. I've been practicing"
+    d "Right, should we go in now?"
+    z "First- [mcname], who do you wanna sit next to during the movie?"
+    menu:
+        "Dante":
+            $ next_dante = True
+            $ next_zane = False
+            $ next_travis = False
+            $ danflag += 1
+            mc "I'll sit next to Dante!"
+            $ renpy.notify("Dante's glad you wanna sit with him!")
+            d "Oh yeah baby! You see that? [mcname] want's to sit with me! Oh yeah"
+            hide zanesad
+            show zanenorm at left
+            z "Genuinely no one cares"
+            hide travshock
+            show travsad at right
+            t "Yeah. Yeah like who would even care. Cuz we don't. Definitely not."
+            z "Oh you're pathetic"
+        "Zane":
+            $ next_dante = False
+            $ next_zane = True
+            $ next_travis = False
+            $ zaneflag += 1
+            mc "I'll sit next to Zane!"
+            $ renpy.notify("Zane's glad you wanna sit with him!")
+            hide zanesad
+            show zaneshock at left
+            z "Oh...really? Uh..yeah I don't mind..."
+            hide dannorm
+            show danmad
+            d "Dude. He is like the worst guy to sit next to during a movie"
+            t "Mid movie bro's gonna start talking about how the Killer Babez are representative of extensionalism or some stupid shit like that LMFAOO"
+            z "Did you...did you mean existentialism?"
+            t "See he's already doing it"
+        "Travis":
+            $ next_dante = False
+            $ next_zane = False
+            $ next_travis = True
+            mc "I'll sit next to Travis!"
+            $ travflag += 1
+            $ renpy.notify("Travis is glad you wanna sit with him!")
+            hide travshock
+            show travnorm at right
+            t "REALLY??? HELL YEAH!!"
+            hide zaneshock
+            show zanenorm at left
+            z "It's not that serious"
+            t "It is that serious! I get to sit next to [mcname]! Woohoooo!!"
+    z "Alright let's just go in"
+    t "Dude you gotta show the guy our tickets first"
+    z "I WAS DOING THAT.."
+    if next_dante==True:
+        hide travsad
+        hide dannorm
+        with dissolve
+    elif next_zane==True:
+        hide danmad
+        hide travsad
+        with dissolve
+        show zaneshock at left with ease
+        hide zaneshock
+        show zanenorm at left
+    elif next_travis==True:
+        hide dannorm
+        hide travnorm
+        with dissolve
+    z "Anyway..sir?"
+    show tylermovie with dissolve
+    ty "Oh right hey welcome. You 4 together?"
+    mc "..you again?"
+    ty "Pardon? Idk you"
+    mc "You...last night...we.."
+    z "You know him?"
+    mc "I...no..just show the tickets.."
+    z "Here they are.."
+    ty "Alright, scanned, you guys head on in and enjoy your movie"
+    hide zanenorm with dissolve
+    ty "[mcname]- stay back..."
+    mc "Wsg gang"
+    ty "Remember what I told you last night..."
+    mc "Wait! So you do acknowledge yesterday!"
+    ty "Just don't fumble this, bad things will happen"
+    mc "Why...why are you helping me like this"
+    ty "Let's just say...I lost someone close to me who was just like you..."
+    mc "..right"
+    d "Yo! What's the holdup?"
+    mc "Just give me a sec!"
+    menu:
+        "I don't need your help":
+            $ tylermean +=1 
+            mc "Listen, Tyler, I don't need your help. Quite frankly, you're freaking me out, so just leave me alone, okay?"
+            ty "You don't get it, man! You need this! You need me!"
+            mc "Whatever you say man"
+        "Thanks for your help":
+            mc "Thanks for the help, even if i'm not sure what you're talking about, i'll keep your advice in mind"
+            ty "Good...now go get em tiger!"
+            mc "Don't ever call me that ever again"
+    scene theatreinside with fade
+    if next_dante == True:
+        show zanenorm at left with dissolve
+        show travnorm at right with dissolve
+        show dannorm with dissolve
+    if next_zane == True:
+        show travnorm at right with dissolve
+        show dannorm at left with dissolve
+        show zanenorm with dissolve
+    if next_travis == True:
+        show dannorm at left with dissolve
+        show zanenorm at right with dissolve
+        show travnorm with dissolve
+    z "Looks like we made it just on time, movie should start soon"
+    d "Ohh man, I'm so excited!"
+    mc "I'm still a bit confused as to what this movie's about?"
+    t "Well, it's a sequel to the movie Rise of the Killer Babez, and in this movie, the Killer Babez fight MICHAEL and..."
+    hide travnorm
+    if next_travis == True:
+        show travshock
+    else:
+        show travshock at right
+    t "Yeah I have no idea what this movie is about"
+    stop music
+    play music killerbabez loop
+    z "Shhh! The movie's starting!"
+    scene killerbabez_1 with fade
+    define kb = Character("Killer Babez")
+    define michael = Character("MICHAEL")
+    kb "YOU'LL NEVER DEFEAT US! WE'RE BABEZ....AND WE'RE KILLER!"
+    scene killerbabez_2
+    michael "...and i'm MICHAEL"
+    if next_dante == True:
+        scene dante_movie_cg_1 with fade
+        pause (2.0)
+        d "[mcname]!! The babez!! The babez are killer!"
+        d "[mcname], this movie is awesome!!"
+        mc "Haha! Yeah! This is epic!"
+        scene dante_movie_cg_2 with dissolve
+        d "Are you enjoying the movie so far?"
+        mc "Oh yeah, definitely! This is amazing!"
+        d "Right! And the babez....GOD!"
+        t "SHHH! I can't hear what they're saying!!!!"
+        d "Jesus christ"
+    if next_zane == True:
+        scene zane_movie_cg_1 with fade
+        pause(2.0)
+        z "This movie....is so..."
+        mc "You don't like it?"
+        z "No...it's...awful!"
+        kb "Heh, he's right behind me, isn't he?"
+        z "The dialogue is so awful! No one talks like that!"
+        z "This movie isn't even funny!"
+        scene zane_movie_cg_2 with dissolve
+        z "...but, i'm glad i'm able to watch it with you..."
+        z "A-and the guys! All of us! Of course.."
+        mc "Haha, i'm glad too! Nothing beats the theatre experience, no matter how bad the movie is"
+        d "Oh so if Zane talks during the movie it's fine but if I talk then i'm the bad guy"
+        z "..."
+    if next_travis == True:
+        scene travis_movie_cg_1 with fade
+        pause (2.0)
+        t "...."
+        mc "Wow, you're really entranced by the movie"
+        t "This is....this is cinema...."
+        kb "What if i'm just a babe...without the killer?"
+        kb "NO! KILLER BABE #3. You are....the most killer of all"
+        play sound travcry
+        t "Oh my god! This is so beautiful!!"
+        scene travis_movie_cg_2 with dissolve
+        t "I'm so glad we're watching this together, [mcname]. This is an experience I can't imagine having without you"
+        z "SHHH! SOME OF US ARE TRYING TO WATCH A MOVIE!"
+        t "ugh. this guy."
+    scene black with fade
+    "An hour later..."
+    stop music
+    play music noonsong loop
+    scene movietheatreinside with fade
+    if next_dante == True:
+        show zanemad at left with dissolve
+        show travsad at right with dissolve
+        show dannorm with dissolve
+    if next_zane == True:
+        show travsad at right with dissolve
+        show dannorm at left with dissolve
+        show zanemad with dissolve
+    if next_travis == True:
+        show dannorm at left with dissolve
+        show zanemad at right with dissolve
+        show travsad with dissolve
+    mc "Well. What a movie!"
+    d "What'd you think of it?"
+    menu:
+        "Loved it!":
+            mc "I loved the movie! It was beautiful!"
+            if next_dante == True:
+                show travsad at center
+                show dannorm at right
+                with ease
+            if next_zane == True:
+                show travsad at center
+                show zanemad at right
+                with ease
+            $ travflag += 1
+            $ renpy.notify("Travis agrees with you!")
+            t "Wasn't it?? Oh my god! It was so beautiful!"
+            t "Truly a thinkpiece!"
+            t "The ending? Where it turns out the Killer Babez were in a dream, and MICHAEL wasn't a villain, but rather, the hero trying to wake them up!"
+            t "And the character arcs....Killer Babe #3 learning that everyone is killer in their own way..."
+            t "Brings a man to tears.."
+            z "Hey, you were making fun of me for digging deep into movies!"
+            t "Uh, yeah, cuz your movies are stupid and this one is awesome"
+            t "I bet you Laurance would agree with me, he's a fellow movie connoisseur like moi"
+            d "You've watched like 4 movies total"
+            t "Yeah? I'm selective"
+            mc "I still think it was perfect"
+            t "Oh most definitely"
+        "Hated it":
+            mc "Oh, I really hated it. It was a lazy excuse of a movie"
+            $ zaneflag += 1
+            $ renpy.notify("Zane agrees with you!")
+            if next_dante==True:
+                show zanemad at center
+                show dannorm at left
+                with ease
+            if next_travis==True:
+                show zanemad at center
+                show travsad at right
+                with ease
+            z "Oh, absolutely! It had a lousy plotline with bland characters, none of it made sense,"
+            z "And worst of all, it promised us comedy, but it was painfully unfunny!"
+            z "Seriously, the part where MICHAEL goes on a 10-minute monologue about how he wishes he was a Killer Babe too? It was so unneccessary."
+            t "Why? What's wrong with MICHAEL wanting to be a Killer Babe?"
+            z "It made no sense with the story!! There wasn't any setup or foreshadowing, it was completely random!"
+            mc "Definitely, I am not satisfied."
+            d "Zane, why must a movie make sense? Can we not simply enjoy ourselves without worry?"
+            z "I can't enjoy a movie as stupid as this one.."
+            d "Look's like someone's allergic to fun..."
+            z "I wish you were allergic to like. Air."
+        "Babez were hot":
+            mc "I just thought the babez were hot"
+            $ danflag += 1
+            $ renpy.notify("Dante agrees with you!")
+            d "Oh, thank you! The babez were so hot!"
+            mc "Truly!"
+            t "Is that all you care about?? LOOKS??"
+            z "How artificial..."
+            t "I can't believe you two...this movie was the best philosophical contribution since Socrates, and all you care about are BOOBS!?"
+            d "Yeah?"
+            t "...I mean I get that but-"
+    d "Anyway! I think we can all agree that we had a fun time, regardless of how we felt about the movie?"
+    mc "Definitely!"
+    z "I guess.."
+    t "I don't think I could ever watch a movie ever again."
+    mc "Uh huh"
+    if next_dante == True:
+        hide dannorm
+        show tylermovie with new
+    if next_zane == True:
+        hide zanemad
+        show tylermovie with new
+    if next_travis == True:
+        hide travsad
+        show tylermovie with new
+    ty "Hey guys. I have to do this survey to see how satisfactory everyone's experience was"
+    ty "So would you say you had a good time or not"
+    menu:
+        "Good time":
+            mc "I think it's safe to say we all had a pretty good time!"
+            ty "Alright that's all I needed to know. Thanks or whateva"
+        "Awful time":
+            $ tylermean +=1
+            mc "Genuinely awful. Actually abhorrent. How do you still work here? You need to be fired."
+            ty "oh WOW i see how it is. You don't want to stand for the working class, huh? You think I make a liveable wage here?"
+            if tylermean ==4:
+                ty "You're gonna rue this day.....RUE!!"
+            else:
+                ty "I hope you have an AWFUL day!!"
+    hide tylermovie with dissolve
+    if next_dante == True:
+        show dannorm with new
+    if next_zane == True:
+        show zanemad with new
+    if next_travis == True:
+        show travsad with new
+    d "Hm. I guess we should all go home now.."
+    scene housenight with fade
+    stop music
+    play music nightsong loop
+    show dannorm at left
+    show zanenorm 
+    show travnorm at right
+    with dissolve
+    d "Massive fun tonight, [mcname]! So glad we invited you!"
+    t "Heh, looks like even Zane had fun today!"
+    z "Whatever...it was..fine..."
+    mc "Haha, I had lots of fun too, guys. We should hang out more!"
+    d "Definitely! Goodnight, [mcname]!"
+    hide dannorm
+    hide zanenorm
+    hide travnorm
+    with dissolve
+    if tylermean == 4:
+        jump tylersecretend
+    else:
+        jump dayend
+label tylersecretend:
+    stop music
+    play music scarysong loop
+    scene houseinsidenight
+    "Aahh, what a long day wi- wait, the door was unlocked?"
+    "That's weird, I must have forgotten to lock it when I left..."
+    play sound doorshut
+    "!!!" with hpunch
+    "The door just shut behind me! What's going on..."
+    q "I tried to help you..."
+    "That voice..."
+    show tylernorm with dissolve
+    mc "Tyler!? What are you doing in my house !?!"
+    ty "I tried to help you...I warned you of the dangers!"
+    mc "Wh- yeah, I remember..."
+    ty "But you've been mean to me. Really Really mean to me. I don't like that"         
+    mc "What? Dude, you're creeping me out"
+    ty "I hope I am! Because I'm about to kill you right now."
+    mc "WHAT!?"
+    ty "Yeah"
+    mc "Look! Wait! Please! Im sorry!"
+    ty "Really??"
+    mc "Yes! I'm sorry..."
+    menu:
+        "-I truly am":
+            mc "I'm sorry..I truly am!"
+            ty "..."
+            ty "like im still gonna kill you"
+        "-that you're a BITCH":
+            mc "I'm sorry...that you're a little BITCH!!"
+            ty "THIS IS WHAT I'M TALKING ABOUT"
+    play sound gunshot
+    "YEEOOOWWCH!!!" with hpunch
+    scene black with fade
+    play sound thud
+    "..."
+    "if only....I was nicer to him..."
+    "maybe this wouldn't have happened..."
+    $ persistent.ending_karma = True
+    centered "{color=#fff}Secret Ending 1: Karma's Embrace{/color}" with dissolve
+    return
+label dayend:
+scene houseinsidenight with fade
+if aphchan == 1:
+    $ aph = ("Aph")
+    $ lol = (nick)
+else:
+    $ aph = ("Aphmau")
+    $ lol = (mcname)
+"Ahh...what a long day."
+if aphchan == True:
+    "Hanging out with [aph] and Kawaii-chan was so much fun!"
+if lucikat == True:
+    "Hanging out with Lucida and Katelyn was so much fun!"
+if laurrest == True:
+    "Hanging out with Laurance was so much fun!"
+if aarrest == True:
+    "Hanging out with Aaron was so much fun!"
+if garrest == True:
+    "Hanging out with Garroth was so much fun!"
+if travzandan == True:
+    "Hanging out with Dante, Travis, and Zane was so much fun!"
+"Super tired now, though...I should really go to bed."
+scene bedroomnight with fade
+scene black with fade
+pause (2.0)
+scene bedroomday with fade
+"Woohoo! A new day!"
+"I'm not too sure what to do right now..."
+"I would like some fresh air, I think.."
+scene houseday with fade
+"Should I go on a walk around the neighbourhood or to the park?"
+menu:
+    "Neighbourhood":
+        "A simple walk will do!"
+        $ neighbourhood =True
+        $ park =False
+    "Park":
+        "To the park we go!"
+        $ park =True
+        $ neighbourhood =False
+show aphsad with dissolve
+a "[lol], Do you have a moment??"
+mc "Huh?? What's up?"
+a "I need your help. I can't find anyone else. It has to be you."
+menu:
+    "Help her":
+        $ aphhelp = True
+        jump aphhelp
+    "Leave her":
+        $ aphhelp = False
+        if park==True:
+            mc "I'm really sorry, Aphmau. I'm kind of in a rush right now..."
+            play sound aphycry
+            a "Oh..right..yeah, I get it"
+            jump parkevent
+        else:
+            mc "I'm really sorry, Aphmau. I'm kind of in a rush right now..."
+            play sound aphycry
+            a "Oh..right..yeah, I get it"
+            jump neigheevent
+label aphhelp:
+    $ aphflag += 1
+    hide aphsad
+    show aphnorm
+    mc "Of course I'll help! What's up?"
+    $ renpy.notify("Aphmau appreciates your help!")
+    play sound aphperf
+    a "Aaaa, thank you soooo much!!"
+    a "Okay, so I'm working on a cosplay for the convention coming up-"
+    mc "Ooo! Who are you cosplaying?"
+    a "An OC of mine! Or well, kind of like, a fantasy persona?"
+    a "Haha, I have this little..fantasy world, that I like to think about and build upon in my free time"
+    a "I won't bore you with all the details, but I sketched up this design for the costume, and I needed some opinions before I went in and started making it!"
+    mc "Of course!"
+    show aphcostume with dissolve
+    a "I've been working on it for a while, but this is the most recent design I came up with"
+    show aphnorm at left with ease
+    a "So?? What do you think?? Is it awesome? Is it awful?? PLEAASEE"
+    mc "Oh my god calm down"
+    menu:
+        "It's great":
+            $ aphflag +=1
+            mc "But [aph], seriously, this is so cool! I love this!"
+            $ renpy.notify("Aphmau's happy you like it!")
+            hide aphnorm
+            show aphsad at left
+            a "Really? You love it??"
+            mc "Yes, really! I honestly can't think of any feedback, this is just...so awesome!"
+            hide aphsad
+            show aphlove at left
+            a "AAA!! Thank you so so soo much!!"
+            hide aphlove
+            show aphnorm at left
+            a "I'm so glad you think it's cool, I really wanted to get a second opinion before I got to work"
+            hide aphcostume with dissolve
+            show aphnorm at center with ease
+            a "I'll see you around! Hopefully I didn't hold you up?"
+            mc "Oh, no! Of course not!"
+            a "Alright! See ya then! Thanks again, seriously!!"
+            hide aphnorm with dissolve
+        "It's cringe":
+            mc "This is...um...it's definitely something..."
+            hide aphnorm
+            show aphsad at left
+            a "What does...what does that mean..?"
+            mc "It's just...cringe? I guess...do you really think you're a fantasy character?"
+            mc "Besides...this design looks pretty basic..."
+            hide aphsad
+            show aphscare at left
+            play sound aphwhat
+            a "WHAATT???"
+            hide aphscare 
+            show aphsad at left
+            a "I...I spent so much time on it...researched and everything.."
+            mc "..better luck next time?"
+            hide aphcostume with dissolve
+            show aphsad at center with ease
+            a "Well...I guess I'll try working on the design, thanks for the help.."
+            a "I'll see you around, sorry for holding you up.."
+            hide aphsad with dissolve
+    if park ==True:
+        jump parkevent
+    else:
+        jump neighevent
+label parkevent:
+    scene park with fade
+    "Wow, this is a gorgeous park! I should definitely try to visit this place more often"
+    "Hey, who's that I see in the distance?"
+    show travsad at right
+    show lucievil at left
+    with dissolve
+    t "I'M NOT DOING IT!!" with hpunch
+    lu "Come on, it won't hurt!"
+    lu "...probably"
+    t "THAT'S NOT HELPINNGGG" with hpunch
+    mc "Travis! Lucinda! Hey guys!"
+    hide lucievil
+    show lucismirk at left
+    lu "Hey [mcname], me and Travis were just-"
+    hide travsad
+    show travscare at right
+    play sound travcry
+    t "THIS BITCH IS TRYING TO KILLL MEEEEEE" with hpunch
+    hide lucismirk
+    show lucinorm at left
+    lu "Okay first off stop screaming pussy"
+    lu "Second, it's not even that serious"
+    mc "What's going on?"
+    lu "I'm working on this potion that's supposed to temporarily heighten all of your senses"
+    lu "Just kind of like, a hyper-focus thing, I suppose"
+    lu "And I was asking sweet Travis here to test it out for me.."
+    t "THAT THING IS LETHAL!!!!!"
+    mc "Is it?"
+    play sound lucisigh
+    lu "...that's what I wanted to find out.."
+    t "NOOOO"
+    lu "Travis, it's not a big deal, I just wanna see if it works, I doubt it'll have any side-effects"
+    t "you DOUBT?? This is my LIFE we're talking about!"
+    lu "You say that like it's precious anyway.."
+    menu:
+        "Tell Travis to drink the potion":
+            $ luciflag +=1
+            mc "Travis, just drink the potion..nothing's gonna happen!"
+            $ renpy.notify("Lucinda appreciates you taking her side!")
+            hide lucinorm
+            show lucismirk at left
+            lu "See, Travis? Even [mcname] "
+        "Tell Lucinda to lay off":
 return

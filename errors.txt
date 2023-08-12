@@ -2,9 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 2117: expected statement.
-    ty
-      ^
+File "game/script.rpy", line 3455: Indentation mismatch.
 
 Ren'Py Version: Ren'Py 8.0.1.22070801
-Mon Aug  7 17:47:48 2023
+Fri Aug 11 21:50:10 2023

@@ -1,28 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 2694, in script
-    show tylercream with easineright
-  File "game/script.rpy", line 2694, in <module>
-    show tylercream with easineright
-NameError: name 'easineright' is not defined
+  File "game/script.rpy", line 1353, in script
+    jump tylersecretend
+ScriptError: could not find label 'tylersecretend'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 2694, in script
-    show tylercream with easineright
-  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\ast.py", line 1654, in execute
-    paired = renpy.python.py_eval(self.paired)
-  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\python.py", line 1080, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\python.py", line 1073, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 2694, in <module>
-    show tylercream with easineright
-NameError: name 'easineright' is not defined
+  File "game/script.rpy", line 1353, in script
+    jump tylersecretend
+  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\ast.py", line 1974, in execute
+    rv = renpy.game.script.lookup(target)
+  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\script.py", line 927, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'tylersecretend'.
 
 Windows-10-10.0.22000 AMD64
 Ren'Py 8.0.1.22070801
 Operation: SWEETHEART!!! ~A Mystreet Dating Simulator~ 1.0
-Mon Aug  7 23:17:28 2023
+Thu Aug 10 22:43:25 2023

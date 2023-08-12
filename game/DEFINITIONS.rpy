@@ -42,6 +42,8 @@ define daydream = "audio/dream/vntrack06.mp3"
 define noonsong = "audio/dream/vntrack19.mp3"
 define shitgetsserious = "audio/dream/vntrack10.mp3"
 define romance = "audio/dream/romance.mp3"
+define killerbabez = "audio/dream/vntrack09.mp3"
+define scarysong = "audio/dream/vntrack18.mp3"
 
 define aarlaugh = "audio/voice/AaronV/aarlaugh.mp3"
 define aartease = "audio/voice/AaronV/aartease.mp3"
@@ -100,6 +102,9 @@ define crunch = "audio/sound/crunch.mp3"
 define wow = "audio/sound/wow.mp3"
 define slip = "audio/sound/slip.mp3"
 define doorbell = "audio/sound/doorbell.mp3" 
+define doorshut = "audio/sound/doorshut.mp3"
+define gunshot = "audio/sound/gunshot.mp3"
+define thud = "audio/sound/thud.mp3"
 
 #CGs
 
@@ -299,7 +304,11 @@ init:
         zoom 0.4
 init:
     image zaneshock:
-        "images/zane/zaneshock1.png"
+        "images/zane/zaneshock.png"
+        zoom 0.4
+init:
+    image zanesad:
+        "images/zane/zanesad.png"
         zoom 0.4
 init:
     image travnorm:
@@ -327,11 +336,27 @@ init:
         zoom 0.4
 init:
     image tylerpizza:
-        "images/tylerpizza.png"
+        "images/tyler/tylerpizza.png"
         zoom 0.4
 init:
     image tylernorm:
-        "images/tylernorm.png"
+        "images/tyler/tylernorm.png"
+        zoom 0.4
+init:
+    image tylerwaiter:
+        "images/tyler/tylerwaiter.png"
+        zoom 0.4
+init:
+    image tylercoffee:
+        "images/tyler/tylercoffee.png"
+        zoom 0.4
+init:
+    image tylercream:
+        "images/tyler/tylercream.png"
+        zoom 0.4
+init:
+    image tylerbowl:
+        "images/tyler/tylerbowl.png"
         zoom 0.4
 init:
     image laurshock:

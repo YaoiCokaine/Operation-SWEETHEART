@@ -309,6 +309,8 @@ screen navigation():
 
         textbutton _("Preferences") action ShowMenu("preferences")
 
+        textbutton _("Achievements") action ShowMenu("achievements")
+
         if _in_replay:
 
             textbutton _("End Replay") action EndReplay(confirm=True)
@@ -368,8 +370,6 @@ screen main_menu():
 
         vbox:
             style "main_menu_vbox"
-
-
 
 style main_menu_frame is empty
 style main_menu_vbox is vbox
@@ -703,7 +703,32 @@ style slot_button_text:
 ## The preferences screen allows the player to configure the game to better suit
 ## themselves.
 ##
-## https://www.renpy.org/doc/html/screen_special.html#preferences
+## https://www.renpy.org/doc/html/screen_special.html#preferences\
+
+screen achievements():
+
+    tag menu
+
+    ## This use statement includes the game_menu screen inside this one. The
+    ## vbox child is then included inside the viewport inside the game_menu
+    ## screen.
+    use game_menu(_("Achievements"), scroll="viewport"):
+
+        style_prefix "achievements"
+
+        vbox:
+
+            label "[config.name!t]"
+            text _("Version [config.version!t]\n")
+
+            ## gui.about is usually set in options.rpy.
+            if gui.about:
+                text "[gui.about!t]\n"
+
+            if persistent.ending_karma == True:
+                text _("Secret ending 1: Karma's Embraces")
+            else: 
+                text _("YOU HAVEN'T UNLOCKED THIS ENDING YET!")
 
 screen preferences():
 
