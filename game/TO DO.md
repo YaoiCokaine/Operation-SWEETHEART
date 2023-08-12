@@ -51,6 +51,8 @@ Lucinda:
     -talk to her and katelyn
     -support her
     - chilli fries
+    - tell travis to drink
+    -drink potion urself
 
 Katelyn:
     -talk to her and lucinda
@@ -62,6 +64,7 @@ Travis:
     -find his joke funny
     -seat
     -good opinion
+    -tell Lucinda to lay off
 
 Zane:
     -talk to him dante and travis
