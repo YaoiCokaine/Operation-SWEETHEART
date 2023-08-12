@@ -2896,6 +2896,14 @@ label garcream:
             else:
                 g "Ahh, well, they're all my greatest friends!"
                 g "I've known them all for so long...it's kinda crazy to think about, actually! I've seen everyone at their best and worst..."
+								g "Haha, don't tell him I told you, but Travis once wrote a Katemau fanfic."
+								mc "...Katemau?"
+								g "You know, Katelyn and Aphmau!"
+								g "He made me read it for feedback and it was...yeesh! Not his best work."
+								g "It wasn't anything crazy, but in the end, Aphmau dies and Katelyn runs to Travis. Just a heap of self-projection, really"
+								mc "Interesting..."
+								define travkatemau = 0
+								$ travkatemau +=1
                 g "Did you know Laurance used to have bright orange hair back in highschool?"
                 mc "Really?"
                 g "Yeah! It was only for a year..but his sister dyed his hair so that they could look more alike. He looked sooo funny."
@@ -3629,12 +3637,19 @@ label parkevent:
 								t "W-what...?"
 								mc "Drink it or else."
 								t "Or else..what??"
-								mc "I'm draining your axe body spray"
-								hide travsad
-								show travscare at right
-								play sound travcry
-								t "NOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
-								lu "Woah. That's serious."
+								if travkatemau == 1
+									mc "A little birdy told me about a certain fanfic of yours?"
+									t "...no..."
+									mc "Would be a shame if Aphmau or Katelyn knew about it..."
+									lu "Huh?"
+									t "NO! PLEASE! I'LL DRINK IT PLEASE DON'T TELL THEM"
+								else:
+									mc "I'm draining your axe body spray"
+									hide travsad
+									show travscare at right
+									play sound travcry
+									t "NOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+									lu "Woah. That's serious."
 							"Try the potion yourself"
 				"Tell Lucinda to lay off":
 return
