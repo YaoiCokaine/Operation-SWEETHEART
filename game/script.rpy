@@ -3613,6 +3613,28 @@ label parkevent:
             $ renpy.notify("Lucinda appreciates you taking her side!")
             hide lucinorm
             show lucismirk at left
-            lu "See, Travis? Even [mcname] "
-        "Tell Lucinda to lay off":
+            lu "See, Travis? Even [mcname] says it'll be fine"
+						hide travscare
+						show travsad at right
+						t "..."
+						t "Nope. Still not doing it."
+						hide lucismirk
+						show lucisad at left
+						play sound lucisigh
+						lu "Ugh, bummer...I really need to test this potion..."
+		        menu:
+							"Threaten Travis":
+								$ luciflag +=1
+								mc "Travis. Drink the fucking potion."
+								t "W-what...?"
+								mc "Drink it or else."
+								t "Or else..what??"
+								mc "I'm draining your axe body spray"
+								hide travsad
+								show travscare at right
+								play sound travcry
+								t "NOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
+								lu "Woah. That's serious."
+							"Try the potion yourself"
+				"Tell Lucinda to lay off":
 return
