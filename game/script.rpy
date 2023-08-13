@@ -567,7 +567,11 @@ label choices1cont:
     t "Suckin cock"
     mc "Oh"
     play sound travlaugh
-    t "Haha jk. Just had some business"
+    t "Haha jk. Was working on a fanfic"
+    mc "Oh?"
+    t "Yup! I'm an aspiring author~"
+    mc "Really? Cool!"
+    t "My penname is BigRectumTravisValkrum on Ao3. I'm definitely not going to regret telling you that information"
     mc "..right. Come on in, we've got everyone"
     if aphparty == True:
         scene houseinsidedecor with fade
@@ -2896,14 +2900,14 @@ label garcream:
             else:
                 g "Ahh, well, they're all my greatest friends!"
                 g "I've known them all for so long...it's kinda crazy to think about, actually! I've seen everyone at their best and worst..."
-								g "Haha, don't tell him I told you, but Travis once wrote a Katemau fanfic."
-								mc "...Katemau?"
-								g "You know, Katelyn and Aphmau!"
-								g "He made me read it for feedback and it was...yeesh! Not his best work."
-								g "It wasn't anything crazy, but in the end, Aphmau dies and Katelyn runs to Travis. Just a heap of self-projection, really"
-								mc "Interesting..."
-								define travkatemau = 0
-								$ travkatemau +=1
+                g "Haha, don't tell him I told you, but Travis once wrote a Katemau fanfic."
+                mc "...Katemau?"
+                g "You know, Katelyn and Aphmau!"
+                g "He made me read it for feedback and it was...yeesh! Not his best work."
+                g "It wasn't anything crazy, but in the end, Aphmau dies and Katelyn runs to Travis. Just a heap of self-projection, really"
+                mc "Interesting..."
+                define travkatemau = 0
+                $ travkatemau +=1
                 g "Did you know Laurance used to have bright orange hair back in highschool?"
                 mc "Really?"
                 g "Yeah! It was only for a year..but his sister dyed his hair so that they could look more alike. He looked sooo funny."
@@ -3481,6 +3485,8 @@ scene bedroomnight with fade
 scene black with fade
 pause (2.0)
 scene bedroomday with fade
+stop music
+play music daysong2 loop
 "Woohoo! A new day!"
 "I'm not too sure what to do right now..."
 "I would like some fresh air, I think.."
@@ -3507,12 +3513,12 @@ menu:
         $ aphhelp = False
         if park==True:
             mc "I'm really sorry, Aphmau. I'm kind of in a rush right now..."
-            play sound aphycry
+            play sound aphcry
             a "Oh..right..yeah, I get it"
             jump parkevent
         else:
             mc "I'm really sorry, Aphmau. I'm kind of in a rush right now..."
-            play sound aphycry
+            play sound aphcry
             a "Oh..right..yeah, I get it"
             jump neigheevent
 label aphhelp:
@@ -3590,6 +3596,13 @@ label parkevent:
     lu "Come on, it won't hurt!"
     lu "...probably"
     t "THAT'S NOT HELPINNGGG" with hpunch
+    menu:
+        "Talk to Travis and Lucinda":
+            jump parkcont
+        "Go around neighbourhood instead":
+            "On second thought, maybe I'll just walk around the street.."
+            jump neighevent
+label parkcont:
     mc "Travis! Lucinda! Hey guys!"
     hide lucievil
     show lucismirk at left
@@ -3610,46 +3623,213 @@ label parkevent:
     mc "Is it?"
     play sound lucisigh
     lu "...that's what I wanted to find out.."
-    t "NOOOO"
+    t "NOOOO" 
     lu "Travis, it's not a big deal, I just wanna see if it works, I doubt it'll have any side-effects"
     t "you DOUBT?? This is my LIFE we're talking about!"
     lu "You say that like it's precious anyway.."
     menu:
         "Tell Travis to drink the potion":
             $ luciflag +=1
+            $ eventful = True
+            $ nice = False
             mc "Travis, just drink the potion..nothing's gonna happen!"
             $ renpy.notify("Lucinda appreciates you taking her side!")
             hide lucinorm
             show lucismirk at left
             lu "See, Travis? Even [mcname] says it'll be fine"
-						hide travscare
-						show travsad at right
-						t "..."
-						t "Nope. Still not doing it."
-						hide lucismirk
-						show lucisad at left
-						play sound lucisigh
-						lu "Ugh, bummer...I really need to test this potion..."
-		        menu:
-							"Threaten Travis":
-								$ luciflag +=1
-								mc "Travis. Drink the fucking potion."
-								t "W-what...?"
-								mc "Drink it or else."
-								t "Or else..what??"
-								if travkatemau == 1
-									mc "A little birdy told me about a certain fanfic of yours?"
-									t "...no..."
-									mc "Would be a shame if Aphmau or Katelyn knew about it..."
-									lu "Huh?"
-									t "NO! PLEASE! I'LL DRINK IT PLEASE DON'T TELL THEM"
-								else:
-									mc "I'm draining your axe body spray"
-									hide travsad
-									show travscare at right
-									play sound travcry
-									t "NOOOOOOOOOOOOOOOOOOOOOOOOOOOO"
-									lu "Woah. That's serious."
-							"Try the potion yourself"
-				"Tell Lucinda to lay off":
+            hide travscare
+            show travsad at right
+            t "..."
+            t "Nope. Still not doing it."
+            hide lucismirk
+            show lucisad at left
+            play sound lucisigh
+            lu "Ugh, bummer...I really need to test this potion..."
+            menu:
+                "Threaten Travis":
+                    mc "Travis. Drink the fucking potion."
+                    t "W-what...?"
+                    mc "Drink it or else."
+                    t "Or else..what??"
+                    if travkatemau == 1:
+                        mc "A little birdy told me about a certain fanfic of yours?"
+                        t "...no..."
+                        mc "Would be a shame if Aphmau or Katelyn knew about it..."
+                        lu "Huh?"
+                        hide travsad
+                        show travscare at right with hpunch
+                        play sound travcry
+                        t "NO! PLEASE! I'LL DO ANYTHING I'LL DRINK IT I'LL PAY YOU JUST PLEASE DON'T TELL THEM"
+                        lu "Woah?"
+                        hide travscare
+                        show travsad at right
+                        hide lucisad
+                        show lucinorm at left
+                        t "Just..just give me the fucking potion.."
+                        lu "Alright!"
+                    else:
+                        mc "Or else...Lucinda here and everyone else might learn about BigRectumTravisValkrum.."
+                        hide travsad
+                        show travscare at right with hpunch
+                        play sound travcry
+                        t "NOOOOOOOOOOOOOOOOOOOOOOOOOOOO" with hpunch
+                        lu "What? The fuck?"
+                        t "NOT THAT. PLEASE. PLEASE I'LL DRINK THE FUCKING POTION"
+                        mc "That's a good boy!"
+                        hide travscare
+                        show travsad at right
+                        t "This is it. I'm gonna die."
+                        t "Tell Zane I always loved him"
+                        lu "Wait, what?"
+                        t "Let's just get on with it..."
+                        play sound lucioohright
+                        lu "OOhhkay..."
+                        hide lucisad
+                        show lucinorm at left
+                    lu "So Travis, just drink the potion and tell me if you feel more energized, if your vision improves, anything that you notice"
+                    t "okay..."
+                    play sound gulp
+                    window hide
+                    pause (1.0)
+                    hide travsad
+                    show travnorm at right with dissolve
+                    t "Hey, that tastes pretty goo-"
+                    play sound thud
+                    hide travnorm with easeoutbottom
+                    with hpunch
+                    lu "woah mama"
+                    mc "...hm"
+                    show lucinorm at center with ease
+                    lu "So...now we know that the potion needs to be fixed.."
+                    mc "What do we do with him?"
+                    lu "Leave him, he'll wake up soon enough"
+                    lu "Nice job convincing him, [mcname]. That was pretty cool"
+                    mc "Haha, no problem"
+                    lu "I'll see you around, I gotta go fix this potion-"
+                    lu "Oh, and if anyone asks, the three of us got lunch and Travis suffered from food poisoning"
+                    mc "...got it"
+                    lu "Toodles!~"
+                    hide lucinorm with dissolve
+                    "Wow. What a way to start the morning."
+                    "I guess I should head home now"
+                    jump homemama
+                "Try the potion yourself for Lucinda":
+                    $ luciflag += 1
+                    mc "...I'll do it! I'll try the potion!"
+                    lu "..really?"
+                    hide travsad
+                    show travdis at right
+                    play sound travconf
+                    t "Slash gen?"
+                    mc "Yeah! You need to test it, right? I'll do it for you!"
+                    $ renpy.notify("Lucinda appreciates your help!")
+                    hide lucinorm
+                    show lucismirk at left
+                    lu "Ooo, thank you so so much!! You're super awesome for this"
+                    mc "Alright, let's do this."
+                    lu "So [mcname], just drink the potion and tell me if you feel more energized, if your vision improves, anything that you notice"
+                    mc "Right!"
+                    "Okay. Here's to hopping I don't die."
+                    play sound gulp
+                    window hide
+                    pause (1.0)
+                    "..Hey, that's pretty good! It's got a bit of a sweet ta-"
+                    play sound thud
+                    scene black with fade
+                    stop music
+                    lu "[mcname!u]!!!"
+                    t "OH MY GOD"
+                    jump lucihome
+        "Tell Lucinda to lay off":
+            mc "Hey, Lucinda, knock it off, if he doesn't want to try it, he doesn't have to."
+            $ travflag +=1
+            hide travscare
+            show travsad at right
+            $ renpy.notify("Travis appreciates your support!")
+            t "Y-yeah! What [mcname] said! I have rights too!"
+            play sound lucisigh
+            lu "Oh my god you guys are so lame..."
+            mc "Go pick on someone your own size!"
+            lu "He's taller than me?"
+            t "EXACTLY!"
+            lu "Right i'm gonna leave you two alone now"
+            lu "I guess I'll see you both later.."
+            hide lucinorm with dissolve
+            show travsad at center with ease
+            hide travsad
+            show travnorm
+            t "Thanks so much for sticking up for me, [mcname]! We need more people like you"
+            mc "Haha, no problem"
+            hide travnorm
+            show travsad
+            t "Just thinking about what would've happened if I drank that potion....shivers!"
+            t "She's always trying to make me do things for her witch stuff, I can't take it anymore!"
+            mc "Haha, now that i'm here, I'll make sure to protect you!~"
+            hide travsad
+            show travnorm
+            t "aa....you're...so cool..[mcname]...."
+            t "I really needed this..."
+            t "Hey, what were you doing here, anyway?"
+            mc "Oh, I was just gonna take a walk around the park, but then I saw you two and wanted to say hi!"
+            t "Oh em gee! I don't want to waste your time. Wanna walk together?"
+            mc "Sure!"
+            scene black with fade
+            "We walked around for a bit..."
+            scene park with fade
+            show travnorm with dissolve
+            play sound travlaugh
+            t "So then I said, 'That's not a camel, that's my wife!'"
+            t "Come on, it's a little bit funny!"
+            mc "Haha..yeah"
+            t "This was really fun, [mcname]. I like hanging out with you"
+            hide travnorm
+            show travflirt
+            t "We really need to be together more often, dontcha think?"
+            mc "Hehe, we should! I like hanging out with you too, Travis"
+            t "Sweeeet"
+            hide travflirt
+            t "Welp! I gotta bounce. I'll see you around then!"
+            mc "Bye Travis!"
+            jump housemama
+            $ eventful = False
+            $ nice = True
+label lucihome:
+    hide window
+    pause (2.0)
+    "..yeeoowwchh..."
+    scene lucinda_rest_cg_blur with fade
+    lu "[mcname]! [mcname], can you hear me?"
+    "hmmm...??"
+    play music romance loop
+    scene lucinda_rest_cg_1 with dissolve
+    pause (2.0)
+    lu "[mcname]? Travis, I think they're waking up."
+    t "Finally, I'm tryna go home"
+    lu "Can you have some compassion?"
+    mc "Lu-.....Lucinda...?"
+    scene lucinda_rest_cg_2 with dissolve
+    lu "[mcname]! Yes, it's me!"
+    lu "Are you alright? How are you feeling?"
+    mc "I'm...um...what happened?"
+    scene lucindahome with fade
+    show travdis at left
+    show lucinorm at right
+    with dissolve
+    t "What happened was Lucinda fed you her RAT POISON and you DIED."
+    lu "That is not what happened!"
+    t "Yeah? Then what?"
+    lu "[mcname], you tried my potion and passed out for like, no more than 6 minutes."
+    lu "Travis and I took you here to my house so you could rest. Feeling any better?"
+    menu:
+        "Feeling awful":
+            mc "I feel...awful...yuck"
+            hide lucinorm
+            show lucisad at right
+            lu "Aww..you poor thing...want a kiss to make you feel better?~"
+            t "WHAT? You don't kiss me when I'm hurt!"
+            lu "Yeah cuz I don't like you"
+            t "HEY"
+        "Feeling alright":
+            mc "I'm feeling alright..! Just a bit tired...don't worry about me"
+            
 return

@@ -105,6 +105,7 @@ define doorbell = "audio/sound/doorbell.mp3"
 define doorshut = "audio/sound/doorshut.mp3"
 define gunshot = "audio/sound/gunshot.mp3"
 define thud = "audio/sound/thud.mp3"
+define gulp = "audio/sound/gulp.mp3"
 
 #CGs
 

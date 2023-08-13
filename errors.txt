@@ -2,7 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 3455: Indentation mismatch.
+File "game/script.rpy", line 3695: expected end of line
+    play sound thud with hpunch
+                    ^
 
 Ren'Py Version: Ren'Py 8.0.1.22070801
-Fri Aug 11 21:50:10 2023
+Sat Aug 12 19:56:08 2023

@@ -46,14 +46,6 @@ Aaron:
     -sausage
     -good opinion
 
-Lucinda:
-    -Start new
-    -talk to her and katelyn
-    -support her
-    - chilli fries
-    - tell travis to drink
-    -drink potion urself
-
 Katelyn:
     -talk to her and lucinda
     -support her
@@ -79,6 +71,8 @@ Dante:
     -seat
     -opinion
 
+
+
 Garroth:
     -Side with rent
     -keep flowers
@@ -87,3 +81,10 @@ Garroth:
     -ice cream
     -good opinion
 
+Lucinda:
+    -Start new
+    -talk to her and katelyn
+    -support her
+    - chilli fries
+    - tell travis to drink
+    -drink potion urself

@@ -309,7 +309,7 @@ screen navigation():
 
         textbutton _("Preferences") action ShowMenu("preferences")
 
-        textbutton _("Achievements") action ShowMenu("achievements")
+        textbutton _("Endings") action ShowMenu("endings")
 
         if _in_replay:
 
@@ -705,16 +705,16 @@ style slot_button_text:
 ##
 ## https://www.renpy.org/doc/html/screen_special.html#preferences\
 
-screen achievements():
+screen endings():
 
     tag menu
 
     ## This use statement includes the game_menu screen inside this one. The
     ## vbox child is then included inside the viewport inside the game_menu
     ## screen.
-    use game_menu(_("Achievements"), scroll="viewport"):
+    use game_menu(_("Endings"), scroll="viewport"):
 
-        style_prefix "achievements"
+        style_prefix "endings"
 
         vbox:
 
