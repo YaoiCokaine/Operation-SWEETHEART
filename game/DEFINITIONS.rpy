@@ -14,6 +14,7 @@ define z = Character("Zane",color="#FFFFFF")
 define q = Character("?",color="#FFFFFF")
 define qq = Character("??",color="#FFFFFF")
 define ty = Character("Tyler",color="#FFFFFF")
+define n = Character("Nicole",color="#FFFFFF")
 
 
 define new = Dissolve(0.3)
@@ -106,6 +107,7 @@ define doorshut = "audio/sound/doorshut.mp3"
 define gunshot = "audio/sound/gunshot.mp3"
 define thud = "audio/sound/thud.mp3"
 define gulp = "audio/sound/gulp.mp3"
+define crash = "audio/sound/crash.mp3"
 
 #CGs
 
@@ -141,7 +143,8 @@ init:
         "images/CGs/katelyn_bowling_cg_1.png"   
 init:
     image katelyn_bowling_cg_2:
-        "images/CGs/katelyn_bowling_cg_2.png"   
+        "images/CGs/katelyn_bowling_cg_2.png"
+
 
 #sprites
 init:
@@ -424,6 +427,24 @@ init:
 init:
     image bowlinginside:
         "images/Backgrounds/bowlinglane.png"
+init:
+    image movietheatreoutside:
+        "images/Backgrounds/movietheatreoutside.png"
+init:
+    image movietheatreinside:
+        "images/Backgrounds/movietheatreinside.png"
+init:
+    image theatreinside:
+        "images/Backgrounds/theatreinside.png"
+init:
+    image park:
+        "images/Backgrounds/park.png"
+init:
+    image streetday:
+        "images/Backgrounds/Street_Spring_Day.png"
+init:
+    image streetnoon:
+        "images/Backgrounds/Street_Spring_Evening.png"
 
 
 if aphchan == 1:

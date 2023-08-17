@@ -571,7 +571,7 @@ label choices1cont:
     mc "Oh?"
     t "Yup! I'm an aspiring author~"
     mc "Really? Cool!"
-    t "My penname is BigRectumTravisValkrum on Ao3. I'm definitely not going to regret telling you that information"
+    t "My penname is DaddyValkrum on Wattpad. I'm definitely not going to regret telling you that information"
     mc "..right. Come on in, we've got everyone"
     if aphparty == True:
         scene houseinsidedecor with fade
@@ -2808,12 +2808,12 @@ label garcream:
     menu:
         "What are your hobbies?":
             define hobby = 0
-            $ hobby += 1
             mc "Do you have any hobbies? Interests?"
             if hobby == 1:
                 g "Didn't you already ask me that?"
                 jump garcreamconv
             else:
+                $ hobby += 1
                 g "Let's see...i'm pretty good at cooking! I've been getting into it a lot more recently, I think because lots of my friends cook too, and they look like they're having so much fun!"
                 g "I also enjoy fanfiction, it's just so fun to see what passionate people can create!"
                 g "I personally believe the most dedicated people in the world are fans. They can do crazy things! Like making Dating Simulators, for example"
@@ -2891,16 +2891,16 @@ label garcream:
                         else:
                             jump garcreamconv
         "What do you think of the other residents?":
-            define resident = 0
-            $ resident += 1
             mc "What do you think of the other people in our neighbourhood?"
+            define resident = 0
             if resident == 1:
                 g "Didn't you already ask me that?"
                 jump garcreamconv
             else:
+                $ resident += 1
                 g "Ahh, well, they're all my greatest friends!"
                 g "I've known them all for so long...it's kinda crazy to think about, actually! I've seen everyone at their best and worst..."
-                g "Haha, don't tell him I told you, but Travis once wrote a Katemau fanfic."
+                g "Haha, don't tell him I told you, but Travis once wrote a Katemau fanfic on Wattpad, his name is DaddyValkrum"
                 mc "...Katemau?"
                 g "You know, Katelyn and Aphmau!"
                 g "He made me read it for feedback and it was...yeesh! Not his best work."
@@ -2964,12 +2964,13 @@ label garcream:
                             jump garcreamconv
         "Are you looking for love?":
             define love = 0
-            $ love += 1
+            $ garconv += 1
             mc "Are you looking for love? Or wait, do you already have someone??"
-            if resident == 1:
+            if love == 1:
                 g "Didn't you already ask me that?"
                 jump garcreamconv
             else:
+                $ love += 1
                 hide garnorm
                 show garshock
                 g "Am I looking for love?? Geez, I don't know..."
@@ -2977,7 +2978,6 @@ label garcream:
                 g "Err...what about you?"
                 menu:
                     "Yes":
-                        $ garconv += 1
                         $ garflag += 1
                         mc "I am! I would like to find somebody"
                         $ renpy.notify("Garroth is glad he has a chance with you!")
@@ -3239,8 +3239,8 @@ label guymovie:
     play music killerbabez loop
     z "Shhh! The movie's starting!"
     scene killerbabez_1 with fade
-    define kb = Character("Killer Babez")
-    define michael = Character("MICHAEL")
+    define kb = Character("Killer Babez",color="#FFFFFF")
+    define michael = Character("MICHAEL",color="#FFFFFF")
     kb "YOU'LL NEVER DEFEAT US! WE'RE BABEZ....AND WE'RE KILLER!"
     scene killerbabez_2
     michael "...and i'm MICHAEL"
@@ -3279,9 +3279,9 @@ label guymovie:
         t "This is....this is cinema...."
         kb "What if i'm just a babe...without the killer?"
         kb "NO! KILLER BABE #3. You are....the most killer of all"
+        scene travis_movie_cg_2 with dissolve
         play sound travcry
         t "Oh my god! This is so beautiful!!"
-        scene travis_movie_cg_2 with dissolve
         t "I'm so glad we're watching this together, [mcname]. This is an experience I can't imagine having without you"
         z "SHHH! SOME OF US ARE TRYING TO WATCH A MOVIE!"
         t "ugh. this guy."
@@ -3501,6 +3501,8 @@ menu:
         "To the park we go!"
         $ park =True
         $ neighbourhood =False
+        $ travdrink = False
+        $ mcdrink=False
 show aphsad with dissolve
 a "[lol], Do you have a moment??"
 mc "Huh?? What's up?"
@@ -3520,7 +3522,7 @@ menu:
             mc "I'm really sorry, Aphmau. I'm kind of in a rush right now..."
             play sound aphcry
             a "Oh..right..yeah, I get it"
-            jump neigheevent
+            jump neighevent
 label aphhelp:
     $ aphflag += 1
     hide aphsad
@@ -3603,6 +3605,10 @@ label parkevent:
             "On second thought, maybe I'll just walk around the street.."
             jump neighevent
 label parkcont:
+    $ zaneagree=False
+    $ kcagree=False
+    $ travdrink=False
+    $ mcdrink=False
     mc "Travis! Lucinda! Hey guys!"
     hide lucievil
     show lucismirk at left
@@ -3647,6 +3653,7 @@ label parkcont:
             lu "Ugh, bummer...I really need to test this potion..."
             menu:
                 "Threaten Travis":
+                    $ travdrink = True
                     mc "Travis. Drink the fucking potion."
                     t "W-what...?"
                     mc "Drink it or else."
@@ -3668,7 +3675,7 @@ label parkcont:
                         t "Just..just give me the fucking potion.."
                         lu "Alright!"
                     else:
-                        mc "Or else...Lucinda here and everyone else might learn about BigRectumTravisValkrum.."
+                        mc "Or else...Lucinda here and everyone else might learn about DaddyValkrum.."
                         hide travsad
                         show travscare at right with hpunch
                         play sound travcry
@@ -3712,9 +3719,10 @@ label parkcont:
                     hide lucinorm with dissolve
                     "Wow. What a way to start the morning."
                     "I guess I should head home now"
-                    jump homemama
+                    jump housemama
                 "Try the potion yourself for Lucinda":
                     $ luciflag += 1
+                    $ mcdrink=True
                     mc "...I'll do it! I'll try the potion!"
                     lu "..really?"
                     hide travsad
@@ -3741,6 +3749,8 @@ label parkcont:
                     t "OH MY GOD"
                     jump lucihome
         "Tell Lucinda to lay off":
+            $ eventful = False
+            $ nice = True
             mc "Hey, Lucinda, knock it off, if he doesn't want to try it, he doesn't have to."
             $ travflag +=1
             hide travscare
@@ -3773,26 +3783,7 @@ label parkcont:
             mc "Oh, I was just gonna take a walk around the park, but then I saw you two and wanted to say hi!"
             t "Oh em gee! I don't want to waste your time. Wanna walk together?"
             mc "Sure!"
-            scene black with fade
-            "We walked around for a bit..."
-            scene park with fade
-            show travnorm with dissolve
-            play sound travlaugh
-            t "So then I said, 'That's not a camel, that's my wife!'"
-            t "Come on, it's a little bit funny!"
-            mc "Haha..yeah"
-            t "This was really fun, [mcname]. I like hanging out with you"
-            hide travnorm
-            show travflirt
-            t "We really need to be together more often, dontcha think?"
-            mc "Hehe, we should! I like hanging out with you too, Travis"
-            t "Sweeeet"
-            hide travflirt
-            t "Welp! I gotta bounce. I'll see you around then!"
-            mc "Bye Travis!"
-            jump housemama
-            $ eventful = False
-            $ nice = True
+            jump travwalk
 label lucihome:
     hide window
     pause (2.0)
@@ -3800,7 +3791,7 @@ label lucihome:
     scene lucinda_rest_cg_blur with fade
     lu "[mcname]! [mcname], can you hear me?"
     "hmmm...??"
-    play music romance loop
+    play music daydream loop
     scene lucinda_rest_cg_1 with dissolve
     pause (2.0)
     lu "[mcname]? Travis, I think they're waking up."
@@ -3811,7 +3802,9 @@ label lucihome:
     lu "[mcname]! Yes, it's me!"
     lu "Are you alright? How are you feeling?"
     mc "I'm...um...what happened?"
-    scene lucindahome with fade
+    scene Livingroom_Night with fade
+    stop music 
+    play music noonsong
     show travdis at left
     show lucinorm at right
     with dissolve
@@ -3831,5 +3824,1117 @@ label lucihome:
             t "HEY"
         "Feeling alright":
             mc "I'm feeling alright..! Just a bit tired...don't worry about me"
-            
+            lu "Oh, what a relief! We were so worried!"
+            t "You're not gonna press charges right"
+            menu:
+                "I will":
+                    mc "I will"
+                    hide travdis 
+                    show travscare at left
+                    play sound travcry
+                    t "NOOOOOOOOOOOOOOOOO MY SQUEAKY CLEAN RECORD" with hpunch
+                    lu "Travis they're joking why would they press charges"
+                    hide travscare
+                    show travdis at left
+                    t "Yeah I knew that...just wanted to know if you knew that...yknow"
+                    lu "Uh huh"
+                "I won't":
+                    mc "No what- why would I press charges against you two"
+                    t "Trust me i've had some scares back in my day"
+                    mc "Seriously who are you"
+    hide lucisad
+    show lucinorm at right
+    lu "Alright anyway, here's some water, it should help you feel a bit better"
+    lu "..speaking of, did you notice any effects from the potion?"
+    mc "Uhh...not really"
+    lu "Fuck! How did I mess up this badly..?"
+    hide travdis
+    show travlaugh at left
+    play sound travlaugh
+    t "HAHAAAA you suck at your jobb lmfaooo"
+    lu "I don't wanna hear it from the guy who cares more about Twitter drama than his own family"
+    lu "To be bad at your job you'd need to have a job first"
+    hide travlaugh
+    show travdis at left
+    t "See this is why we don't hang out one-on-one that much"
+    mc "I'm sensing some hostility, I think I should go..."
+    lu "Aht, no, no hostitlity here! Travis and I...uh...we joke! Yeah"
+    mc "Haha, seriously though, I should probably head home, I don't want to trouble the two of you any longer."
+    lu "Well, i'm glad that you're feeling better."
+    hide lucinorm
+    show lucisad at right
+    lu "I'd hate if you got hurt over something I did.."
+    mc "No no, it's not your fault! I just wanted to help you!"
+    lu "And I can't ever thank you enough"
+    window hide
+    pause (2.0)
+    lu "Travis why are you still here"
+    t "Oh right yeah sorry I forgor"
+    hide travdis with easeoutleft
+    show lucisad at center with ease
+    lu "Will you really be alright by yourself?"
+    mc "Mhm! No need to worry about me"
+    lu "Alright, then I'll see you later, kay?"
+    mc "Bye Lucinda!"
+    jump housemama
+label travwalk:
+    scene travis_walk_cg_1 with fade
+    pause (2.0)
+    t "We really should hang out more often, just the two of us, y'know?"
+    mc "We should! I'd like to get to know you more!"
+    t "I am actually, like, super cool. And you're super cool too! We're perfect together, actually"
+    t "Haha, you know what they say, two rights make a wr- wait, I don't think that's the right line..."
+    mc "Were you really just about to use a pick-up line on me??"
+    t "I wanted to make you laugh!"
+    mc "It was just a little bit funny, I'll give you that"
+    t "Hehe!"
+    scene travis_walk_cg_2 with dissolve
+    stop music
+    play music daydream loop
+    t "You know, back in high school, Dante gave me tons of dating advice. He had a whole book and everything"
+    t "Before that, I was super shy, could barely talk to anyone, but his advice really changed me"
+    t "I became a lot more confident since then! Flirty, too. I mainly just used whatever tips Dante told me"
+    t "But when I'm with you...I don't really feel the need to use all that, I feel like I can just talk to you how I normally would"
+    mc "...r-really?"
+    t "Sorry, I just made things awkward-"
+    mc "No no, it's fine! I'm glad you can be yourself around me!"
+    mc "You shouldn't ever have to feel like you need to be someone else"
+    t "Ha, thanks, [mcname]. See? You're so cool!"
+    mc "I guess I am! Haha"
+    scene black with fade
+    "We walked around for a bit..."
+    scene parknoon with fade
+    stop music
+    play music noonsong
+    show travnorm with dissolve
+    play sound travlaugh
+    t "So then I said, 'That's not a camel, that's my wife!'"
+    t "Come on, it's a little bit funny!"
+    mc "Haha..yeah"
+    mc "Woah! It's already noon??"
+    t "Wow! That's crazy"
+    mc "I really should get going now, Travis."
+    t "This was really fun, [mcname]. I like hanging out with you"
+    hide travnorm
+    show travflirt
+    t "We really need to be together more often, dontcha think?"
+    mc "Not when you're like that, we won't"
+    hide travflirt
+    show travnorm
+    t "I'm playing! I'm playing"
+    t "Seriously, we should get together again"
+    mc "Absolutely!"
+    t "Sweeeet"
+    t "Welp! I gotta bounce. I'll see you around then!"
+    mc "Bye Travis!"
+    jump housemama
+label neighevent:
+    $ nice=False
+    $ eventful=False
+    scene streetday with fade
+    "This is a really beautiful street. Much nicer compared to my hometown"
+    "Man, I must be the luckiest person in the world! Being able to find a house in such a great neighbourbood filled with awesome people."
+    "Speaking of awesome people, I think I recognize those two up ahead!"
+    show zanemad at left
+    show kcmad at right
+    with dissolve
+    z "You're WRONG! You are so incredibly WRONG!" with hpunch
+    kc "Kawaii-chan isn't wrong, Zane-kun is!!" with hpunch
+    "Looks like they're arguing...should I meddle with that?"
+    menu:
+        "Talk to Zane and Kawaii-chan":
+            jump neighcont
+        "Go to the park instead":
+            "On second thought, maybe I will go to the park..."
+            jump parkevent
+    label neighcont:
+    mc "Zane! Kawaii-chan! Hey guys!"
+    z "Oh. [mcname], hey"
+    kc "[lol]-san! This may not be the time.."
+    mc "Why? What's going on?"
+    z "Kawaii-chan and I are in a bit of an argument.."
+    play sound kchey
+    kc "A HEATED one!!!"
+    mc "Okay...what are you even arguing over"
+    z "Kawaii-chan, don't-"
+    kc "Zane-kun believes that the best episode of My Little Horsies is the one where Pinkie Cake falls into depression or whatever.."
+    kc "When really, the best episode is when Rainbow Flash learns her self worth when Pinkie Cake shows her how much she cares about her!"
+    play sound zaneno
+    z "FIRST OF ALL! It's not WHATEVER. Pinkie Cake forms self-esteem issues and feels that no one takes her seriously and that she's doomed to be the silly one, but is able to get through it with the help of her best friends!" with hpunch
+    z "It's a deeply emotional and symbolic episode that develops Pinkie Cake's character while also showcasing My Little Horsies at it's best, when the Mane 6 all come together and work through their problems using friendship!"
+    z "Compared to your silly episode..."
+    kc "Uh, nuh uh! Rainbow Flash and Pinkie Cake's relationship is so much more fleshed out in 'Rainbow Flash's Dilemma'."
+    kc "You can see that despite their differences, Pinkie Cake understands Rainbow Flash and her insecurity as the middle child to an older sister that's paid more attention by their parents!"
+    z "That's only because 'Pinkie Cake and the Sad Times' features EVERY PONY! So they focus on each pony's relationship with Pinkie! And it goes into so much depth about how Pinkie Cake tries to stand out within her big family, going as far as to create this bubbly persona!"
+    z "Better than The Godfather, really."
+    kc "[lol]-san agrees with me, right??"
+    mc "Uhh-"
+    menu:
+        "Rainbow Flash's Dilemma is better":
+            $ kcagree = True
+            $ zaneagree = False
+            $ alonewalk = False
+            jump kcagree
+        "Pinkie Cake and the Sad Times is better":
+            $ kcagree =False
+            $ alonewalk=False
+            $ zaneagree=True
+            jump zaneagree
+        "Both of you suck":
+            $ kcagree =False
+            $ alonewalk=True
+            $ zaneagree=False
+            mc "I think both of you are weird for liking a kid's show this much like what the fuck"
+            mc "Are you guys not pushing 30 or"
+            z "..."
+            z "Come on, Kawaii-chan! Let's take our intellectual debate elsewhere."
+            kc "Mhm!"
+            hide zanemad
+            hide kcmad
+            with dissolve
+            "...I guess they're both mad at me now."
+            "Maybe that resolved their conflict...?"
+            "I guess I'll just walk around on my own..."
+            scene black with fade
+            pause (1.5)
+            scene streetnoon with fade
+            "What an exhilirating walk. I should head home now."
+            jump housemama
+    label kcagree:
+    $ kcflag += 1
+    mc "I haven't seen it, but Rainbow Flash's Dilemma sounds more intriguing..."
+    mc "I'm more interested in Rainbow Flash's dynamic with her older sibling, how by being neglected by her parents affects her self esteem and ability to form relationships as and adult"
+    mc "If only there was someone like Rainbow Flash to show us what that's like..."
+    z "...WHATEVER! YOU DON'T UNDERSTAND REAL TELEVISION!"
+    hide kcmad
+    show kcnorm at right
+    $ renpy.notify("Kawaii-chan's glad you agree!")
+    kc "Hehe, don't worry [lol]-san, Zane-kun just doesn't get it~"
+    mc "Hehehe!"
+    z "H-Hey! You don't even watch My Little Horsies, [mcname]!"
+    if aphchan == True:
+        z "And....what's up with '[nick]'..?"
+        kc "That's the nickname Kawaii-chan and Aphmau-Senpai came up with!"
+        z "Right..."
+    mc "Just because I haven't watched the show doesn't mean I can't give input!"
+    z "That's exactly what that means."
+    kc "Thanks for settling our debate, [lol]-san!"
+    z "What? The debate hasn't been se-"
+    mc "No problem, Kawaii-chan!"
+    z "Grrrrr, I'm going home!"
+    hide zanemad with dissolve
+    show kcnorm at center with ease
+    kc "Hehe, Zane-kun get's mad easily, but he doesn't mean it most of the time..."
+    mc "I feel a little bad.."
+    kc "Don't! Zane-kun knows we're joking around!"
+    mc "Mhm"
+    kc "So, where was [lol]-san going?"
+    mc "Oh, nowhere in particular! I was just walking around. Wanted some fresh air."
+    kc "Oooo, can Kawaii-chan join [lol]-san on your walk?"
+    mc "Sure! I don't mind!"
+    scene kawaiichan_walk_cg_1 with fade
+    stop music
+    play music daydream loop
+    pause (2.0)
+    kc "The breeze is so nice today..."
+    mc "It is!"
+    kc "Kawaii-chan loves talking to [lol]-san..."
+    kc "She knows we just met...but..."
+    kc "Kawaii-chan just senses such kind energy from [lol]-san!"
+    mc "Aww, thank you.. but you're the real kind one here, Kawaii-chan"
+    play sound kclaugh
+    kc "Hehee~"
+    menu:
+        "Ask about the way she speaks":
+            mc "So..why do you uh, talk like that? In 3rd person with the honorifics?"
+            scene kawaiichan_walk_cg_2 with dissolve
+            kc "Hm? Oh...err...that's just how...Kawaii-chan speaks..."
+            kc "No real reason.."
+            mc "Have you been talking like that since you were born?"
+            kc "Ummm..."
+        "Ask about her name":
+            mc "So...is Kawaii-chan just a nickname? Or.."
+            scene kawaiichan_walk_cg_2
+            kc "Umm..that's..."
+            kc "That's Kawaii-chan's real name..."
+            mc "Really?"
+            kc "Yeas...."
+            mc "That's pretty peculiar...did your parents have any reason as to why-"
+    kc "Wow! The sun is already setting!"
+    scene streetnoon
+    stop music
+    play music noonsong loop
+    show kcsad with dissolve
+    mc "I'm sorry, was that too personal?"
+    kc "A little.."
+    mc "That's my bad, I should've realized that wasn't appropriate to ask.."
+    kc "It's okay...Kawaii-chan knows she's a bit weird..."
+    mc "You're not weird! I just wanted to know more about you.."
+    mc "Don't ever let anyone tell you you're weird, Kawaii-chan"
+    kc "Hehe...thank you, [lol]-san."
+    kc "One day, Kawaii-chan would love to tell [lol]-san everything about herself-"
+    kc "But...she's not ready.."
+    mc "Don't pressure yourself."
+    hide kcsad
+    show kcnorm
+    kc "Kawaii-chan is so happy [lol]-san understands..!"
+    mc "Of course!"
+    kc "Well, Kawaii-chan should probably go home now...she assumes [lol]-san has things to do too?"
+    mc "You're right, yeah, I do"
+    mc "I'll see you around, Kawaii-chan!"
+    kc "Bye byeee~!"
+    hide kcnorm with dissolve
+    jump housemama
+    label zaneagree:
+    $ zaneflag += 1
+    mc "I haven't seen it, but Pinkie Cake and the Sad Times sounds more intriguing..."
+    mc "I'm more interested in Pinkie Cake's persona. How she feels that in order to stand out, she has to be someone she isn't, a caricature of sorts. Hiding who she really is because she can't guarantee that her friends will like the REAL Pinkie Cake"
+    mc "If only there was someone like Pinkie Cake to show us what that's like..."
+    kc "...Kawaii-chan still doesn't agree!"
+    hide zanemad
+    show zanenorm at right
+    $ renpy.notify("Zane is glad you agree!")
+    play sound zanethanks
+    z "See, Kawaii-chan? Even [mcname] agrees."
+    z "..thanks..by the way"
+    kc "Grr..."
+    z "Why don't you give it another watch, Kawaii-chan? Maybe you'll see the true greatness this time around."
+    kc "MAYBE SHE WILL!"
+    hide kcmad with dissolve
+    show zanenorm at center with ease
+    mc "She's stubborn, isn't she?"
+    z "Quite."
+    z "I'm shocked, you were able to tell which episode is better based on a simple description"
+    mc "I'm shocked too, I never pegged you to be a My Little Horsies fan~"
+    hide zanenorm
+    show zaneshock
+    z "Uh- I- Well-"
+    mc "It's okay, Zane, I don't care. It's okay to like that show"
+    z "...you don't think i'm lame?"
+    mc "What? Of course not!"
+    mc "Hey, if it makes you feel any better..."
+    menu:
+        "I like Guardian Moon":
+            mc "I like kid's shows too! Guardian Moon is my favourite."
+            z "Ah, that's the one Kawaii-chan and Aphmau like.."
+        "I like Fairy Club":
+            mc "I like kid's shows too! Fairy Club is my favourite."
+            z "Oh, I know Lucinda used to like that show a lot.."
+    hide zaneshock
+    show zanesad
+    z "That..actually does make me feel a little better...knowing we're similar.."
+    hide zanesad
+    show zanenorm
+    z "Uh. Anyway. What were you doing here?"
+    mc "Oh, right! I wanted to go on a walk around the neighbourhood, but then I saw you guys and wanted to see what was up."
+    z "Mhm..well..since we're both here...I hope you wouldn't mind if I were to join you..?"
+    mc "Of course not!"
+    z "...yay.."
+    scene zane_walk_cg_1 with fade
+    stop music 
+    play music daydream loop
+    pause (2.0)
+    z "This place looks so nice when the sun sets.."
+    mc "It does, Doesn't it?"
+    z "Walking around at this time is one of my favourite things to do. There's not much people around...its calm..quiet."
+    mc "You're much more....reserved, compared to everyone else"
+    z "That's just how I am, I guess.."
+    mc "..can I ask, why you wear that mask?"
+    scene zane_walk_cg_2 with dissolve
+    z "...."
+    mc "You don't have to tell me if you're not comfortable."
+    z "..Just..not a fan of how I look. It's easier with the mask.."
+    mc "I'm sure you look ama-"
+    z "No, don't do that! Don't tell me you think I look fine, it's not true and you saying that won't do anything.."
+    mc "Well, even then, looks don't matter, Zane."
+    mc "I know that on the inside, you're beautiful, and I'd much prefer that over you looking good or whatever"
+    scene zane_walk_cg_1 with dissolve
+    z "..thanks, [mcname]"
+    scene streetnoon with fade
+    stop music
+    play music noonsong loop
+    show zanesad with dissolve
+    z "If you want me to take my mask off for you, I won't."
+    mc "Don't worry, I'd never want you to do anything you don't want to."
+    mc "Zane, I just want you to know...I wish you could give yourself more credit..you're so great!"
+    mc "I know we just met, but seriously Zane, I like hanging out with you, believe me"
+    z "..."
+    z "So corny..."
+    mc "Hey, I was being nice!" with hpunch
+    hide zanesad
+    show zanenorm
+    z "Haha, you're right, sorry."
+    z "..I really appreciate that, [mcname]. You're one of the only people I feel really sees me."
+    mc "Of course, Zane."
+    z "I should go now, I have some things to do. But thanks for this walk, I really needed this"
+    z "Bye, [mcname]"
+    mc "Bye Zane!"
+    hide zanenorm with dissolve
+    jump housemama
+label housemama:
+    scene houseinsidenoon with fade
+    if eventful ==True:
+        "Hm. What an...eventful morning."
+    elif nice==True:
+        "That was a really nice walk with Travis. I'm glad I got to see more of who he really is."
+    elif kcagree==True:
+        "Walking with Kawaii-chan was fun, I hope one day I could learn more about her.."
+    elif zaneagree==True:
+        "Walking with Zane was fun, I hope he really listened to everything I said.."
+    elif alonewalk==True:
+        "What a nice walk on my own."
+    "But wow, time really flew by today, I haven't even had breakfast yet!"
+    "I'll just go make some cereal."
+    scene kitchen with fade
+    "Bowl of cereal, aanndd..."
+    "No! What? I have no milk!"
+    "I must've forgotten to get some since I bumped into Laurance the other day..."
+    "Oh, I really don't feel like going to the grocery store, but I already poured the cereal.."
+    "Maybe I can ask around to see if anyone would let me borrow some milk?"
+    label ask:
+    menu:
+        "Ask Aphmau, Kawaii-chan, and Katelyn":
+            "I'll go ask the girls!"
+            jump askgirl
+        "Ask Laurance, Dante, Travis, and Garroth":
+            "I'll go ask the guys!"
+            jump askguy
+        "Ask Zane":
+            "I'll go ask Zane!"
+            jump askzane
+        "Ask Aaron":
+            "I'll go ask Aaron!"
+            jump askaaron
+        "Ask Lucinda":
+            if park==True:
+                "Lucinda might be busy with her potion, I don't want to bother her..."
+                "Who else could I ask?"
+                jump ask
+            else:
+                "I'll go ask Lucinda!"
+                scene lucihouse with fade
+                "Ringing the doorbell.."
+                play sound doorbell
+                window hide
+                pause (2.0)
+                "Looks like she isn't home.."
+                "Who else could I ask?"
+                menu:
+                    "Ask Aphmau, Kawaii-chan, and Katelyn":
+                        "I'll go ask the girls!"
+                        jump askgirl
+                    "Ask Laurance, Dante, Travis, and Garroth":
+                        "I'll go ask the guys!"
+                        jump askguy
+                    "Ask Zane":
+                        "I'll go ask Zane!"
+                        jump askzane
+                    "Ask Aaron":
+                        "I'll go ask Aaron!"
+                        jump askaaron
+label askgirl:
+    scene aphdoor with fade
+    play sound doorbell
+    pause (2.0)
+    show aphnorm with dissolve
+    a "[lol]? Hey! What're you doing here?"
+    mc "Hi [aph]! Sorry to bother you, but is it possible that I could borrow some milk?"
+    if aphhelp ==True:
+        a "Oh, yeah, of course! You helped me, so I help you"
+        a "Come on in!"
+    else:
+        a "Hah...so you'd like my help..."
+        mc "Hm?"
+        a "Sorry! Come on in"
+    scene aphhouse with fade
+    show aphnorm with dissolve
+    a "I'll just put the milk in a cup for you, give me a second!"
+    hide aphnorm with dissolve
+    "What shall I do while I wait..."
+    menu:
+        "See Aphmau in the kitchen":
+            jump aphkitchen
+        "Visit Katelyn's room":
+            jump katroomawyeah
+        "Visit Kawaii-chan's room":
+            jump kcroomawyeah
+    label aphkitchen:
+    $ aphflag += 1
+    scene kitchen with fade
+    show aphnorm with dissolve
+    $ renpy.notify("Aphmau enjoys your company!")
+    a "Oh! You scared me there.."
+    mc "Sorry! Oh wow, our kitchens look identical"
+    a "Sooo...you were too lazy to go grocery shopping today?"
+    a "I get that, I never feel like going grocery shopping.."
+    mc "Haha, not necesarrily, I went shopping a while ago but...was distracted.."
+    mc "Forgot to buy milk and I didn't feel like going to the grocery store just for one thing"
+    a "Haha! But you'll have to get the milk eventually?"
+    mc "I know, I know! I just...I'll do it next week"
+    a "What do you need the milk for? Oh! Are you baking something??"
+    mc "I wish, just making cereal"
+    hide aphnorm
+    show aphconf
+    a "Cereal?"
+    mc "Yeah I kinda forgot to eat breakfast today.."
+    hide aphconf
+    show aphscare
+    play sound aphwhat
+    a "WHAATT??"
+    a "[lol], it's noon! Have you seriously not eaten anything!?"
+    mc "I forgor.."
+    a "[lol], seriously, that's an awful habit! You need to be eating breakfast! It's the most important meal of the day!"
+    mc "I'm sorry! I'm sorry!"
+    a "If you ever feel like you don't want to make breakfast, drop by here! I'd happily make you something"
+    menu:
+        "You're not my mom":
+            mc "You're not my mom tf"
+            hide aphscare
+            show aphsad
+            a "I wasn't trying to be..."
+            hide aphsad 
+            show aphnorm
+            a "Anyway.."
+        "Thank you":
+            mc "Thanks for the offer, but this was a one time thing, I swear.."
+            hide aphscare
+            show aphnorm
+            a "That's good to hear."
+    a "Sorry if this is kinda random, [lol], but I am really grateful that you're here"
+    mc "Asking for milk?"
+    a "No! I mean, here in the neighbourhood!"
+    a "You're really cool, and fun, and I'm glad to have a new friend, y'know?"
+    a "You've been an awesome new neighbour, really!"
+    mc "Oh, thank you, Aphmau..I'm glad I'm here too."
+    mc "I'll be honest, this wasn't my first choice to move, but I'm really glad I came here anyway."
+    mc "I hope I can bring more excitement to you guys!"
+    a "Hah, don't worry about that, you're not like, our toy, or anything"
+    a "You simply being here is exciting enough!"
+    mc "Oh stawp it, you're too kind~~"
+    a "Anyway, here's your milk!"
+    mc "Oh, thank you so much! Seriously!"
+    a "No problem!"
+    a "And remember, from now on, breakfast is the very first thing you do when you wake up!"
+    mc "Right, I'll try to remember that.. see ya!"
+    jump milkafter
+    label katroomawyeah:
+    scene katroom with fade
+    $ katflag += 1
+    show katnorm with dissolve
+    $ renpy.notify("Katelyn enjoys your company!")
+    k "Oh, [mcname], hey, what are you doing here?"
+    mc "Sorry, I came to borrow some milk, Aphmau's getting it for me.."
+    mc "Just wanted to see what you're up to"
+    k "Oh, cool. I was just watching a show, was thinking of maybe playing some volleyball after this."
+    mc "What're you watching?"
+    k "Uh..it's this show called Once Upon A Time, I was just rewatching an episode I liked"
+    menu:
+        "I love that show!":
+            mc "Hey, I love that show!"
+            hide katnorm
+            show katsmile
+            $ katflag +=1
+            $ renpy.notify("Yoou and Katelyn share a common interest!")
+            k "Wait, really? Oh my god! I haven't met anyone who's liked the show!"
+            k "Everyone thinks it's stupid, but I always liked it. It's what started my passion for theatre, I'd say"
+            mc "Woah, you're into theatre? Didn't know that!"
+            k "I guess I don't really talk about it often..but yeah, I'm into dramatic arts and all that stuff."
+            k "You should ask Aphmau, I'm always dragging her off to watch whatever musical's in town."
+            k "Maybe that's something we'll have to start doing together?"
+            mc "I wouldn't mind!"
+            hide katsmile
+        "Fuck ass show":
+            mc "That show? It's so stupid.."
+            hide katnorm
+            show katdis
+            k "..oh. You're one of those.."
+            k "It's not stupid, for your information, but I don't want to waste my breath explaining to you why it's good."
+            mc "Uh huh.."
+            hide katdis
+    show katnorm
+    k "So, wait, you came here to get milk?"
+    mc "Yeah, no, I forgot to get some when I went grocery shopping, and I really wanted cereal.."
+    k "Cereal? It's noon"
+    mc "Can you not judge my choices"
+    k "Haha, no judging here, I get you"
+    k "Can I just say, [mcname], I'm really glad you decided to move here"
+    k "Don't get me wrong, I love everyone-"
+    hide katnorm
+    show katmad
+    k "..mostly everyone.."
+    hide katmad
+    show katnorm
+    k "But after a while, things kinda get boring when you talk to the same people every day..."
+    hide katnorm
+    show katsmile
+    k "I feel though that you're gonna bring lots of more fun times around here."
+    mc "Oh, well, thank you, Katelyn. I really do hope I can bring something exciting to you all"
+    k "I know you will!"
+    mc "I've only been here a couple days, but so far, I really am loving it here a lot more than I thought I would!"
+    mc "You guys are all so fun to be with-"
+    a "[lol]?"
+    mc "Oh! That's my milk. I'll see you around, Katelyn!"
+    jump aphmilk
+    label kcroomawyeah:
+    scene kcroom with fade
+    $ kcflag +=1
+    if park==False:
+        if kcagree==True:
+            show kcnorm with dissolve
+            $ renpy.notify("Kawaii-chan enjoys your company!")
+            kc "[lol]-san! Hi! Kawaii-chan is glad to see you again!"
+            mc "Hey Kawaii-chan!"
+        else:
+            show kcmad with dissolve
+            kc "Oh, [lol]-san...Hi..."
+            mc "..are you still mad at me over the My Little Horsies thing?"
+            kc "..a little.."
+            mc "Come on, Kawaii-chan, it wasn't personal!"
+            hide kcmad
+            show kcnorm
+            kc "Haha, [lol]-san is right, Kawaii-chan is being stubborn."
+        kc "So, what is [lol]-san doing here anyway?"
+    else:
+        show kcnorm with dissolve
+        kc "[lol]-san! What are you doing here?"
+    mc "Funny story, actually..I was making cereal-"
+    kc "Cereal? At noon...?"
+    mc "Yeah no I forgot to have breakfast today.."
+    hide kcnorm
+    show kcsad
+    kc "[lol]-san! It's noon, almost night! How could you forget??"
+    mc "I'm sorry! This isn't a regular thing, I swear!"
+    kc "Better not be...breakfast is incredibly important!"
+    mc "I know...oh, right, I hope you don't mind that I just barged in.."
+    hide kcsad
+    show kcnorm
+    if kcagree==False:
+        $ renpy.notify("Kawaii-chan enjoys your company!")
+    kc "Oh, it's alright! Kawaii-chan doesn't mind! She likes your company!~"
+    mc "Soo, what were you up to?"
+    kc "Oh, Kawaii-chan was just doodling, nothing much..."
+    kc "Here, Kawaii-chan was working on a self-portrait for funsies!"
+    show kcportrait at center with easeinbottom
+    kc "Does [lol]-san think it's good..?"
+    menu:
+        "That's awesome!":
+            mc "Woah, Kawaii-chan, that's so awesome! I didn't know you were such a great artist!"
+            $ kcflag +=1
+            $ renpy.notify("Kawaii-chan appreciates the compliment!")
+            show kcnorm at left with ease
+            kc "Hehe, thanks so much! But Kawaii-chan isn't that good.."
+            mc "No, really, you are!"
+            play sound kclaugh
+            kc "Well...I guess she's a little good.."
+            hide kcportrait with easeoutbottom
+            show kcnorm at center with ease
+        "Needs some work":
+            mc "Hmmm..I don't know, it could be better..."
+            mc "Your art style is kind of weird.."
+            hide kcnorm
+            show kcsad
+            show kcsad at left with ease
+            kc "R-really..? [lol]-san thinks it's weird..?"
+            mc "Yeah...is this uhh..'anime'?"
+            kc "Well, um, yes.."
+            mc "Hmm.."
+            kc "Uhh, Kawaii-chan will take that..."
+            hide kcportrait with easeoutbottom
+            show kcsad at center with ease
+            hide kcsad
+            show kcnorm
+    kc "Anyway...can Kawaii-chan tell you something, [lol]-san?"
+    mc "Sure! What's up?"
+    kc "Well, everyone has been glad [lol]-san's here, but Kawaii-chan especially is really happy!"
+    kc "She thinks [lol]-san is exciting, and fun, and Kawaii-chan just wants to thank [lol]-san for being here."
+    mc "Oh, Kawaii-chan..that's so sweet, thank you, I don't know what to say.."
+    kc "Hehe, [lol]-san doesn't have to say anything! Kawaii-chan just wishes to express her gratitude~"
+    a "[lol]?"
+    mc "Oh! That's my milk. It was fun talking to you, Kawaii-chan"
+    kc "See ya later!"
+    jump aphmilk
+    label aphmilk:
+    scene aphhouse with fade
+    show aphnorm with dissolve
+    a "Here's your milk!"
+    mc "Thanks so much, truly!"
+    a "Anytime!"
+    jump milkafter
+label askguy:
+    scene guydoor with fade
+    play sound doorbell
+    pause (2.0)
+    show dannorm with dissolve
+    play sound danheybaby
+    d "Yoo! [mcname], what's up?"
+    mc "Hey Dante, so sorry to bother you, but is it possible I could borrow some milk?"
+    d "Oh, yeah, sure, come in"
+    scene guyhouse with fade
+    show dannorm with dissolve
+    d "Hang in there for just a second, I'm gonna go see if we have any that isn't expired"
+    mc "What"
+    hide dannorm with dissolve
+    "What shall I do while I wait..."
+    $ travnotknow =False
+    label guyask:
+    menu:
+        "See Dante in the kitchen":
+            jump dankitchen
+        "Visit Laurance's room":
+            jump laurroomawyeah
+        "Visit Travis's room" if travnotknow==False:
+            if travdrink ==True:
+                "You know, Travis is probably still out there at the park..."
+                "Who else could I visit?"
+                $ travnotknow =True
+                jump guyask
+            else:
+                jump travroomawyeah
+        "Visit Garroth's room":
+            jump garroomawyeah
+    label dankitchen:
+    $ danflag +=1
+    scene kitchen with fade
+    show dannorm with dissolve
+    $ renpy.notify("Dante enjoys your company!")
+    d "Ya, so it turns out we DO have non-expired milk! Isn't it beautiful how life works that way?"
+    mc "I'm a bit concerned is expired milk normal for you guys"
+    hide dannorm
+    show danmad
+    d "Hey, clearly you aren't shopping for new milk either, so not too much on us"
+    mc "You're right I'm sorry"
+    hide danmad
+    show dannorm
+    d "Hahaaaa, I'm just playing."
+    d "Oh yeah, I hope you don't mind, this is Skin milk"
+    mc "Oh yeah no it's fi- did you mean Skimmed milk?"
+    d "No this is like, some special milk we got a couple years ago, it's supposed to be derived from like angel skin or something"
+    mc "A couple YEARS?"
+    hide dannorm
+    show danmad
+    d "Yeah you see why I had to check if it was expired?"
+    mc "Have you drunk this before??"
+    d "Of course?"
+    mc "..and you're alive?"
+    play sound danhuh
+    d "Why wouldn't I be?"
+    mc "Dante you're drink years-old milk that is 'derived from angel skin' there's gotta be like ecstasy or something in there"
+    d "I don't know, I don't think McDonald's would put ecstasy in their milk,"
+    mc "YOU GOT IT FROM MCDONALDS ?"
+    d "Well, you know the guy behind the McDonald's? Says he's part of the FBI?"
+    mc "Dante I don't want to talk about the milk anymore"
+    d "Yeah this happens a lot"
+    hide danmad
+    show dannorm
+    d "So, like, how's the move been? You liking this place?"
+    mc "Oh, yeah, it's been great, I've really been enjoying talking to all of you guys!"
+    d "Sweet! We all like you too. It's been kinda boring around here, we've been waiting for something to spice everything up, y'know?"
+    mc "I can't imagine you lot being bored.."
+    d "Welp, here's your milk. Couldn't find a glass to put it in so I hope this baby bottle suffices?"
+    hide dannorm
+    show danmad
+    d "It's for Laurance's brother just- don't tell him I gave it to you"
+    mc "You have fun Dante"
+    jump milkafter
+    label laurroomawyeah:
+    scene laurroom with fade
+    show laurshock with dissolve
+    la "[mcname]! What a surprise"
+    $ laurflag +=1
+    la "What are you doing here?"
+    mc "Sorry, came to borrow some milk for you guys and thought to come visit you while Dante's pouring the milk"
+    la "It shouldn't take that long to pour milk..?"
+    mc "Oh, you're right , I should go-"
+    $ renpy.notify("Laurance enjoys your company!")
+    la "No! Stay! Sorry, I didn't mean it like that,"
+    hide laurshock
+    show laurnorm
+    la "So, what's up?"
+    mc "Not much, really, just wanted to know how you were doing"
+    la "Oh, well, I'm fine, thanks for asking"
+    la "Wasn't really doing much, actually. Just sitting around waiting for Garroth"
+    mc "Where's Garroth?"
+    la "He went out to buy toothpaste, we ran out"
+    hide laurnorm
+    show laursad
+    la "I've been waiting since I wanted to do something.."
+    la "I'm really bored.."
+    mc "Aw, what a bummer."
+    hide laursad
+    show laursmile
+    la "But I will say, things have been more exciting since you came!"
+    la "We've all been eager to get to know you more."
+    la "I can say that personally, I've loved every second of talking to you"
+    mc "Really..?"
+    hide laursmile
+    show laurshock
+    play sound lauruhh
+    la "Not in a weird way, of course!"
+    hide laurshock
+    show laursad
+    la "Sorry, I didn't mean for it to come out like that.."
+    mc "You..suck at talking, don't you?"
+    hide laursad
+    show laurdis
+    la "Excuse me?"
+    mc "Haha, you just keep saying things that you 'don't mean for it to sound like that'"
+    hide laurdis
+    show laursmile
+    play sound laurlaugh
+    la "Hehheh, sorry, I just get kind of nervous talking to new people, I guess."
+    d "[mcname]? Where'd you go??"
+    mc "Oh, that's my cue, I'll see you around, Laurance."
+    jump danmilk
+    label travroomawyeah:
+    scene travroom with fade
+    $ travflag +=1
+    show travnorm with dissolve
+    if mcdrink==True:
+        t "[mcname]! Hey! You uhh..you feeling better?"
+        mc "Yeah, no, I'm fine, yeah"
+    if nice=True:
+        t "Oh, [mcname], hey again!"
+        mc "Hey Travis!"
+    else:
+        t "[mcname]! Hey!"
+        mc "Hey Travis!"
+    t "Soo..um"
+    hide travnorm
+    show travshock
+    t "What are you doing in my room randomly?"
+    mc "Oh..right, yeah, I came here to borrow some milk, and Dante's grabbing it for me right now, so I just wanted to visit you."
+    if nice=True:
+        hide travshock
+        show travnorm
+        t "Ooo, awesome!"
+    else:
+        hide travshock
+        show travflirt
+        t "Heh heh...you wanted to see me?"
+        mc "Don't"
+        hide travflirt
+        show travshock
+        t "sorry"
+    t "So wait, you came to borrow.. milk?"
+    t "How do you borrow milk? How does someone use milk and then return it?"
+    mc "Like I feel like you know what I mean but you're being obtuse on purpose"
+    mc "Anyway, what were you up to?"
+    hide travshock
+    show travnorm
+    t "Not much! Just chilling. I seriously need to pick up a new hobby, I don't have anything to do these days!"
+    mc "Ohh I get that feeling, I can never find something to do"
+    t "Yeah, but y'know what? I haven't really felt like that since you moved here!"
+    t "You're so fresh! Like...there's always something new with you!"
+    mc "Well, that's only because you don't know me, ahah"
+    t "Yeah yeah, but still! Every day i'm just like, 'man. I wonder when I can talk to [mcname] again. I sure do miss [mcname]!'"
+    t "Pretty sure it's the same for everyone else."
+    mc "Oh..wow, thank you, Travis"
+    t "Seriously, though. We all are very glad to have you here."
+    hide travnorm
+    show travflirt
+    play sound travlaugh
+    t "Especially me~~"
+    mc "Oohhkay"
+    hide travflirt
+    show travnorm
+    t "Hmm. You know what? I'm gonna ask Laurance if he wants to watch a movie with me"
+    if travzazndan ==True:
+        t "I'm still so....influenced by Killer Babez vs MICHAEL and I think it's time I enter the world of film with him."
+    else:
+        t "Yesterday, Dante, Zane and I all went to see this movie called Killer Babez vs MICHAEL and it....it really moved me."
+        t "Laurance is into all that film stuff so I'd like to enter the world of film with him now."
+    mc "Haha, wow. That's awesome."
+    t "Care to join us one day for a movie?"
+    mc "That sounds great, I'm in!"
+    t "Sick!"
+    d "[mcname]? Where'd you go??"
+    mc "Whoops, that's my cue. I'll see you around Travis!"
+    jump danmilk
+    label garroomawyeah:
+    scene garroom with fade
+    "Hmm..looks like Garroth isn't home."
+    "He has a pretty nice room...although, I feel bad for being here when he isn't."
+    "Who else can I visit?"
+    menu:
+        "See Dante in the kitchen":
+            jump dankitchen
+        "Visit Laurance's room":
+            jump laurroomawyeah
+        "Visit Travis's room" if travnotknow==False:
+            if travdrink ==True:
+                "You know, Travis is probably still out there at the park..."
+                "Who else could I visit?"
+                $ travnotknow =True
+                jump guyask
+            else:
+                jump travroomawyeah
+    label danmilk:
+    scene guyhouse with fade
+    show dannorm with dissolve
+    d "Here's your milk, hope it's up to your standards!"
+    mc "I'm sure it is. Thanks so much!"
+    d "Anytime brah!"
+    jump milkafter
+    label askzane:
+    scene zanedoor with fade
+    play sound doorbell
+    pause (2.0)
+    if park==True:
+        if zaneagree==True:
+            show zanenorm with dissolve
+            z "[mcname]? Hey again?"
+        else:
+            show zanemad with dissolve
+            z "Oh. [mcname]...you."
+            mc "You're not still mad at me about the My Little Horsies thing are you"
+            z "..."
+            mc "Come on man it's a kids show it can't be that serious"
+            z "Sure.."
+            hide zanemad
+            show zanenorm
+            mc "Anyway-"
+    else:
+        show zanenorm with dissolve
+        z "[mcname]? Hello?"
+    mc "I'm sorry to bother you, Zane, but is it okay if I could borrow some milk?"
+    $ zaneflag +=1
+    $ renpy.notify("Zane appreciates you came to him!")
+    z "Oh...sure..come in"
+    scene zaneinside with fade
+    show zanesad with dissolve
+    z "Sorry about the mess, if you had told me you were coming beforehand, I would have cleaned up."
+    mc "Zane this is the cleanest house i've ever seen in my life"
+    z "Here's the kitchen"
+    scene kitchen with fade
+    show zanenorm with dissolve
+    mc "Hey, we have the same kitchen!"
+    z "I'm sure we do."
+    z "So, why do you need the milk?"
+    mc "I'm sacrificing a virgin tonight"
+    z "?"
+    mc "JK i'm making cereal lol"
+    z "Oh, I thought Lucinda indoctrinated you..."
+    z "Wait, cereal? It's noon"
+    mc "I may or may have not forgotten to eat breakfast this morning.."
+    z "Yeesh, [mcname], that's not good"
+    z "You need to be eating your meals on time."
+    mc "I know, I know, it was just a slip up.."
+    z "Here, a glass of milk. It's a plastic cup so you don't have to worry about returning anything."
+    mc "Thanks so much- why is the milk gray"
+    z "Hm?"
+    mc "The milk. It's gray."
+    hide zanenorm
+    show zanemad
+    z "Ohhh...right.."
+    z "A week ago Travis put black food dye in every edible item I own so that it could 'match my soul'"
+    z "I got so used to it I forgot."
+    menu:
+        "That's really funny":
+            mc "That is incredibly funny my god"
+            z "It really isn't..."
+        "I'm so sorry":
+            mc "That's so awful, why would he do that?"
+            z "He's just a prankster, I suppose..."
+    hide zanemad
+    show zanenorm
+    z "But I assure you, it's safe for consumption."
+    mc "Good to hear.."
+    mc "Well, I should g-"
+    z "Wait, before you go.."
+    z "I just want to say..err.."
+    z "i'm..WE...are all very glad to have you here."
+    z "I may have not been the nicest to you but...it's nice to have a new person around."
+    z "So..thanks for being here, [mcname]. I value your prescence"
+    mc "Aww..Zane, that's really nice..thank you."
+    mc "I'm glad to be here too, it's been really fun hanging out and talking with everyone"
+    z "I'm glad to hear that.."
+    z "Well...I don't want to keep you. You should go."
+    mc "Right..thanks so much, Zane"
+    z "You can come anytime if you need help again."
+    jump milkafter
+    label askaaron:
+    $ aarflag +=1
+    scene aardoor with fade
+    play sound doorbell 
+    pause (2.0)
+    show aarnorm with dissolve
+    ar "Oh, hey [mcname]. What's up?"
+    mc "Hi Aaron! Sorry to bother you, but I really need to borrow some milk, is that fine?"
+    $ renpy.notify("Aaron appreciates you came to him!")
+    play sound aarsure
+    ar "Oh, sure, come on in!"
+    scene aarinside with fade
+    show aarnorm with dissolve
+    ar "So, I take it you haven't gotten a chance to grocery shop since you moved here?"
+    mc "Uhh...not necessarily.."
+    scene kitchen with fade
+    show aarnorm with dissolve
+    ar "Oh no...I'm running out of milk too.."
+    mc "Oh, I can ask someone else-"
+    ar "No no, it's fine, just enough to fill a glass for you."
+    mc "Ahh, I don't want to take it if you don't have much left.."
+    hide aarnorm
+    show aarsmile
+    ar "I insist, [mcname]. Really."
+    mc "Alright..."
+    hide aarsmile
+    show aarsad
+    ar "And since you're here already..."
+    ar "I've been meaning to say...well..."
+    ar "Things have been really great now that you're here."
+    ar "And uhh...we really appreciate that you're taking the time to become friends with us."
+    ar "I've struggled a lot in the past with making friends, and socializing, but it feels so much more natural with you, [mcname]."
+    ar "We all are really glad, but I wanted to say that personally, I'm really happy you're in our lives now."
+    mc "Wow, Aaron...I don't know what to say.."
+    ar "S-sorry...that was random..forget I said anything..."
+    mc "No, Aaron, that was sweet, really."
+    mc "I'm glad to be here too. To have met you...met everyone..it's really great."
+    mc "I think I really needed a group as great as this one...you all really have changed me within a matter of days."
+    hide aarsad
+    show aarsmile
+    ar "I'm glad to hear that."
+    ar "And hey, if you ever run out of anything again, you can always come by here."
+    ar "You can come by for any sort of help, really."
+    mc "Thanks Aaron, I'll keep that in mind."
+    mc "And thanks for the milk, I'll get going now."
+    ar "Have a good night, [mcname]!"
+    mc "Goodnight!"
+    jump milkafter
+label milkafter:
+    scene housenoon with fade
+    scene houseinside noon with fade
+    "Ahh...finally got the milk. Now I can enjoy my cereal-"
+    play sound crash
+    "!!!!" with hpunch
+    "What was that????"
+    scene housenoon with fade
+    "Oh my god...my window broke.."
+    "...is that a volleyball?"
+    k "Oh my god!! [mcname]!!"
+    show katnorm at left
+    show nicolesad at right
+    with dissolve
+    q "Oh my god...."
+    k "[mcname], I'm so sorry, me and my friend Nicole were just playing some volleyball and then-"
+    k "I may have hit the ball too hard.."
+    n "We're really sorry, um, [mcname]."
+    n "This is such an awful way to meet.."
+    menu:
+        "Forgive Katelyn":
+            jump katforgive
+        "Yell at Katelyn":
+            mc "KATELYN. WHAT THE FUCK IS WRONG WITH YOU."
+            mc "I HAVEN'T EVEN HAD THIS HOUSE FOR A WEEK YET."
+            k "look, I'm really sorry..."
+            mc "Leave. I can't even look at you right now."
+            k "Yeah..uh...I'll just give you this $200 for the window and uhh.."
+            k "Come on, Nicole, let's go.."
+            n "We're so sorry..."
+            hide katnorm
+            hide nicolesad
+            with dissolve
+            "Cannot believe the audacity of those two."
+            jump branchoff
+    label katforgive:
+    $ katflag +=1
+    mc "Hey, Katelyn, it's okay. We all make mistakes"
+    hide katnorm
+    show katsmile at left
+    $ renpy.notify("Katelyn's happy you forgave her!")
+    k "Oh, thank you for understanding, [mcname]..."
+    k "I'll replace the window, I swear"
+    k "Here, I just so happen to have $200 in my pocket, that should be enough"
+    mc "Oh wow, thank you, Katelyn."
+    hide nicolesad
+    show nicolenorm at right
+    n "Wow, your friend is so understanding, Katelyn!"
+    n "Hi, i'm Nicole, I live not too far from here. It's great to meet you!"
+    mc "Great to meet you too!"
+    k "Nicole's awesome, I'm sure you guys will get along great."
+    n "Right. That's been settled. Shall we go?"
+    k "Mhm. Thanks again, [mcname], for understanding. And sorry about the window!"
+    mc "No worries! You girls have fun"
+    label branchoff:
+    scene houseinsidenight with fade
+    stop music
+    play music nightsong loop
+    "Man. It's been such a day. I don't even want my cereal anymore. I think I'm just gonna sleep now."
+    scene bedroomnight with fade
+    "It's only been a couple days...but I really have been enjoying my time here."
+    "I feel like I reall have gotten close with everyone!"
+    if aphflag == 6:
+        "Especially with Aphmau..."
+    elif katflag == 6:
+        "Especially with Katelyn..."
+    elif kcflag == 6:
+        "Especially with Kawaii-chan..."
+    elif luciflag == 6:
+        "Especially with Lucinda..."
+    elif laurflag == 6:
+        "Especially with Laurance..."
+    elif garflag == 6:
+        "Especially with Garroth..."
+    elif danflag == 6:
+        "Especially with Dante..."
+    elif travflag == 6:
+        "Especially with Travis..."
+    elif aarflag == 6:
+        "Especially with Aaron..."
+    elif zaneflag == 6:
+        "Especially with Zane..."
+    else:
+        "No one in particular though..."
+    "i'm so excited to see what my future has in store!"
+    screen black with fade
+    if aphflag == 6:
+        centered "{color=#fff}End of Act 1.{/color}" with dissolve
+        jump aphroutestart
+    elif katflag == 6:
+        centered "{color=#fff}End of Act 1.{/color}" with dissolve
+        jump katroutestart
+    elif kcflag == 6:
+        centered "{color=#fff}End of Act 1.{/color}" with dissolve
+        jump kcroutestart
+    elif luciflag == 6:
+        centered "{color=#fff}End of Act 1.{/color}" with dissolve
+        jump luciroutestart
+    elif laurflag == 6:
+        centered "{color=#fff}End of Act 1.{/color}" with dissolve
+        jump laurroutestart
+    elif garflag == 6:
+        centered "{color=#fff}End of Act 1.{/color}" with dissolve
+        jump garroutestart
+    elif danflag == 6:
+        centered "{color=#fff}End of Act 1.{/color}" with dissolve
+        jump danroutestart
+    elif travflag == 6:
+        centered "{color=#fff}End of Act 1.{/color}" with dissolve
+        jump travroutestart
+    elif aarflag == 6:
+        centered "{color=#fff}End of Act 1.{/color}" with dissolve
+        jump aarroutestart
+    elif zaneflag == 6:
+        centered "{color=#fff}End of Act 1.{/color}" with dissolve
+        jump zaneroutestart
+    else:
+    scene bedroomday with fade
+    stop music
+    play music daysong2 loop
+    "What a bright and beautiful morning!"
+    "Nothing can ruin my day!"
+    play sound doorbell
+    "Now who could that be?"
+    scene frontdoorday with fade
+    show tylernorm with dissolve
+    "..something can ruin my day"
+    ty "YOU FAILED! YOU FAAIIILLEEEDDDD!!"
+    mc "What??"
+    ty "THE TIME OF JUDGEMENT HAS COME AND YOU FAILED!!!"
+    mc "What? What are you talking about?"
+    ty "Visit Aphmau's house...and you'll understand"
+    hide tylernorm with dissolve
+    "I seriously have got to do something about this guy."
+    
+
+
 return

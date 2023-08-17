@@ -1,40 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 3514, in script
-    play sound aphycry
-  File "renpy/common/000statements.rpy", line 300, in execute_play_sound
-    renpy.sound.play(_audio_eval(p["file"]),
-  File "renpy/common/000statements.rpy", line 32, in _audio_eval
-    return eval(expr, locals=store.audio.__dict__)
-  File "game/script.rpy", line 3514, in <module>
-    play sound aphycry
-NameError: name 'aphycry' is not defined
+  File "game/script.rpy", line 4411, in script
+    jump milkafter
+ScriptError: could not find label 'milkafter'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 3514, in script
-    play sound aphycry
-  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\ast.py", line 2232, in execute
-    self.call("execute")
-  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\ast.py", line 2220, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\statements.py", line 281, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 300, in execute_play_sound
-    renpy.sound.play(_audio_eval(p["file"]),
-  File "renpy/common/000statements.rpy", line 32, in _audio_eval
-    return eval(expr, locals=store.audio.__dict__)
-  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\python.py", line 1080, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\python.py", line 1073, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 3514, in <module>
-    play sound aphycry
-NameError: name 'aphycry' is not defined
+  File "game/script.rpy", line 4411, in script
+    jump milkafter
+  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\ast.py", line 1974, in execute
+    rv = renpy.game.script.lookup(target)
+  File "C:\Users\manjo\OneDrive\Documents\renpy-8.0.1-sdk\renpy\script.py", line 927, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'milkafter'.
 
-Windows-10-10.0.22000 AMD64
+Windows-10-10.0.22621 AMD64
 Ren'Py 8.0.1.22070801
 Operation: SWEETHEART!!! ~A Mystreet Dating Simulator~ 1.0
-Sat Aug 12 18:55:00 2023
+Wed Aug 16 00:43:12 2023

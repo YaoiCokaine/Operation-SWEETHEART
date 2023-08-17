@@ -1,76 +1,51 @@
-TO DO
+TO Do
+MISC
+
+-main menu fix
+-about screen
+-erm?
+
 
 IMAGES
 
--garroth ice cream cg
--aaron sausage cg
--zane cg
--travis cg
--dante cg
+-zane theatre cg
+-luci rest cg
+-travis walk cg
+-kc walk cg
+-zane walk cg
 -killer babez vs MICHAEL
+-kc portrait
+-nicole norm + sad sprite
 
--park 
--movie theatre outside + inside + inside
+-park noon
+-lucidoor
+-aphdoor
+-guydoor
+-zanedoor
+-aardoor
+-kat room
+-kc room
+-aphhome
 
--aph costume
--tyler movie sprite
 
+ROUTES:
+
+Luci- teony jealousy arc
+zane - insecurity arc
+someone has to travel
 
 
 flags:
-
-Aphmau:
-    -Organize party
-    -Talk to her and kc
-    -get her coffee
-    -help her
-    -its awesome
     
 
-Kawaii Chan:
-    -Eat cookies
-    -talk to her and aph
-    -get her coffee
 
-Laurence:
-    -keep flowers
-    -talk to him aaron and garroth
-    -pizza
-    -veverythign pizza
-    - good opinion
-
-Aaron:
-    -escape from past
-    -talk to him garroth and laurence
-    -sausage
-    -sausage
-    -good opinion
 
 Katelyn:
     -talk to her and lucinda
     -support her
     -burger
-
-Travis:
-    -talk to him dante and zane
-    -find his joke funny
-    -seat
-    -good opinion
-    -tell Lucinda to lay off
-
-Zane:
-    -talk to him dante and travis
-    -not find travis' joke funny
-    -seat
-    -good opinion
-
-Dante:
-    -Side with rent
-    -keep flowers
-    -talk to him zane and travis
-    -seat
-    -opinion
-
+    -milk
+    -once
 
 
 Garroth:
@@ -88,3 +63,59 @@ Lucinda:
     - chilli fries
     - tell travis to drink
     -drink potion urself
+
+Aphmau:
+    -Organize party
+    -Talk to her and kc
+    -get her coffee
+    -help her
+    -its awesome
+    -milk
+
+Aaron:
+    -escape from past
+    -talk to him garroth and laurence
+    -sausage
+    -sausage
+    -good opinion
+    -milk
+
+Travis:
+    -talk to him dante and zane
+    -find his joke funny
+    -seat
+    -good opinion
+    -tell Lucinda to lay off
+    -milk
+
+Zane:
+    -talk to him dante and travis
+    -not find travis' joke funny
+    -seat
+    -good opinion
+    -mlp
+    -milk
+
+Dante:
+    -Side with rent
+    -keep flowers
+    -talk to him zane and travis
+    -seat
+    -opinion
+    -milk
+
+Kawaii Chan:
+    -Eat cookies
+    -talk to her and aph
+    -get her coffee
+    -mlp
+    -milk
+    - portrait
+
+Laurence:
+    -keep flowers
+    -talk to him aaron and garroth
+    -pizza
+    -veverythign pizza
+    - good opinion
+    -milk

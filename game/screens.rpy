@@ -311,6 +311,8 @@ screen navigation():
 
         textbutton _("Endings") action ShowMenu("endings")
 
+        textbutton _("Special Thanks") action ShowMenu("special_thanks")
+
         if _in_replay:
 
             textbutton _("End Replay") action EndReplay(confirm=True)
@@ -556,7 +558,7 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("Credits - Music by TERNOX - Backgrounds by Nekonomare")
+            text _("This is YOUR operation sweetheart.")
 
 
 style about_label is gui_label
@@ -718,17 +720,35 @@ screen endings():
 
         vbox:
 
-            label "[config.name!t]"
-            text _("Version [config.version!t]\n")
-
-            ## gui.about is usually set in options.rpy.
-            if gui.about:
-                text "[gui.about!t]\n"
-
             if persistent.ending_karma == True:
                 text _("Secret ending 1: Karma's Embraces")
             else: 
                 text _("YOU HAVEN'T UNLOCKED THIS ENDING YET!")
+
+screen special_thanks():
+
+    tag menu
+
+    ## This use statement includes the game_menu screen inside this one. The
+    ## vbox child is then included inside the viewport inside the game_menu
+    ## screen.
+    use game_menu(_("Special Thanks"), scroll="viewport"):
+
+        style_prefix "special_thanks"
+
+        vbox:
+
+            text _("Here are special thanks/credits to everyone who helped with the process of making this game:")
+            text _(" ")
+            text _("Majority of soundtrack made by {a=https://ternox.itch.io/}TERNOX{/a}")
+            text _(" ")
+            text _("Majority of backgrounds made by {a=https://noranekogames.itch.io/}NoranekoGames{/a}")
+            text _(" ")
+            text _("Special thanks to my friend Umi for teaching me how to code and for helping me through the development of the game")
+            text _(" ")
+            text _("Special thanks to my friend RemiFather for being my go-to for advice and helping me through the development of the game - @colorremi on Instagram")
+            text _(" ")
+            text _("I couldn't have done it without you all! <3")
 
 screen preferences():
 
