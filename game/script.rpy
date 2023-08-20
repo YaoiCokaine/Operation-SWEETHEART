@@ -1,4 +1,6 @@
 ﻿label start:
+    $ persistent.ending_karma = False
+    $ persistent.ending_nobody = False
     $ mcname = renpy.input("What is your name?")
     scene houseday with fade
     play music daysong1 loop
@@ -81,7 +83,7 @@
     scene bedroomday with fade
     "Alright! That's all the important stuff! I can do the rest tomorrow, I've done enough today."
     "I guess I could go outside and get some fresh air"
-    scene street with fade
+    scene streetday with fade
     "A walk will do me good!"
     q "YOU NEED TO TRUST ME!"
     "? what was that?"
@@ -89,6 +91,8 @@
     q "Dude, just give me some time"
     qq "You've said that multiple times now!"
     "Sounds like there's some people nearby arguing...should I go meddle with that?"
+    $ kcconv = False
+    $ gardan = False
     menu:
         "Check it out":
             "Let's go have a look-"
@@ -97,8 +101,6 @@
             "Not my business."
             jump choices1_b
 label choices1_a:
-    $ gardan = True
-    $ kcconv = False
     scene boyshouse with fade
     show garmad at left with dissolve
     qq "You haven't paid your share of the rent, you can't keep getting away with it!"
@@ -106,6 +108,16 @@ label choices1_a:
     q "dude. I told you. I got this. I'm working on it."
     qq "I really do not believe you"
     q "TRUUSSTTT!"
+    "Looks like they're arguing...do I wanna stay for this?"
+    menu:
+        "Stay":
+            jump gardancont
+        "Leave":
+            "I should go..."
+            scene streetday with fade
+            jump choices1_b
+    label gardancont:
+    $ gardan = True
     play sound garsigh
     qq "*sigh* Dante, we really need you to be on time with your payments!"
     qq "Laurance and I have been covering your part, but we can't keep doing that for you!"
@@ -165,12 +177,20 @@ label choices1_a:
     scene street with fade
     jump choices1cont
 label choices1_b:
-    $ kcconv = True
-    $ gardan = False
     "I guess I'll just sit out here for a bit..."
     show kcnorm with dissolve
     kc "Hmmm? Kawaii-chan has never seen you around here..are you new?"
     mc "Oh! Uh, yeah, I just moved here"
+    "Do I want to stay for this conversation? Or follow those voices?"
+    menu:
+        "Stay":
+            jump kcconvcont
+        "Leave":
+            mc "Sorry! Gotta dash!"
+            scene boyshouse with fade
+            jump choices1_a
+    label kcconvcont:
+    $ kcconv = True
     play sound kcperfect
     kc "Oohhh! You're the one Aphmau-senpai talked about!"
     kc "My name is Kawaii-chan! It's nice to meet you!"
@@ -678,6 +698,7 @@ label choices1cont:
             hide lucinorm
             show lucismirk
             $ renpy.notify ("Lucinda thinks you're interesting!")
+            $ luciflag +=1
             lu "Ooo, adventurous, I like it"
             lu "I'll definitely make sure to take you to cool places here"
             mc "I'd love that!"
@@ -1372,7 +1393,7 @@ label lucikatbowl:
     show lucismirk at right
     lu "That's me, right?"
     k "I guess we'll find out~"
-    "There's some tension between two..but I can't tell what kind...."
+    "There's some tension between these two..but I can't tell what kind...."
     lu "Come on, let's go inside"
     scene bowlinginside with fade
     show katnorm at right with dissolve
@@ -3192,6 +3213,7 @@ label guymovie:
     z "Here they are.."
     ty "Alright, scanned, you guys head on in and enjoy your movie"
     hide zanenorm with dissolve
+    hide zanesad with dissolve
     ty "[mcname]- stay back..."
     mc "Wsg gang"
     ty "Remember what I told you last night..."
@@ -3368,14 +3390,29 @@ label guymovie:
     t "I don't think I could ever watch a movie ever again."
     mc "Uh huh"
     if next_dante == True:
-        hide dannorm
-        show tylermovie with new
+        show zanemad:
+            xalign 0.0
+            linear 0.3 xpos 0.2
+        show dannorm:
+            xalign 0.5
+            linear 0.3 xpos 0.6
+        show tylermovie at left with easeinleft
     if next_zane == True:
-        hide zanemad
-        show tylermovie with new
+        show dannorm:
+            xalign 0.0
+            linear 0.3 xpos 0.2
+        show zanemad:
+            xalign 0.5
+            linear 0.3 xpos 0.6
+        show tylermovie at left with easeinleft
     if next_travis == True:
-        hide travsad
-        show tylermovie with new
+        show dannorm:
+            xalign 0.0
+            linear 0.3 xpos 0.2
+        show travsad:
+            xalign 0.5
+            linear 0.3 xpos 0.6
+        show tylermovie at left with easeinleft
     ty "Hey guys. I have to do this survey to see how satisfactory everyone's experience was"
     ty "So would you say you had a good time or not"
     menu:
@@ -3390,13 +3427,34 @@ label guymovie:
                 ty "You're gonna rue this day.....RUE!!"
             else:
                 ty "I hope you have an AWFUL day!!"
-    hide tylermovie with dissolve
     if next_dante == True:
-        show dannorm with new
+        show zanemad:
+            xalign 0.0
+            linear 0.3 xpos 0.0
+        show dannorm:
+            xalign 0.5
+            linear 0.3 xpos 0.5
+        show tylermovie at offscreenleft
+        with ease
     if next_zane == True:
-        show zanemad with new
+        show dannorm:
+            xalign 0.0
+            linear 0.3 xpos 0.0
+        show zanemad:
+            xalign 0.5
+            linear 0.3 xpos 0.5
+        show tylermovie at offscreenleft
+        with ease
     if next_travis == True:
-        show travsad with new
+        show dannorm:
+            xalign 0.0
+            linear 0.3 xpos 0.0
+        show travsad:
+            xalign 0.5
+            linear 0.3 xpos 0.5
+        show tylermovie at offscreenleft
+        with ease
+    hide tylermovie
     d "Hm. I guess we should all go home now.."
     scene housenight with fade
     stop music
@@ -3471,7 +3529,7 @@ else:
 if aphchan == True:
     "Hanging out with [aph] and Kawaii-chan was so much fun!"
 if lucikat == True:
-    "Hanging out with Lucida and Katelyn was so much fun!"
+    "Hanging out with Lucinda and Katelyn was so much fun!"
 if laurrest == True:
     "Hanging out with Laurance was so much fun!"
 if aarrest == True:
@@ -3497,6 +3555,8 @@ menu:
         "A simple walk will do!"
         $ neighbourhood =True
         $ park =False
+        $ travdrink = False
+        $ mcdrink=False
     "Park":
         "To the park we go!"
         $ park =True
@@ -3571,10 +3631,10 @@ label aphhelp:
             mc "It's just...cringe? I guess...do you really think you're a fantasy character?"
             mc "Besides...this design looks pretty basic..."
             hide aphsad
-            show aphscare at left
+            show aphshock at left
             play sound aphwhat
             a "WHAATT???"
-            hide aphscare 
+            hide aphshock 
             show aphsad at left
             a "I...I spent so much time on it...researched and everything.."
             mc "..better luck next time?"
@@ -3726,7 +3786,7 @@ label parkcont:
                     mc "...I'll do it! I'll try the potion!"
                     lu "..really?"
                     hide travsad
-                    show travdis at right
+                    show travshock at right
                     play sound travconf
                     t "Slash gen?"
                     mc "Yeah! You need to test it, right? I'll do it for you!"
@@ -3743,7 +3803,7 @@ label parkcont:
                     pause (1.0)
                     "..Hey, that's pretty good! It's got a bit of a sweet ta-"
                     play sound thud
-                    scene black with fade
+                    scene black with dissolve
                     stop music
                     lu "[mcname!u]!!!"
                     t "OH MY GOD"
@@ -3802,10 +3862,10 @@ label lucihome:
     lu "[mcname]! Yes, it's me!"
     lu "Are you alright? How are you feeling?"
     mc "I'm...um...what happened?"
-    scene Livingroom_Night with fade
+    scene luciroom with fade
     stop music 
-    play music noonsong
-    show travdis at left
+    play music noonsong loop
+    show travshock at left
     show lucinorm at right
     with dissolve
     t "What happened was Lucinda fed you her RAT POISON and you DIED."
@@ -3829,13 +3889,13 @@ label lucihome:
             menu:
                 "I will":
                     mc "I will"
-                    hide travdis 
+                    hide travshock 
                     show travscare at left
                     play sound travcry
                     t "NOOOOOOOOOOOOOOOOO MY SQUEAKY CLEAN RECORD" with hpunch
                     lu "Travis they're joking why would they press charges"
                     hide travscare
-                    show travdis at left
+                    show travshock at left
                     t "Yeah I knew that...just wanted to know if you knew that...yknow"
                     lu "Uh huh"
                 "I won't":
@@ -3848,14 +3908,14 @@ label lucihome:
     lu "..speaking of, did you notice any effects from the potion?"
     mc "Uhh...not really"
     lu "Fuck! How did I mess up this badly..?"
-    hide travdis
+    hide travshock
     show travlaugh at left
     play sound travlaugh
     t "HAHAAAA you suck at your jobb lmfaooo"
     lu "I don't wanna hear it from the guy who cares more about Twitter drama than his own family"
     lu "To be bad at your job you'd need to have a job first"
     hide travlaugh
-    show travdis at left
+    show travshock at left
     t "See this is why we don't hang out one-on-one that much"
     mc "I'm sensing some hostility, I think I should go..."
     lu "Aht, no, no hostitlity here! Travis and I...uh...we joke! Yeah"
@@ -3870,7 +3930,7 @@ label lucihome:
     pause (2.0)
     lu "Travis why are you still here"
     t "Oh right yeah sorry I forgor"
-    hide travdis with easeoutleft
+    hide travshock with easeoutleft
     show lucisad at center with ease
     lu "Will you really be alright by yourself?"
     mc "Mhm! No need to worry about me"
@@ -3905,7 +3965,7 @@ label travwalk:
     "We walked around for a bit..."
     scene parknoon with fade
     stop music
-    play music noonsong
+    play music noonsong loop
     show travnorm with dissolve
     play sound travlaugh
     t "So then I said, 'That's not a camel, that's my wife!'"
@@ -3998,6 +4058,8 @@ label neighevent:
             scene black with fade
             pause (1.5)
             scene streetnoon with fade
+            stop music
+            play music noonsong loop
             "What an exhilirating walk. I should head home now."
             jump housemama
     label kcagree:
@@ -4191,6 +4253,7 @@ label housemama:
     "I must've forgotten to get some since I bumped into Laurance the other day..."
     "Oh, I really don't feel like going to the grocery store, but I already poured the cereal.."
     "Maybe I can ask around to see if anyone would let me borrow some milk?"
+    $ luciknow = False
     label ask:
     menu:
         "Ask Aphmau, Kawaii-chan, and Katelyn":
@@ -4205,10 +4268,11 @@ label housemama:
         "Ask Aaron":
             "I'll go ask Aaron!"
             jump askaaron
-        "Ask Lucinda":
+        "Ask Lucinda" if luciknow==False:
             if park==True:
                 "Lucinda might be busy with her potion, I don't want to bother her..."
                 "Who else could I ask?"
+                $ luciknow =True
                 jump ask
             else:
                 "I'll go ask Lucinda!"
@@ -4278,7 +4342,7 @@ label askgirl:
     a "Cereal?"
     mc "Yeah I kinda forgot to eat breakfast today.."
     hide aphconf
-    show aphscare
+    show aphshock
     play sound aphwhat
     a "WHAATT??"
     a "[lol], it's noon! Have you seriously not eaten anything!?"
@@ -4289,7 +4353,7 @@ label askgirl:
     menu:
         "You're not my mom":
             mc "You're not my mom tf"
-            hide aphscare
+            hide aphshock
             show aphsad
             a "I wasn't trying to be..."
             hide aphsad 
@@ -4297,7 +4361,7 @@ label askgirl:
             a "Anyway.."
         "Thank you":
             mc "Thanks for the offer, but this was a one time thing, I swear.."
-            hide aphscare
+            hide aphshock
             show aphnorm
             a "That's good to hear."
     a "Sorry if this is kinda random, [lol], but I am really grateful that you're here"
@@ -4360,9 +4424,9 @@ label askgirl:
     k "Can I just say, [mcname], I'm really glad you decided to move here"
     k "Don't get me wrong, I love everyone-"
     hide katnorm
-    show katmad
+    show katdis
     k "..mostly everyone.."
-    hide katmad
+    hide katdis
     show katnorm
     k "But after a while, things kinda get boring when you talk to the same people every day..."
     hide katnorm
@@ -4483,11 +4547,14 @@ label askguy:
         "Visit Laurance's room":
             jump laurroomawyeah
         "Visit Travis's room" if travnotknow==False:
-            if travdrink ==True:
-                "You know, Travis is probably still out there at the park..."
-                "Who else could I visit?"
-                $ travnotknow =True
-                jump guyask
+            if park ==True:
+                if travdrink ==True:
+                    "You know, Travis is probably still out there at the park..."
+                    "Who else could I visit?"
+                    $ travnotknow =True
+                    jump guyask
+                else:
+                    jump travroomawyeah
             else:
                 jump travroomawyeah
         "Visit Garroth's room":
@@ -4518,7 +4585,7 @@ label askguy:
     mc "..and you're alive?"
     play sound danhuh
     d "Why wouldn't I be?"
-    mc "Dante you're drink years-old milk that is 'derived from angel skin' there's gotta be like ecstasy or something in there"
+    mc "Dante you're drinking years-old milk that is 'derived from angel skin' there's gotta be like ecstasy or something in there"
     d "I don't know, I don't think McDonald's would put ecstasy in their milk,"
     mc "YOU GOT IT FROM MCDONALDS ?"
     d "Well, you know the guy behind the McDonald's? Says he's part of the FBI?"
@@ -4592,7 +4659,7 @@ label askguy:
     if mcdrink==True:
         t "[mcname]! Hey! You uhh..you feeling better?"
         mc "Yeah, no, I'm fine, yeah"
-    if nice=True:
+    if nice==True:
         t "Oh, [mcname], hey again!"
         mc "Hey Travis!"
     else:
@@ -4603,7 +4670,7 @@ label askguy:
     show travshock
     t "What are you doing in my room randomly?"
     mc "Oh..right, yeah, I came here to borrow some milk, and Dante's grabbing it for me right now, so I just wanted to visit you."
-    if nice=True:
+    if nice==True:
         hide travshock
         show travnorm
         t "Ooo, awesome!"
@@ -4638,7 +4705,7 @@ label askguy:
     hide travflirt
     show travnorm
     t "Hmm. You know what? I'm gonna ask Laurance if he wants to watch a movie with me"
-    if travzazndan ==True:
+    if travzandan ==True:
         t "I'm still so....influenced by Killer Babez vs MICHAEL and I think it's time I enter the world of film with him."
     else:
         t "Yesterday, Dante, Zane and I all went to see this movie called Killer Babez vs MICHAEL and it....it really moved me."
@@ -4802,7 +4869,7 @@ label askguy:
     jump milkafter
 label milkafter:
     scene housenoon with fade
-    scene houseinside noon with fade
+    scene houseinsidenoon with fade
     "Ahh...finally got the milk. Now I can enjoy my cereal-"
     play sound crash
     "!!!!" with hpunch
@@ -4854,14 +4921,14 @@ label milkafter:
     n "Right. That's been settled. Shall we go?"
     k "Mhm. Thanks again, [mcname], for understanding. And sorry about the window!"
     mc "No worries! You girls have fun"
-    label branchoff:
+label branchoff:
     scene houseinsidenight with fade
     stop music
     play music nightsong loop
     "Man. It's been such a day. I don't even want my cereal anymore. I think I'm just gonna sleep now."
     scene bedroomnight with fade
     "It's only been a couple days...but I really have been enjoying my time here."
-    "I feel like I reall have gotten close with everyone!"
+    "I feel like I really have gotten close with everyone!"
     if aphflag == 6:
         "Especially with Aphmau..."
     elif katflag == 6:
@@ -4885,7 +4952,7 @@ label milkafter:
     else:
         "No one in particular though..."
     "i'm so excited to see what my future has in store!"
-    screen black with fade
+    scene black with fade
     if aphflag == 6:
         centered "{color=#fff}End of Act 1.{/color}" with dissolve
         jump aphroutestart
@@ -4917,6 +4984,8 @@ label milkafter:
         centered "{color=#fff}End of Act 1.{/color}" with dissolve
         jump zaneroutestart
     else:
+        jump badend1
+label badend1:
     scene bedroomday with fade
     stop music
     play music daysong2 loop
@@ -4934,7 +5003,68 @@ label milkafter:
     ty "Visit Aphmau's house...and you'll understand"
     hide tylernorm with dissolve
     "I seriously have got to do something about this guy."
-    
-
-
+    "I guess I should go visit [aph] and see what he's talking about...?"
+    scene aphdoorday with fade
+    "Woah, sounds like she's blasting music in there."
+    "Are the girls having a party...?"
+    window hide
+    play sound doorbell
+    pause (3.0)
+    "Where is she?"
+    window hide
+    pause (1.0)
+    show aphnorm with dissolve
+    a "GUYS! PIZZA'S HE-"
+    hide aphnorm
+    show aphsad
+    a "Oh! [lol]....hey...."
+    mc "Hey [aph]...uhhh...what's up?"
+    a "Uhh..nothing much...did you need something?"
+    mc "..are you throwing a party in there?"
+    a "Hm? Well..it's just a little get-together, I guess..."
+    show danlaugh at left with dissolve
+    d "THIS PARTY IS AWEESOMEEEEEEEE"
+    hide danlaugh
+    show danmad at left
+    d "Oh. [mcname]. Didn't expect to see you here."
+    mc "Hey Dante.."
+    show danmad:
+        xalign 0.0
+        linear 0.3 xpos 0.2
+    d "Aphmau...I thought we said we weren't inviting [mcname]...?"
+    a "I didn't invite them..! It must've been someone else..!"
+    show lucinorm at right with dissolve
+    lu "Hey guys, what's the holdu-"
+    hide lucinorm
+    show lucisad at right
+    lu "[mcname]! Heeyyyy!"
+    mc "You guys were throwing a party without me...?"
+    show katnorm at left with dissolve
+    k "Guys if i don't stuff pizza into my mouth right now I might die"
+    k "[mcname]!?"
+    a "Listen...[mcname]..."
+    d "None of us really know you like that..sooo..."
+    mc "What?? But yesterday...last night...you guys..."
+    k "We were just being polite..."
+    hide lucisad
+    show laurdis at right with new
+    la "Oh, [mcname] is here..?"
+    mc "I can't believe you guys...I thought we were all becoming friends..."
+    k "WE all are friends"
+    k "You? Well...you just moved here.."
+    mc "..."
+    d "Come on guys, let's go back to partying"
+    hide danmad
+    hide aphsad
+    hide katnorm
+    hide laurdis
+    with dissolve
+    "...."
+    scene black with dissolve
+    "I don't know what to say...I thought we were all friends...I thought they liked me..."
+    "After everything they said...that we did together...turns out it was just me who thought things were going good.."
+    "Maybe I should have listened to Tyler...maybe I should have been more careful with how I interacted with everyone..."
+    "I failed my operation.."
+    $ persistent.ending_nobody = True
+    centered "{color=#fff}Secret Ending 2: Nobody.{/color}" with dissolve
 return

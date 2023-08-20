@@ -1,10 +1,6 @@
 TO Do
 MISC
 
--main menu fix
--about screen
--erm?
-
 
 IMAGES
 
@@ -13,39 +9,43 @@ IMAGES
 -travis walk cg
 -kc walk cg
 -zane walk cg
--killer babez vs MICHAEL
--kc portrait
--nicole norm + sad sprite
 
--park noon
--lucidoor
--aphdoor
--guydoor
--zanedoor
--aardoor
--kat room
--kc room
--aphhome
+
+-zaneroom
+-luciroom
+-aphroom
+-aarroom
+-danroom
+-clovers bar
+
+-luciphonecall
+-zanephonecall
+-kcphonecall
+-aarphonecall
+-danphonecall
+-aphphonecall
+
 
 
 ROUTES:
 
-Luci- teony jealousy arc
+aph- mcd awareness
 zane - insecurity arc
-someone has to travel
+katelyn - has to travel
+aaron - gasleak
+laur - michi stalk arc
+
 
 
 flags:
     
-
-
-
 Katelyn:
     -talk to her and lucinda
     -support her
     -burger
     -milk
     -once
+    -ball
 
 
 Garroth:
@@ -63,6 +63,10 @@ Lucinda:
     - chilli fries
     - tell travis to drink
     -drink potion urself
+    -
+    -Dress up
+    -drink
+    -movie
 
 Aphmau:
     -Organize party

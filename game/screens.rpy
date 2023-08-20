@@ -558,7 +558,17 @@ screen about():
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("This is YOUR operation sweetheart.")
+            text _("Hello agent...welcome aboard to your new operation. Your Operation: SWEETHEART!!!")
+            text _(" ")
+            text _("You have just moved into a new neighbourhood in order to start fresh...but wouldn't you know, you just so happened to move into a neighbourhood filled with a vibrant and unique group of people!")
+            text _(" ")
+            text _("Talk to everyone, learn more about them, hang out, go on dates, laugh, cry...you make the calls in this operation.")
+            text _(" ")
+            text _("And if you play your cards right, maybe you'll find your sweetheart...")
+            text _(" ")
+            text _(" ")
+            text _("This is a fan-made game using Aphmau's characters from the Minecraft roleplay series Mystreet. I do not own any of the characters depicted in this game. This is a fun passion-project made by an Aphmau fan, for Aphmau fans.")
+            
 
 
 style about_label is gui_label
@@ -721,9 +731,30 @@ screen endings():
         vbox:
 
             if persistent.ending_karma == True:
-                text _("Secret ending 1: Karma's Embraces")
+                text _("Secret ending 1: Karma's Embrace")
             else: 
                 text _("YOU HAVEN'T UNLOCKED THIS ENDING YET!")
+            if persistent.ending_nobody == True:
+                text _("Secret ending 2: Nobody")
+            else: 
+                text _("YOU HAVEN'T UNLOCKED THIS ENDING YET!")
+            if persistent.ending_lucinda_lucky == True:
+                text _("Secret ending 3: Lucky!")
+            else: 
+                text _("YOU HAVEN'T GOTTEN LUCKY YET!")
+            if persistent.ending_lucinda_secret == True:
+                text _("Secret ending 4: Envy")
+            else: 
+                text _("YOU HAVEN'T UNLOCKED THIS ENDING YET!")
+            if persistent.ending_lucinda_good == True:
+                text _("Lucinda: GOOD ENDING")
+            else: 
+                text _("YOU HAVEN'T UNLOCKED THIS ENDING YET!")
+            if persistent.ending_lucinda_bad == True:
+                text _("Lucinda: BAD ENDING")
+            else: 
+                text _("YOU HAVEN'T UNLOCKED THIS ENDING YET!")
+            
 
 screen special_thanks():
 

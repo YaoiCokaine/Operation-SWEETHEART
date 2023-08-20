@@ -15,6 +15,7 @@ define q = Character("?",color="#FFFFFF")
 define qq = Character("??",color="#FFFFFF")
 define ty = Character("Tyler",color="#FFFFFF")
 define n = Character("Nicole",color="#FFFFFF")
+define te =Character("Teony",color="FFFFFF")
 
 
 define new = Dissolve(0.3)
@@ -45,6 +46,8 @@ define shitgetsserious = "audio/dream/vntrack10.mp3"
 define romance = "audio/dream/romance.mp3"
 define killerbabez = "audio/dream/vntrack09.mp3"
 define scarysong = "audio/dream/vntrack18.mp3"
+define sadsong = "audio/dream/vntrack21.mp3"
+define scarysong2 = "audio/dream/vntrack17.mp3"
 
 define aarlaugh = "audio/voice/AaronV/aarlaugh.mp3"
 define aartease = "audio/voice/AaronV/aartease.mp3"
@@ -176,8 +179,8 @@ init:
         "images/aphmau/aphsad.png"
         zoom 0.4
 init:
-    image aphscare:
-        "images/aphmau/aphscare.png"
+    image aphshock:
+        "images/aphmau/aphshock.png"
         zoom 0.4
 init:
     image aphlove:
@@ -363,13 +366,41 @@ init:
         "images/tyler/tylerbowl.png"
         zoom 0.4
 init:
+    image tylermovie:
+        "images/tyler/tylermovie.png"
+        zoom 0.4
+init:
     image laurshock:
         "images/laurence/laurshock.png"
         zoom 0.4
-
-
+init:
+    image teonynorm:
+        "images/other_chars/teonynorm.png"
+        zoom 0.4
+init:
+    image teonysad:
+        "images/other_chars/teonysad.png"
+        zoom 0.4
+init:
+    image teonyhappy:
+        "images/other_chars/teonyhappy.png"
+        zoom 0.4
+init:
+    image nicolenorm:
+        "images/other_chars/nicolenorm.png"
+        zoom 0.45
+init:
+    image nicolesad:
+        "images/other_chars/nicolesad.png"
+        zoom 0.45
 #backgrounds
-
+init:
+    image kcroom:
+        "images/Backgrounds/Old_EncoreRoomDay.png"
+        zoom 1.5
+init:
+    image mclivingroom:
+        "images/Backgrounds/Livingroom_Night.png"
 init:
     image kitchen:
         "images/Backgrounds/Kitchen_day.png"
@@ -445,6 +476,10 @@ init:
 init:
     image streetnoon:
         "images/Backgrounds/Street_Spring_Evening.png"
+init:
+    image Old_Street:
+        "images/Backgrounds/Old_Street.png"
+        zoom 1.5
 
 
 if aphchan == 1:
