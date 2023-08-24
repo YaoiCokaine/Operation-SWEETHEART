@@ -48,6 +48,7 @@ define killerbabez = "audio/dream/vntrack09.mp3"
 define scarysong = "audio/dream/vntrack18.mp3"
 define sadsong = "audio/dream/vntrack21.mp3"
 define scarysong2 = "audio/dream/vntrack17.mp3"
+define eeriesong = "audio/dream/vntrack09.mp3"
 
 define aarlaugh = "audio/voice/AaronV/aarlaugh.mp3"
 define aartease = "audio/voice/AaronV/aartease.mp3"

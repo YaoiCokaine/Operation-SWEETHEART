@@ -536,16 +536,22 @@ scene bedroomday with fade
 stop music
 play music daysong2 loop
 "Ooo, I feel the energy!"
+$ travhang = False
+$ kathang =False
+$ aarhang =False
 if lucimovie== True:
     "I should probably head over to Lucinda's house so we can watch that movie."
 else:
     "I should find something to do. Maybe I'll hang out with someone. I wonder who's available right now?"
     menu:
-        "Laurance":
-            "I'll go hang out with Laurance!"
+        "Travis":
+            $ travhang =True
+            "I'll go hang out with Travis!"
         "Katelyn":
+            $ kathang =True
             "I'll go hang out with Katelyn!"
         "Aaron":
+            $ aarhang =True
             "I'll go hang out with Aaron!"
 play sound doorbell
 "Huh...looks like someone's here. I wonder who it could be?"
@@ -571,9 +577,9 @@ menu:
 label mermer:
 if lucimovie==True:
     jump lucimovieevent
-elif laurhang ==True:
-    jump laurnomovie
-elif katehang==True:
+elif travhang ==True:
+    jump travnomovie
+elif kathang ==True:
     jump katenomovie
 elif aarhang==True:
     jump aarnomovie
@@ -678,6 +684,8 @@ label teonyinside:
                                             centered "{color=#fff}Secret Ending 4: Envy.{/color}" with dissolve
                                             return
 label lucimovieevent:
+    stop music
+    play music daysong2 loop
     scene aardoorday with fade
     play sound doorbell
     pause (1.5)
@@ -701,3 +709,434 @@ label lucimovieevent:
     mc "Ready as I'll ever be!"
     scene black with fade
     "We finished the trilogy.."
+    scene luciroom with fade
+    stop music
+    play music noonsong loop
+    show lucismirk with dissolve
+    lu "Woah! That was creepy."
+    lu "I was a bit confused during the 3rd movie...it turns out that Final Girl is a long lost 'Killer Babe'?  What does that even mean?"
+    lu "We still have some time before we should head out to the forest, anything you wanna talk about?"
+    menu:
+        "Talk about love":
+            mc "Let's talk about love!"
+            lu "Ooo, interesting topic."
+            lu "What about love?"
+            mc "Mmm..do you have a crush on anyone..?"
+            lu "Hey, weren't we talking about this at the bar yesterday?"
+            mc "We were...before Aphmau got drunk."
+            hide lucismirk
+            show lucisad
+            lu "Right..."
+            hide lucisad
+            show lucinorm
+            lu "Well....maybe I do...maybe I don't.."
+            lu "There is definitely a person I know that's catching my eye~"
+            "Is she talking about me? Or Teony...?"
+            lu "What about you? Do you have anyone you like?"
+            menu:
+                "Yes":
+                    $ luciflag +=1
+                    mc "Haha...maybee..."
+                    mc "There is someone I like more than others.."
+                    $ renpy.notify("Lucinda's glad she has a chance with you!")
+                    lu "Interesting...good to know."
+                "No":
+                    mc "No, don't think so."
+                    lu "Oh...um. Alright.."
+        "Talk about witchcraft":
+            mc "Let's talk about witchcraft!"
+            lu "Ooo! You know how I love my witchcraft."
+            mc "Soo..how did you get into all that?"
+            lu "Well, it was just something I was really into when I was younger."
+            lu "I spent a lot of time practicing my spells and potions"
+            mc "What do you use them for?"
+            lu "Oh, nothing crazy. Just like, world domination, whatever,"
+            lu "Hah! Just kidding. Yeah, I don't really do anything absurd."
+            lu "Say, how would you like to learn some stuff under me?"
+            menu:
+                "Yes":
+                    $ luciflag +=1
+                    mc "I'd love to!"
+                    hide lucinorm
+                    show lucismirk
+                    $ renpy.notify("Lucinda's excited to teach you!")
+                    lu "Awesome! I'll be the greatest teacher ever, who knows, maybe you'll be naturally gifted?"
+                    mc "We'll have to see~"
+                "No":
+                    mc "Oh fuck no I hate witchcraft"
+                    lu "oh"
+                    lu "Well, you were the one that wanted to talk about it..."
+        "Talk about Teony":
+            mc "Let's talk about Teony!"
+            lu "Oh, Teony! She's so awesome."
+            lu "I've really been catching up with her, I still really can't believe that she's here."
+            mc "Uh huh..."
+            lu "She is super nice! Man, I really wish she came with all of us when we moved here...but I guess she's living her own life."
+            lu "Why are you asking about her?"
+            menu:
+                "I like her":
+                    mc "I just think she's cool! We haven't talked much..but if she's a friend of yours, she's a friend of mine."
+                    if teonytalk == False:
+                        "Knowin i was frontin"
+                    $ luciflag +=1 
+                    $ renpy.notify("Lucinda's glad you like Teony!")
+                    lu "She is great! I really think you'd guys would get along."
+                    lu "I'd love it for my girls to be friends~"
+                    "Hehe...I am her girl..."
+                "I don't mind her":
+                    mc "Just wanted to know. She's fine...I guess, I don't mind her."
+                    hide lucismirk
+                    show lucinorm
+                    lu "...right."
+                    lu "You always act weird when we talk about Teony.."
+                    mc "..."
+    lu "Anyway, I think this is a good time to head to that forest."
+    lu "I told Dante where to go, he might be waiting there for us. Come on"
+    jump forestbitch
+label travnomovie:
+    if teonytalk ==True:
+        stop music
+        play music daysong2 loop
+    scene travroom with fade
+    show travnorm with dissolve
+    t "[mcname]! What's good?"
+    mc "Hi Travis! What are you up to?"
+    t "Nothing. I'm just planning how I'm gonna ask Katelyn out this week"
+    mc "Oh? I didn't know you liked Katelyn!"
+    t "Ya, I'm trying to optimize this ask-out. Everytime I try to ask her to go on a date, she always get's angry!"
+    hide travnorm
+    show travsad
+    t "Makes me wonder...what is the common factor between everytime I've asked her out?"
+    "Oh he doesn't know..."
+    t "I've tried extravagant proposals and simple ones too. None of them seem to work, though."
+    t "I even turned to Dante for advice, but he just said that I need to make myself more attractive for her."
+    hide travsad
+    show travflirt
+    t "But, and I don't know if you know this, I'm already incredibly attractive! How does one get any hotter than this?"
+    t "It's like saying the sun isn't warm enough, that's just not true"
+    hide travflirt
+    show travnorm
+    mc "Right."
+    t "[mcname], tell me, what do you think I should do?"
+    menu:
+        "Katelyn is not interested":
+            mc "Travis, I don't know how to tell you this, but YOU'RE the common factor"
+            hide travflirt
+            show travshock
+            t "Huh? What's that supposed to mean"
+            mc "It means she does not like you AT ALL. There is nothing you could do that would make her agree to going out with you"
+            t "...okay What would you know?? You don't know Katelyn like I do!"
+            mc "No but Travis I can assure you on this"
+            t "..."
+            hide travshock
+            show travsad
+            play sound travcry
+            t "WHYYYYYYYYYYYYYY. WHYY WON'T SHE LOVE MEEEEEEEE" with hpunch
+            "Oh my god he's crying"
+            mc "It's okay Travis! There are other people out there for you! I'm sure!"
+            play sound travcry
+            t "BUT I NEED KATELYYYNNNNNNN"
+            mc "It's okay Travis you'll be fine"
+            t "...*sniff*..*sniff*...."
+        "Play hard to get":
+            mc "You should try playing hard to get!"
+            t "...keep going.."
+            mc "What you need to do is get a partner, and make sure Katelyn knows about it, because she'll be super jealous!"
+            t "Woah, you think that'd really work??"
+            mc "Uh huh! I think she just doesn't realize how awesome you are, but she will once she sees you're in high demand.."
+            t "Wow! You're right! That's an awesome plan.."
+            t "You're quite the advice-giver, [mcname]! You give Dante a run for his money!"
+            mc "Trust me. Katelyn won't stop thinking about you once she sees you're taken"
+            t "Definitely. Now, where would I find someone willing to date me short-term..."
+            hide travnorm
+            show travflirt
+            t "...I don't suppose you-"
+            mc "no"
+            hide travflirt
+            show travshock
+            t "Uh huh yeah I can respect that"
+            hide travshock
+            show travnorm
+            t "You know what? Teony's back in town for a bit, I think I'll ask her to go out with me!"
+            mc "That...works perfectly actually yeah I think you should try that"
+            t "Thanks for your advice, [mcname]. You could start a business like this"
+            mc "I don't think I will no"
+    show lucitxt2 with easeinbottom
+    "Whoops, looks like it's forest time.."
+    mc "I gotta go, Travis. Let's talk again sometime."
+    jump forestbitch
+label katenomovie:
+    if teonytalk==True:
+        stop music
+        play music daysong2 loop
+    scene katroom with fade
+    show katnorm with dissolve
+    k "Oh, [mcname], hi. What's up?"
+    mc "Hi Katelyn! What are you up to?"
+    k "Ummm....it's nothing..."
+    mc "Sounds like something's bothering you...everything okay?"
+    k "Well..."
+    k "You know Travis, right?"
+    mc "Sometimes I wish I didn't"
+    k "It's just..."
+    k "He keeps asking me out and isn't getting the hint that I do not want him at all."
+    mc "Can you not just tell him that you're not into him?"
+    k "I've tried, but then he does this thing where he get's super sad and I feel bad.."
+    mc "Has he been harrassing you??"
+    k "No, not harrassment...it's just..I think he thinks I'm trying to play hard to get when really I just do not want this guy"
+    mc "Hmm, that does sound pretty annoying.."
+    k "It really is! I don't know how to hit it home for him that I don't like him that way without hurting his feelings."
+    k "He's still my friend...somewhat.."
+    k "You have any idea what I could do?"
+    menu:
+        "Be honest with him":
+            mc "Katelyn, the best thing you can do is just be honest with him. Even if it hurts his feelings..."
+            k "How would I even go about doing that?"
+            mc "Well, I guess just...talk to him?"
+            mc "Let him know that you're flattered but you only see him as a friend"
+            mc "He'll be hurt for a bit, but it's better than him consistently thinking he has a shot with you."
+            k "..."
+            hide katnorm
+            show katsmile
+            k "You're right. I should just talk to him. Can't be that hard, right?"
+            mc "Right!"
+            k "I just hope we can continue being friends after. I'd hate to completely lose him over something stupid.."
+            mc "Don't worry, he cares about you a lot, obviously. You won't lose him"
+            k "Thanks, [mcname]"
+            play sound katlaugh
+            k "You're really good at giving advice, y'know? Hah! Maybe I could stop seeing my therapist now that you're here.."
+            mc "No I really don't think you should do that"
+        "Pity date him":
+            mc "I think you're only option is to give in..."
+            hide katnorm
+            show katdis
+            k "...really?"
+            mc "You should date him out of pity, I think."
+            mc "Just so that like...y'know....you don't hurt his feelings."
+            k "..then what about me?"
+            mc "...idk, suck it up?"
+            hide katdis
+            show katmad
+            k "I'm not just gonna 'suck it up'!"
+            mc "Well shit what do you wanna do"
+            hide katmad
+            show katdis
+            k "Well, definitely not what you tell me, you suck with advice."
+            mc "It's not that bad of an idea! Just pretend you like him, then break it off after a week."
+            k "That's...that's awful."
+            mc "Is it really?"
+            k "YES yes it is. I don't want to hurt Travis.."
+            mc "I mean hey it's your funeral"
+            k "Genuinely you should never give anyone advice ever again like"
+            mc "And you'll think back on this when you're 50 years old and Travis is still bothering you..."
+            t "[mcname] I think you should go"
+    show lucitxt2 with easeinbottom
+    "Whoops, looks like it's forest time.."
+    mc "Well, I gotta go, see ya around, Katelyn!"
+    jump forestbitch
+label aarnomovie:
+    if teonytalk==True:
+        stop music
+        play music daysong2 loop
+    scene aaroom with fade
+    show aarnorm with dissolve
+    ar "[mcname]? How'd you get into my house?"
+    mc "Don't worry about it"
+    play sound aarsure
+    ar "Okay um. What's up?"
+    mc "Just wanted to see what you were up to! I need to kill some time"
+    ar "Ohhh...well, i'm just pondering.."
+    mc "What are you thinking about?" 
+    hide aarnorm
+    show aarsad
+    ar "Well...I'm just...a bit worried for Aphmau."
+    ar "I'm not sure if you know, but she's been acting weird recently."
+    ar "She keeps talking about how 'everything is fake'? That this world we're in isn't real and that we need to 'wake up'?"
+    mc "Yeah I've seen it.."
+    ar "Something about how i'm the Lord of Falcon Claw???"
+    mc "What is Falcon Claw?"
+    ar "It's the university we went to, I just...I don't know what she's talking about!"
+    ar "And she seems very frantic too. She's just been acting very different."
+    mc "That is really weird, I just assumed that was normal for her..."
+    ar "No, it only started recently..."
+    ar "I don't know what to do. Should I say something?"
+    menu:
+        "Leave her alone":
+            mc "I think it's best if we just leave her alone for now..."
+            ar "Really?"
+            mc "I'm sure she'll go back to normal soon enough."
+            mc "Maybe she's like, got something going on, we wouldn't want to bombard her during a hard time, y'know?"
+            ar "You're right...I don't want to hurt Aphmau. I'm just worried, we all are, really"
+            mc "I usually am right yea"
+        "Confront Her":
+            mc "I think you should confront and check in on her..."
+            mc "If she's going through something, it's best that you're able to be there for her and show her she has people that care."
+            ar "Yeah...that's what I was thinking.."
+            mc "And you two are close, right? I'm sure she'll listen and talk to you"
+            hide aarsad
+            show aarsmile
+            ar "You're right. Aphmau is one of my closest friends, I don't know why I'm so scared to talk to her."
+    hide aarsad
+    hide aarsmile
+    show aarshock
+    ar "But seriously, what could have caused this?"
+    mc "Maybe it's her evil twin!"
+    hide aarshock
+    show aarmad
+    ar "This isn't the time to joke..."
+    hide aarmad
+    show aarshock
+    ar "It's weird, I know it's Aphmau, but it feels like...a different Aphmau. She talks like she's from another universe or something."
+    ar "She keep's telling me to 'remember it all'. She's just been so weird around everyone!"
+    show lucitxt2 with easeinbottom
+    "Whoops, looks like it's forest time.."
+    mc "I'd love to talk about this, Aaron, but I gotta go now. Good luck with Aphmau!"
+    jump forestbitch
+label forestbitch:
+stop music
+play music noonsong loop
+if lucimovie ==True:
+    scene darkforest with fade
+    show danmad with dissolve
+    show lucinorm at left with dissolve
+    lu "We're heeerre~!"
+else:
+    scene darkforest with fade
+    show danmad
+    show lucinorm at left
+    with dissolve
+    lu "There you are, [mcname]"
+d "Final-fucking-ly! I've been waiting here all day!"
+mc "Oh, don't be dramatic"
+d "no like I've literally been here since morning I had nothing to do"
+mc "Oh wow I don't know what to say about that"
+lu "Okay, now that we're all here, can we go in?"
+hide danmad
+show dannorm
+d "Alright! Let's do this!"
+scene darkforest2 with fade
+stop music
+play music eeriesong loop
+show lucismirk with dissolve
+lu "Wooahh...I'm already feeling the spirits..."
+show danmad at left with dissolve
+d "ARE YOU JOKING ?"
+lu "Uhh...I guess?"
+d "Right. Yeah cuz ghosts arent real right ahaha"
+lu "Okay Dante"
+mc "This place IS really creepy though.."
+lu "But that's what's so cool about it!"
+lu "So..you guys think we'll find anything creepy? Like a dead body or something...?"
+d "Guys I think I just shit my pants"
+mc "Oh my god Dante what the fuck"
+d "I'm sorry guys I've never done this before"
+hide lucismirk
+show lucisad
+lu "it's okay, Dante..let's just keep looking."
+lu "And stay at least 6ft away from us two."
+d "Uh huh.."
+mc "Wait! Guys, I found something.."
+mc "It's a letter!"
+lu "Let me see?"
+scene luci_forest_cg with fade
+pause (2.0)
+lu "The writing is a bit messy, like it was rushed..."
+lu "This also looks like it was written with dirt? Or mud?"
+mc "What does it say?"
+d "Lucinda if you start speaking Latin I'm getting the fuck out of here"
+lu "calm down Dante. Let's see.."
+lu "It just says 'I cannot run' over and over again..."
+d "Oohhmmy god we're gonna die"
+mc "No one's dying, Dante!"
+scene darkforest2 with fade
+show lucismirk with dissolve
+lu "[mcname], should we take this letter with us?"
+menu:
+    "Yes":
+        mc "Absolutely! It's super cool!"
+        $ luciflag +=1
+        $ renpy.notify("Lucinda likes that you think it's cool!")
+        lu "Exactly! I knew you'd get me."
+    "No":
+        mc "Absolutely not, thats either haunted or covered in STD's or both"
+        hide lucismirk
+        show lucisad
+        lu "Ugh. You're boringg."
+play sound wail
+window hide
+pause 
+show danscare at left with dissolve
+play sound dancry
+d "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" with hpunch
+hide lucismirk
+hide lucisad
+show lucinorm
+lu "Dante! Why are you screaming!"
+d "DID YOU NOT HEAR THAT??"
+play sound wail
+window hide
+pause
+d "OH MY FUCKING GOD WE'RE GONNA DIE"
+d "I'M GONNA DIE WITHOUT TASTING PUUSSYYYYYYY"
+mc "DANTE! NO ONE'S DYING!"
+hide lucinorm
+show lucievil
+lu "Let's follow that sound!"
+d "NOoOoOooOOoOOOoOoOOOO"
+scene black with dissolve
+lu "It sounded like it was coming from here?"
+mc "Is this a good idea...?"
+d "Guys the pee is trickling down my pants right now"
+lu "Dante we're gonna leave you here"
+play sound wail
+mc "Hold on...I think I hear it here..behind this tree..."
+scene garrancetree with fade
+mc "GARROTH!? LAURANCE!?"
+g "Errrr....Nope! You're hallucinating"
+lu "I don't think we are?"
+g "You're dreaming! This is a dream!"
+la "Garroth...drop it..."
+scene darkforest3 with fade
+show garsad:
+    xalign 0.0
+    xpos 0.25 ypos 60
+show laursad:
+    xpos 0.4 ypos 60
+with dissolve
+g "Well...erm...this is awkward..."
+show danmad at left with dissolve
+d "Dude! Garroth! You told me you were busy today because of a date!"
+show lucisad at right with dissolve
+lu "Dante, I don't think he was lying about that..."
+play sound danhuh
+d "Huh..?"
+d "OHhhhh"
+la "Yeahh.."
+d "...actually i'm not shocked at all honestly"
+lu "Yeah now that I'm thinking about it this was kind of expected"
+hide laursad
+show laurshock:
+    xpos 0.4 ypos 60
+hide garsad
+show garshock:
+    xalign 0.0
+    xpos 0.25 ypos 60
+la "Wait, what?"
+mc "Yeah no I'm seeing it now yea"
+lu "Well like...you two are inseperable like we could tell"
+d "Hey man I've been shipping you guys for a while now actually"
+g "Wait, so you guys knew!?!"
+mc "Well like...I guess we kind of just figured..."
+play sound lauruhh
+la "Wow. Uhh. Then yeah me and Garroth are dating I guess"
+g "You guys don't care?"
+hide danmad
+show dannorm at left
+d "Come on, why would we care?"
+hide lucisad
+show lucinorm at right
+lu "Seriously why would I"
+hide garshock
+show garshock:
+    xalign 0.0
+    xpos 0.25 ypos 60

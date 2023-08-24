@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/lucinda.rpy", line 532: expected statement.
-    (2.0)
-         ^
+File "game/lucinda.rpy", line 778: choice menuitem expects a non-empty block.
+    "I don't mind her":
+                       ^
 
 Ren'Py Version: Ren'Py 8.0.1.22070801
-Sun Aug 20 12:48:54 2023
+Sun Aug 20 17:23:50 2023

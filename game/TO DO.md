@@ -25,6 +25,9 @@ IMAGES
 -danphonecall
 -aphphonecall
 
+-luci text msg bar
+-luci text msg forest
+
 
 
 ROUTES:

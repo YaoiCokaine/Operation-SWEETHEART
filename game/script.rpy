@@ -62,7 +62,7 @@
             show aphlove 
             hide aphnorm 
             play sound aphperf
-            a "Terrific! I'm a pretty great party planner. This is gonna be awesome!"
+            a "Perfect! I'm a pretty great party planner. This is gonna be awesome!"
             hide aphlove 
             show aphnorm
             a "You can get settled in and we can discuss details later. Here! This is my number."
@@ -260,11 +260,14 @@ label choices1cont:
     if aphparty == True:
         "I guess I should call Aphmau to discuss some stuff...I hope she isn't busy!"
         "It's dialing...."
+        show aphphonecall with easeinleft
         a "Hello?"
         mc "Hi Aphmau! I was just calling because I wanted to talk about the party"
         a "Ooo, that's right! You don't have to worry at all about decorations and inviting people, I've got that completely covered! You just think about the food and drinks"
         mc "Oh, alright then! Thanks for everything!"
         a "Anytime! Now, I've gotta get back to what I was doing. I'll pop by tomorrow afternoon to help set up! Bye byeee!"
+        hide aphphonecall with easeoutleft
+        play sound hangup
         "Glad to know she's got all of that taken care of"
         "Food and drinks...I could make some pasta for everyone!"
     if aphparty == False:
@@ -334,7 +337,7 @@ label choices1cont:
     stop music
     play music daysong2 loop
     play sound laurokay
-    q "The floor here is slippery, you should be careful"
+    q "You okay? The floor here is slippery, you should be careful"
     mc "Yeah no I got that"
     la "My name is Laurance, by the way."
     mc "I'm [mcname]...thanks for helping me up"
@@ -386,7 +389,7 @@ label choices1cont:
     a "I'd like to be!"
     mc "Well then..I'd also like to support you! As a friend!"
     play sound aphperf
-    a "Hehe, great! I love making new friends"
+    a "Hehe, perfect! I love making new friends"
     scene houseinsidedecor with fade
     show aphnorm with dissolve
     a "Alright! This party is gonna be a hoot and a holler!"
@@ -516,7 +519,7 @@ label choices1cont:
     show garnorm at left
     g "Oh, we also have a 4th buddy, Travis, but he's just running a bit late!"
     la "He said he's doing something important right now?"
-    d "I bet he's suckin cock"
+    d "I bet he's suckin dick"
     hide laurnorm
     show laurdis
     la "Dude?"
@@ -584,7 +587,7 @@ label choices1cont:
     mc "Right! You're with Laurance and those guys!"
     t "Yeah..! Sorry...I ran here..."
     mc "What were you doing before you got here?"
-    t "Suckin cock"
+    t "Suckin dick"
     mc "Oh"
     play sound travlaugh
     t "Haha jk. Was working on a fanfic"
@@ -1580,7 +1583,7 @@ label lucikatbowl:
             mc "Um...I'll get something else.."
             ty "Right, one Make-A-Choice Xtremity for you"
             mc "What? I didn't even order-"
-            "It's what we give to our particularly non-decisive customers"
+            ty "It's what we give to our particularly non-decisive customers"
             menu:
                 "Fuck you bitch":
                     $ tylermean += 1
@@ -4655,6 +4658,7 @@ label askguy:
     label travroomawyeah:
     scene travroom with fade
     $ travflag +=1
+    $ renpy.notify("Travis enjoys your company!")
     show travnorm with dissolve
     if mcdrink==True:
         t "[mcname]! Hey! You uhh..you feeling better?"
