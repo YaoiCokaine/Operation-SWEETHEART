@@ -1137,6 +1137,84 @@ hide lucisad
 show lucinorm at right
 lu "Seriously why would I"
 hide garshock
-show garshock:
+show garnorm:
     xalign 0.0
     xpos 0.25 ypos 60
+play sound garawesome
+g "Aww, you guys! I'm so glad to have such awesome friends!"
+lu "You know what I don't even really feel like being in this forest anymore how about we all leave"
+mc "Yeah.."
+scene darkforest with fade
+stop music
+play music nightsong loop
+show garnorm at left
+show laurnorm at right
+with dissolve
+la "Well, we're going home now."
+g "See you guys tomorrow!"
+hide garnorm
+hide laurnorm
+with dissolve
+show dannorm at left
+show lucinorm at right
+with dissolve
+d "Well, that wasn't so bad, right guys?"
+lu "Dante we're never hanging out again"
+d "Yeah I figured"
+d "Well, I'm gonna go buy some new pants, these ones are SEVERELY stained"
+d "See ya!"
+hide dannorm with dissolve
+show lucinorm at center with ease
+lu "That guy..."
+"The moon is shining so bright tonight...I think it's time..time that I confess my love for Lucinda!"
+mc "Lucinda, there's something I need to tell you before we go..."
+lu "What's up?"
+mc "Lucinda...I...I....I LOVE YOU!"
+lu "Woah mama"
+mc "And right now I am asking you to be my girlfriend! In sickness and in health!"
+lu "..."
+if luciflag==11:
+    jump lucigoodend
+else:
+    jump lucibadend
+label lucigoodend:
+lu "Wow...this is.."
+lu "Are you being serious?"
+mc "Yeas..."
+lu "Haha...well.."
+lu "I guess I should tell you I like you too.."
+mc "REALLY ?"
+lu "I mean, I don't know, I've just always felt more strong about you than anyone else ever since you came here."
+mc "Wow.."
+scene lucinda_end_cg with fade
+lu "I think you're amazing, [mcname]. I'll happily be your girlfriend"
+scene white with dissolve
+centered "{color=#000}Lucinda: GOOD END{/color}" with dissolve
+$ persistent.ending_lucinda_good = True
+return
+label lucibadend:
+lu "Are you..joking?"
+mc "N-no! I really do like you.."
+hide lucinorm
+show lucisad
+lu "[mcname]...I don't know how to tell you this..."
+mc "What?"
+show teonynorm at left with dissolve
+te "Hey Lucinda! Are you done now?"
+mc "Teony!?"
+te "Hi [mcname]! I'm here to pick up Lucinda."
+lu "[mcname]...Teony and I are...well, together."
+mc "..no...."
+te "I got our reservation Lucinda. Do you wanna buy matching outfits before or after dinner?"
+mc "No..."
+lu "We can get them after, Teony. Let's go..."
+hide teonynorm 
+hide lucisad
+with easeoutleft
+"..."
+"I can't believe it...Teony got to her before I did...she caught me lacking..."
+"I...I failed my operation..."
+scene black with fade
+centered "{color=#fff}Lucinda: BAD END{/color}" with dissolve
+$ persistent.ending_lucinda_bad = True
+return

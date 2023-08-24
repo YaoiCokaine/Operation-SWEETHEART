@@ -4,11 +4,12 @@ MISC
 
 IMAGES
 
--zane theatre cg
 -luci rest cg
 -travis walk cg
 -kc walk cg
 -zane walk cg
+-luci forest cg
+-luci win cg
 
 
 -zaneroom
@@ -17,6 +18,7 @@ IMAGES
 -aarroom
 -danroom
 -clovers bar
+-3 forests
 
 -luciphonecall
 -zanephonecall
@@ -24,6 +26,7 @@ IMAGES
 -aarphonecall
 -danphonecall
 -aphphonecall
+-garrance
 
 -luci text msg bar
 -luci text msg forest
