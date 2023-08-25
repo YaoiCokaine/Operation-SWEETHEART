@@ -1,19 +1,24 @@
 TO Do
 MISC
 
+kat route:
+
+-tmrw; kat rehearsal vs hang out branch
+-dinner
+-emo
+-final show
+-emo
+-end
 
 IMAGES
 
--luci rest cg
 -travis walk cg
--kc walk cg
 -zane walk cg
 -luci forest cg
 -luci win cg
 
 
 -zaneroom
--luciroom
 -aphroom
 -aarroom
 -danroom
@@ -26,10 +31,11 @@ IMAGES
 -aarphonecall
 -danphonecall
 -aphphonecall
--garrance
+-garrancetree
 
--luci text msg bar
--luci text msg forest
+-lucibartext
+-lucitxt2 (forest)
+-kattxt 
 
 
 
@@ -61,18 +67,6 @@ Garroth:
     -ice cream
     -ice cream
     -good opinion
-
-Lucinda:
-    -Start new
-    -talk to her and katelyn
-    -support her
-    - chilli fries
-    - tell travis to drink
-    -drink potion urself
-    -
-    -Dress up
-    -drink
-    -movie
 
 Aphmau:
     -Organize party
@@ -129,3 +123,16 @@ Laurence:
     -veverythign pizza
     - good opinion
     -milk
+
+
+Lucinda:
+    -Start new
+    -talk to her and katelyn
+    -support her
+    - chilli fries
+    - tell travis to drink
+    -drink potion urself
+    -
+    -Dress up
+    -drink
+    -movie

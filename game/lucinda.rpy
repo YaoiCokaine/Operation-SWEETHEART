@@ -321,7 +321,7 @@ label event1after:
     "I can't tell if I'm just waking up super late or if the days are super duper short"
     "I've been asking but I wonder what I could do now?"
     "Oh, I just got a text message from Lucinda..."
-    lu "Pull up @ Clover's Bar. Let's have a fun night!"
+    show lucibartext with easeinbottom
     "WOOHOOOOOO!! Lucinda wants to hang out!!!"
     "I gotta rush to this Clover's Bar place."
 scene cloversbar with fade
@@ -452,7 +452,7 @@ ty "Yeah you're right"
 hide tylerwaiter with dissolve
 lu "Mm. You know once you have this dumpster mix so many times it starts to tase kind of good"
 mc "Yeah no I'm throwing this out"
-hide lucinorm
+hide lucisad
 show lucismirk at right
 lu "So, guys, let's talk. Is there anyone ~special~ on our minds?"
 mc "W-what do you mean by special...?"
@@ -1182,6 +1182,8 @@ lu "Wow...this is.."
 lu "Are you being serious?"
 mc "Yeas..."
 lu "Haha...well.."
+hide lucinorm
+show lucismirk
 lu "I guess I should tell you I like you too.."
 mc "REALLY ?"
 lu "I mean, I don't know, I've just always felt more strong about you than anyone else ever since you came here."
