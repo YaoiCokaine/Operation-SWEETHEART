@@ -3496,6 +3496,9 @@ label tylersecretend:
     mc "Wh- yeah, I remember..."
     ty "But you've been mean to me. Really Really mean to me. I don't like that"         
     mc "What? Dude, you're creeping me out"
+    ty "I hope I am!"
+    hide tylernorm
+    show tylergun
     ty "I hope I am! Because I'm about to kill you right now."
     mc "WHAT!?"
     ty "Yeah"
@@ -4589,9 +4592,9 @@ label askguy:
     play sound danhuh
     d "Why wouldn't I be?"
     mc "Dante you're drinking years-old milk that is 'derived from angel skin' there's gotta be like ecstasy or something in there"
-    d "I don't know, I don't think McDonald's would put ecstasy in their milk,"
-    mc "YOU GOT IT FROM MCDONALDS ?"
-    d "Well, you know the guy behind the McDonald's? Says he's part of the FBI?"
+    d "I don't know, I don't think MaccyDonald's would put ecstasy in their milk,"
+    mc "YOU GOT IT FROM MACCYYDONALDS ?"
+    d "Well, you know the guy behind the MaccyDonald's? Says he's part of the FBI?"
     mc "Dante I don't want to talk about the milk anymore"
     d "Yeah this happens a lot"
     hide danmad

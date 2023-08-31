@@ -1,5 +1,8 @@
 TO Do
 MISC
+snore sound
+wail sound
+pour sound
 
 kat route:
 
@@ -13,31 +16,10 @@ kat route:
 IMAGES
 
 -travis walk cg
--zane walk cg
 -luci forest cg
 -luci win cg
-
-
--zaneroom
--aphroom
--aarroom
--danroom
--clovers bar
--3 forests
-
--luciphonecall
--zanephonecall
--kcphonecall
--aarphonecall
--danphonecall
--aphphonecall
--garrancetree
-
--lucibartext
--lucitxt2 (forest)
--kattxt 
-
-
+-tylergun
+-alleyway
 
 ROUTES:
 
@@ -46,8 +28,6 @@ zane - insecurity arc
 katelyn - has to travel
 aaron - gasleak
 laur - michi stalk arc
-
-
 
 flags:
     
