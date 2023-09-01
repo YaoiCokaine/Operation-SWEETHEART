@@ -6,7 +6,6 @@ pour sound
 
 kat route:
 
--tmrw; kat rehearsal vs hang out branch
 -dinner
 -emo
 -final show
@@ -18,8 +17,14 @@ IMAGES
 -travis walk cg
 -luci forest cg
 -luci win cg
+
+-kat bella sprites
+-assistant
+
 -tylergun
 -alleyway
+-stage
+-stage top
 
 ROUTES:
 

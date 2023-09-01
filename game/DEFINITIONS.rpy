@@ -15,7 +15,8 @@ define q = Character("?",color="#FFFFFF")
 define qq = Character("??",color="#FFFFFF")
 define ty = Character("Tyler",color="#FFFFFF")
 define n = Character("Nicole",color="#FFFFFF")
-define te =Character("Teony",color="FFFFFF")
+define te =Character("Teony",color="#FFFFFF")
+define ass =Character("Assistant",color="#FFFFFF")
 
 
 define new = Dissolve(0.3)

@@ -41,7 +41,7 @@ mc "WHAT? WHAT?"
 k "Okay, so, 2 weeks ago, I was the lead role for this musical, and apparently, there was a talent agent in the audience!"
 k "She said she loved my work and is considering scouting me!"
 mc "OH MY GOD! Katelyn, that's awesome!!"
-k "Yes! Oh my god, I worked so hard for this, they're saying we're gonna perform it again soon in a much bigger venue!!"
+k "Yes! Oh my god, I worked so hard for this, they're saying we're gonna perform it again soon in a much bigger theatre!!"
 mc "Seriously, Katelyn, I'm so happy for you! What's the play about?"
 k "It's a musical adaptation of the Midnight saga!"
 mc "Do you mean Twilight..?"
@@ -521,8 +521,199 @@ label lucihomehang:
     "Might as well head to the dinner..."
     jump katdinner
 label katrehearsal:
-    
-
+    scene stage with fade
+    "Hmm..seems like this is the place.."
+    show tylerdirect with dissolve
+    ty "Sorry, this is a closed rehearsal, you can't be here"
+    mc "You're? The director?"
+    ty "I've always had a passion for the arts"
+    show bellanorm at left with dissolve
+    k "It's okay, Tyler, they're with me."
+    mc "Katelyn! Wow, is that your costume?"
+    k "Yeah, it's nothing special..."
+    menu:
+        "You look nice":
+            $ katflag +=1
+            mc "It looks great on you, Katelyn."
+            hide bellanorm
+            show bellasmile at left
+            $ renpy.notify("Katelyn appreciates the compliment!")
+            k "Thanks, [mcname]!"
+        "You look stupid":
+            mc "Hahaaaaa you look stupid"
+            k "Wow.....okay"
+    ty "Alright enough chit chat! Let's do the 3rd scene everyone!"
+    ty "You can...uh..sit here and watch, I guess. No speaking!"
+    mc "Oka-"
+    ty "Aht aht! What did I say?"
+    mc "....?"
+    ty "Alright, Katelyn, you ready?"
+    k "Yes sir!"
+    ty "Alright where is Jacob?"
+    mc "Who's Jacob?"
+    ty "That's our actor for Tedward."
+    mc "Haha your actor for Tedward is named Jacob ahaha"
+    ty "Why is that funny"
+    mc "Nevermind"
+    ty "Seriously! Where is Jacob!?"
+    show assistant at right with dissolve
+    ass "Um...we don't know..."
+    ty "He's MISSING?! We perform tomorrow!"
+    hide bellanorm
+    hide bellasmile
+    show bellashock at left
+    k "TOMORROW!?!?"
+    ty "Oh, right, yeah, forgot to mention that"
+    k "Oh my god.....oh my god....."
+    mc "It's okay, Katelyn, you'll bne great!"
+    hide bellashock
+    show bellasmile at left
+    k "Right...i've practiced a lot...it'll be fine!"
+    ty "Okay we still need someone to do Tedward's lines right now"
+    ass "I would find his understudy but...he's...gone too....."
+    ty "Omfg what if i fire you"
+    ass "NO PLEASE I WILL GET EVICTED FROM MY HOME"
+    menu:
+        "Offer to stand in":
+            jump standin
+        "Suggest the Assistant does it":
+            jump standout
+label standin:
+    $ katflag +=1
+    mc "Um, I can!"
+    ty "What? Do you even know the lines?"
+    mc "I can just read off the script..."
+    ty "..you know what sure that works"
+    $ renpy.notify("Katelyn loves that you're helping!")
+    k "Awesome! Let's do this."
+    scene stagetop with fade
+    show bellanorm with dissolve
+    "Gotta channel my inner Edw-I mean Tedward.."
+    ty "AAnnnndddd...ACTION!"
+    k "You're impossibly fast. And strong. Your skin is pale-white, ice-cold. Your eyes change color. And sometimes you speak like... you're from a different time..."
+    mc "Mhm yeah I have been doing all that"
+    ty "Let's cool it on the improv"
+    k "How old are you...?"
+    mc "Uhhhh seventeen"
+    k "How long have you been seventeen...."
+    mc "..a while.."
+    k "I know what you are...."
+    mc "Say it! Say it outloud!"
+    k "...a VAMPIRE!"
+    ty "OOOOO THAT WAS GOOOD! That was good."
+    mc "Really?"
+    ty "Oh no not you you sucked, Katelyn! That was awesome."
+    k "Thanks, sir"
+    ty "Alright let's do a quick lighting check. Tedward? Can you say 'I'm a massive shithead and no one likes me'"
+    mc "I don't think that's part of the script?"
+    ty "Yes it is it's in the prologue can you just say it"
+    k "He's messing with you, let's get down."
+    scene stage with fade
+    show tylerdirect with dissolve
+    ty "ALright! Everyone! Take 10! I need to pee"
+    hide tylerdirect with easeoutright
+    show bellanorm with dissolve
+    k "Thanks for helping out with my lines, that was really fun."
+    mc "No problem!"
+    jump rehearsecont
+label standout:
+    mc "How about your assistant does it?"
+    ass "What? M-me??"
+    ty "Yeah sure we just need someone to read the lines"
+    ass "But...I-I don't know the lines!!"
+    ty "Just read off the script omfg"
+    k "Let's do this..."
+    scene stagetop with fade
+    show bellanorm at left 
+    show assistant at right
+    with dissolve
+    ty "AAnnnndddd...ACTION!"
+    k "You're impossibly fast. And strong. Your skin is pale-white, ice-cold. Your eyes change color. And sometimes you speak like... you're from a different time..."
+    ass "errrr....."
+    ty "Linda! Shh!"
+    k "How old are you...?"
+    ass "s...seventeen...."
+    ty "TOO QUIET!"
+    ass "SEVENTEEN!"
+    ty "TOO LOUD!"
+    k "How long have you been seventeen...."
+    ass "a long time..."
+    ty "THAT'S NOT YOUR LINE!!"
+    k "I know what you are...."
+    ass "Say it! Say it outloud!"
+    k "...a VAMPIRE!"
+    ty "OOOOO THAT WAS GOOOD! That was good."
+    ass "R-really?"
+    ty "No Linda you were awful, get out of here"
+    ass "WAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    hide assistant with easeoutleft
+    ty "But Katelyn, great work"
+    k "Thanks, sir"
+    scene stage with fade
+    show tylerdirect with dissolve
+    ty "ALright! Everyone! Take 10! I need to pee"
+    hide tylerdirect with easeoutright
+    show bellanorm with dissolve
+label rehearsecont:
+    mc "From what I saw, you were awesome, Katelyn."
+    k "Thanks, but seriously, I'm not THAT good..."
+    mc "Seriously! You were great! I can't wait to see your whole performance tomorrow."
+    k "Im a bit nervous but..yeah! It's gonna be awesome!"
+    k "Give me a second, I'm gonna go get changed out of my costume and then we can head to dinner."
+    mc "Awesome!"
+    hide bellanorm with dissolve
+    show tylerdirect with dissolve
+    ty "SO what'd you think of our play so far"
+    mc "Would be better if you weren't directing it"
+    ty "Oh fuck you first of all"
+    show katnorm at left with dissolve
+    k "Alright! Let's go."
+    jump katdinner
+label katdinner:
+    if katdine ==True:
+        if katrehearse==True:
+            scene pipinghotpizza with fade
+            show katnorm with dissolve
+            k "This is the Piping Hot Pizza Palace, I love this place!"
+            mc "I think I've heard a thing or two about it.."
+        else:
+            scene pipinghotpizza with fade
+            "I think this is the place Katelyn said to come...Piping Hot Pizza Palace?"
+        jump katdinealone
+    else:
+        if katrehearse==True:
+            scene pipinghotpizza with fade
+            show katnorm with dissolve
+            k "This is the Piping Hot Pizza Palace, I love this place!"
+            mc "I think I've heard a thing or two about it.."
+            k "Everyone's inside probably, let's go in."
+        else:
+            scene pipinghotpizza with fade
+            "I think this is the place Katelyn said to come...Piping Hot Pizza Palace?"
+            "Hopefully I'm not last to be here..."
+        jump katdinetogether
+label katdinealone:
+    if katrehearse==True:
+        scene pipinghotpizzainside with fade
+        show katsmile with dissolve
+        k "Here, let's sit here."
+        mc "Awesome!"
+    else:
+        scene pipinghotpizzainside with fade
+        show katnorm with dissolve
+        k "[mcname]! Over here!"
+        mc "Oh, hi Katelyn! Hopefully I'm not too late!"
+        k "Yeah yeah, whatever..."
+        mc "Sooo, how was rehearsal?"
+        k "Fine...kinda wish you were there, though."
+        k "Oh! I found out that we're performing TOMORROW. Can you believe it??"
+        mc "WHAAT??"
+        k "Yeah! But I think we'll be fine..I mean, we've already performed onced before, right?"
+        mc "Exactly!"
+    mc "You know, I'm just really looking forward to your performance. I've been hearing great things about this musical and I'm just super excited!"
+    hide katnorm
+    show katsmile
+    k "I'll make sure to bring my absolute A-game to this performance, just for you!"
 
 
 
