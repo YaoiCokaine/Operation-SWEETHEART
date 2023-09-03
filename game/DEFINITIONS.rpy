@@ -17,6 +17,7 @@ define ty = Character("Tyler",color="#FFFFFF")
 define n = Character("Nicole",color="#FFFFFF")
 define te =Character("Teony",color="#FFFFFF")
 define ass =Character("Assistant",color="#FFFFFF")
+define r =Character("Random Girl",color="#FFFFFF")
 
 
 define new = Dissolve(0.3)

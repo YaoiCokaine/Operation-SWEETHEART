@@ -3,10 +3,11 @@ MISC
 snore sound
 wail sound
 pour sound
+shutter sound
+breathe sound
 
 kat route:
 
--dinner
 -emo
 -final show
 -emo
@@ -20,8 +21,9 @@ IMAGES
 
 -kat bella sprites
 -assistant
-
+-fan
 -tylergun
+
 -alleyway
 -stage
 -stage top
@@ -30,7 +32,6 @@ ROUTES:
 
 aph- mcd awareness
 zane - insecurity arc
-katelyn - has to travel
 aaron - gasleak
 laur - michi stalk arc
 

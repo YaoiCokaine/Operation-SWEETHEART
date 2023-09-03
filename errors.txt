@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/lucinda.rpy", line 16: expected 'comma or end of line' not found.
-    with ease
-    ^
+File "game/katelyn.rpy", line 805: choice menuitem expects a non-empty block.
+    "Talk about Kawaii-Chan":
+                             ^
 
 Ren'Py Version: Ren'Py 8.0.1.22070801
-Thu Aug 24 22:57:38 2023
+Fri Sep  1 13:02:08 2023

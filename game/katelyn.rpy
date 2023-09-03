@@ -74,7 +74,7 @@ k "Come on, I think Aphmau and Kawaii-chan are home now. Let's go tell them!"
 scene aphhouse with fade
 show aphnorm at left with dissolve
 a "Lucinda's magic is strong, Kawaii-chan, but yours is just as good! No need for rivalry!"
-show kcconf at right with Dissolve
+show kcconf at right with dissolve
 kc "Kawaii-chan doesn't quite understand but...thank you?"
 show katsmile with dissolve
 mc "Aphmau! Kawaii-chan! Guess what!"
@@ -87,7 +87,7 @@ show kcstar at right
 hide aphnorm
 show aphlove at left
 a "Katelyn! That's awesome!!"
-k "We're so proud of you Katelyn-sama!"
+kc "We're so proud of you Katelyn-sama!"
 k "Thanks!"
 hide kcstar
 show kcnorm at right
@@ -147,6 +147,7 @@ ar "Well, I have this Buy 1-Get 1 free coupon that expires soon, I might as well
 mc "If you insist!"
 ar "I'll go order for us."
 hide aarsmile with dissolve
+pause (1.0)
 show aarnorm with dissolve
 ar "Okay so it turns out the barista heard our conversation and also wired the money straight out of my bank account somehow so"
 mc "...okay"
@@ -159,7 +160,7 @@ mc "Mhm! And she even got noticed by a talent agency!"
 ar "Of course she did, her performance in Midnight as Nutella Swan was spectacular."
 ar "For being such a silly role, she really put her whole heart into it. The whole musical was amazing, really."
 mc "Wow...I wish I could have seen it.."
-ar "It really was spectacular, whatever you think you know of Katelyn's talent, seriously, it's nothing compared to Midnight."
+ar "It really was something special, whatever you think you know of Katelyn's talent, seriously, it's nothing compared to Midnight."
 mc "That's awesome! I didn't know Katelyn was that good.."
 ar "Quite frankly, me neither. I was worried what a food-based Twilight parody would do to her career."
 ar "I used to think Katelyn might only be able to stick to acting as a hobby but after Midnight, she could honestly go professional."
@@ -285,6 +286,7 @@ label laurpark:
     la "Oh, right, I do have to go now. I have some plans."
     hide laurdis
     hide laurnorm
+    hide laursad
     show laursmile
     la "It was great talking to you, [mcname]!"
     mc "Great talking to you too!"
@@ -362,7 +364,7 @@ label dandonald:
     d "WHAAAT"
     mc "WOAH LET'S CALM DOWN"
     ty "I have to kill everyone who knows the truth about Skin Milk!"
-    d "YOU DO NOT NEED TO TRUST"
+    d "TRUST YOU DO NOT NEED TO"
     ty "No no I have to"
     d "[mcname!u] WHAT DO WE DOO"
     menu:
@@ -384,21 +386,21 @@ label dandonald:
             mc "...No! No you will NOT kill us!"
             ty "Oh yea?"
             mc "Yes! This is a free country! You will not shoot us!"
+            hide danscare
+            show danmad at right
             d "Y...yeah!!"
             ty "Aww shucks really I didn't know this was a free country guess I'll go-I'M GONNA KILL YOU"
             mc "TYLER. STOP. THIS ISN'T YOU."
             mc "Look me in the eye Tyler. This isn't you. Please."
             ty "???"
-            hide danscream
-            show danmad
             d "Come on...Tyler...we know you're better than this..."
             ty "Alright fine I won't kill you guys you two are weirding me out"
             hide danmad
-            show dannorm
+            show dannorm at right
             d "WOOHOO!!"
             ty "Well you two have really inspired me and i'm gonna quit my life of crime i'm gonna become a pro league baseball player like i've always dreamed of."
             hide tylergun with easeoutleft
-            show dannorm at center with dissolve
+            show dannorm at center with ease
             d "Man. That guy. Am I right?"
             mc "He's a weird one"
     d "Welp, thanks for helping me out, [mcname]!"
@@ -457,7 +459,7 @@ label lucihomehang:
             show lucismirk
             lu "Woah! Look! It's running super fast now!"
             mc "Yay! It worked!"
-            lu "Awesome! Man, I've been working on this for a while..thankfull you chose the right one. Great job, [mcname]"
+            lu "Awesome! Man, I've been working on this for a while..thankfully you chose the right one. Great job, [mcname]"
             mc "Haha, thanks."
         "Fungus":
             mc "Hmmm...try the fungus?"
@@ -481,7 +483,7 @@ label lucihomehang:
     hide lucisad
     hide lucismirk
     show lucinorm
-    lu "I just felt like it'd be useful to have. You see, I normall make potions with much more drastic effects, and those come naturally to me! But something basic like this, I don't know, I always find myself having a hard time."
+    lu "I just felt like it'd be useful to have. You see, I normally make potions with much more drastic effects, and those come naturally to me! But something basic like this, I don't know, I always find myself having a hard time."
     mc "Well, I think potion making in general is very impressive."
     lu "Haha, thank you, [mcname]."
     lu "So? Why are you here?"
@@ -565,7 +567,7 @@ label katrehearsal:
     k "TOMORROW!?!?"
     ty "Oh, right, yeah, forgot to mention that"
     k "Oh my god.....oh my god....."
-    mc "It's okay, Katelyn, you'll bne great!"
+    mc "It's okay, Katelyn, you'll be great!"
     hide bellashock
     show bellasmile at left
     k "Right...i've practiced a lot...it'll be fine!"
@@ -693,6 +695,8 @@ label katdinner:
             "Hopefully I'm not last to be here..."
         jump katdinetogether
 label katdinealone:
+    stop music 
+    play music romance loop
     if katrehearse==True:
         scene pipinghotpizzainside with fade
         show katsmile with dissolve
@@ -714,6 +718,176 @@ label katdinealone:
     hide katnorm
     show katsmile
     k "I'll make sure to bring my absolute A-game to this performance, just for you!"
+    mc "I'm looking forward to it!"
+    mc "Man, this place is fancy, isn't it?"
+    k "It is pretty fancy..but I just like the food, it's awesome."
+    k "Laurance took us here once after an intense game of soccer, and ever since, I've never been able to stop thinking about this place! It's just too good."
+    mc "I see...I can tell by the smell here that the food is gonna be great."
+    play sound katlaugh
+    k "Tonight, we feast like kings!"
+    mc "Woohoooo!"
+    show tylerwaiter at right with easeinright
+    hide katsmile
+    show katnorm
+    ty "Hey welcome to piping hot whatever. What can I get for the both of you"
+    mc "Oh god"
+    k "I'll have the pepperoni pizza. [mcname]?"
+    if katrehearse==True:
+        mc "Katelyn you're just not gonna say anything about this?"
+        k "About what?"
+        mc "Our waiter? He doesn't look familliar to you?"
+        k "What are you talking about?"
+        mc "Nevermind actually"
+    mc "I'll just have pepperoni too"
+    ty "Awesome"
+    hide tylerwaiter with easeoutright
+    k "Man, I'm starving. Rehearsal took a lot out of me."
+    mc "I can imagine"
+    show fan at left with easeinleft
+    r "Umm...excuse me...are you Katelyn..?"
+    k "Huh? Who's asking?"
+    r "Ummmm...well...I'm a really big fan of yours..! I saw you in Midnight and I just loved your performance...!"
+    hide katnorm
+    show katsmile
+    k "Wait...really?"
+    r "Yes! I'm obsessed with the books...so I had to see the musical when it came out. And..it was perfect! Everything was how I imagined it in the books!"
+    r "And you...you were just so amazing...I think you were born to play Nutella Swan..!"
+    k "Why....thank you! I don't know what to say.."
+    r "Sorry if this is weird! I just noticed you while I was about to leave and I had to say something...I can't wait to see you perform tomorrow!"
+    r "I really hope that if Midnight ever gets a movie adaptation, that you can play Nutella again!"
+    k "I hope so too..hey, want picture?"
+    r "Oh my god!! Really?? Yess!!!"
+    show fan:
+        xpos 0.2
+    with ease
+    play sound shutter
+    r "Thank you sososomuch!!!!"
+    k "Anytime! I love meeting my fans"
+    hide fan with easeoutright
+    k "Woah....I Love Meeting My Fans...I've always wanted to say that"
+    mc "Looks like you're becoming famous already?"
+    k "I never thought my performance would make people like me that much! I can't believe it.."
+    mc "I was talking about it with Aaron, actually. He was saying that you really could go professional after this?"
+    k "Really? He said that?"
+    mc "Yeah! And I think so too."
+    play sound katlaugh
+    k "You haven't even seen me perform yet!"
+    mc "I know I know! But I really do believe in you, Katelyn"
+    k "Man....thanks, [mcname]"
+    show tylerwaiter at right with easeinright
+    ty "here are your pizzas"
+    k "Let's dig in!"
+    scene black with fade
+    "We feasted like kings.."
+    scene pipinghotpizzainside with fade
+    show katnorm with dissolve
+    k "maannn....I..am...STUFFED!"
+    mc "me too....it was just too good,,,"
+    k "That's how they get you man"
+    mc "Ready to leave?"
+    k "Hold on...I need a moment to compose myself after that...let's just talk for a bit"
+    mc "Hmmm, what should we talk about?"
+    k "I don't know, our friends? Anything to distract me from the pain that was that pizza.."
+    $ abtaph = False
+    define abtkc = False
+    label icecreamsogood:
+    define katconv = 0
+    if katconv ==3:
+        jump icecreamnogood
+    menu:
+        "Talk about Aphmau" if abtaph ==False:
+            mc "What do you think about Aphmau?"
+            hide katnorm
+            show katsmile
+            k "Oh, Aphmau's great. We've been best friends since high school."
+            k "She really is awesome, one of the kindest people I know, actually."
+            mc "It's because of her I'm friends with all of you guys!"
+            k "Exactly! She's just...great. Always able to bring people together."
+            k "She can definitely be a bit weird at times, but that's just Aphmau being the quirky person she is. She's one of the most unique people I know."
+            hide katsmile
+            show katnorm
+            k "Speaking of weird, she has been saying lots of abnormal things recently, even for Aphmau's standards."
+            k "Lot's of talk about some magic world? Something about how she was the lord of Pheonix Drop and I'm her guard? I thought it was just weird talks about our highschool days but, I don't know, it's just been weird."
+            "Interesting...maybe that's something I'd know more about if we ever got closer."
+            $ abtaph =True
+            $ katconv +=1
+            jump icecreamsogood
+        "Talk about Kawaii-Chan" if abtkc ==False:
+            mc "What do you think about Kawaii-Chan?"
+            hide katnorm
+            show katsmile
+            k "See, most people think Kawaii-Chan is weird, but she really is an awesome person. So kindhearted and always fun to be with."
+            hide katsmile
+            show katdis
+            k "I will admit, she has done some pretty...interesting things,"
+            hide katdis
+            show katnorm
+            k "-But she means well, and seriously, can light up any room she's in. Really, she's the life of the party"
+            mc "I definitely was a bit confused by...well, everything about her, at first. But I've come to really enjoy those parts about her"
+            k "She really is a unique person. But, well, it's not like she acts the way she does for no reason, it's a bit deeper than that.."
+            "Really? Maybe that's something I could learn more about if we ever got closer.."
+            $ abtkc =True
+            $ katconv +=1
+            jump icecreamsogood
+        "Talk about Lucinda" if abtluci ==False:
+            mc "What do you think about Lucinda?"
+            k "Oh, she's great. We have a bit of a playful rivalry going on"
+            mc "I've noticed.."
+            k "Oftentimes people really get worried thinking we're like, actually fighting, but it's all for fun and she's one of my greatest friends! I don't know if I ever could get like, actually mad at her."
+            k "And her witch stuff is really cool too. She's been doing it for a long time but she's gotten super good at it now! Maybe I'll get her to teach me some stuff one day.."
+            k "I haven't really gotten a chance to talk to her much recently, actually. Apparently, one of our old friends Teony's back in town, and she's been hanging out with Lucinda a lot. They're very close.."
+            "Hmm...I wonder if I'd be able to hang out with Lucinda still if we were closer, despite Teony's sudden appearance? Maybe if I ever got to know her better.."
+            $ abtluci =True
+            $ katconv +=1
+            jump icecreamsogood
+        "Talk about Aaron" if abtaar ==False:
+            mc "What do you think about Aaron?"
+            k "Aaron's cool. I was kinda put off by him when we first met, but we've become good friends."
+            k "I think he really holds himself back, he's really kind and great to be with, but he's also very anti-social. Doesnt't really talk to people he doesn't already know."
+            k "Aphmau's really helped him get out of his shell, and he's definitely become more sociable now! Actually, I was shocked to see how quickly he got used to you. That's not something you usually see from him."
+            mc "Interesting.."
+            $ abtaar =True
+            $ katconv +=1
+            jump icecreamsogood
+        "Talk about Laurance" if abtlaur ==False:
+            mc "What do you think about Laurance?"
+            k "Laurance is cool. We never really had any reason to hang out alone before, but we've been playing soccer together a ton, he's great to be around."
+            k "He's very...well, posh? I guess. A textbook gentleman, one could say."
+            k "He was quite the ladies-man back in highschool, he actually had his own fanclub back then. It was crazy."
+            mc "That's...a bit creepy, actually."
+            k "Yeah...he had some identity struggles back then because of it, but he's better now, I think. Really thriving now that he's able to live as a normal guy and not like, Prince Charming."
+            k "He has been a bit weird though recently.."
+            mc "How so?"
+            k "Well, he seems kind of down a lot of the time, like something's bothering him. He's also been very secretive recently. Not sure what it is, but it sucks seeing him not act like himself anymore."
+            "Hmm...maybe that's something I'd know more about if I ever got closer to him..."
+            $ abtlaur =True
+            $ katconv +=1
+            jump icecreamsogood
+        "Talk about Zane" if abtzane ==False:
+            mc "What do you think about Zane?"
+            k "Zane is....hard to explain."
+            k "We've had some rough moments, he can be really hard to talk to."
+            k "But he's also a very genuine person. Might not seem like it, but he really cares a lot about everyone."
+            k "-Especially Aphmau and Kawaii-chan. I know how much he means to them, so I've learnt to get along with him."
+            k "Sorry, it sounds like I hate him or something. We're friends! Really. It was just hard for me to get closer to him."
+            $ abtzane =True
+            $ katconv +=1
+            jump icecreamsogood
+        "Talk about Aphmau" if abtaph ==False:
+            mc "What do you think about Aphmau?"
+            $ abtaph =True
+            $ katconv +=1
+            jump icecreamsogood
+        "Talk about Aphmau" if abtaph ==False:
+            mc "What do you think about Aphmau?"
+            $ abtaph =True
+            $ katconv +=1
+            jump icecreamsogood
+        "Talk about Aphmau" if abtaph ==False:
+            mc "What do you think about Aphmau?"
+            $ abtaph =True
+            $ katconv +=1
+            jump icecreamsogood
 
 
 
